@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Web.Http;
 using System.Data.Entity;
+using MeetMeWeb.Migrations;
 
 namespace MeetMeWeb
 {
@@ -20,7 +21,7 @@ namespace MeetMeWeb
             GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             // Database 
-            Database.SetInitializer(new DropCreateDatabaseAlways<MeetMeDbContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MeetMeDbContext, Configuration>());
         }
     }
 }
