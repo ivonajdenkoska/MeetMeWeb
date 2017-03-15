@@ -116,6 +116,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AngularWeb\app\app.js" />
+    <Content Include="AngularWeb\gulpfile.js" />
+    <Content Include="AngularWeb\index.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\Custom.css" />
     <Content Include="Content\font-awesome.css" />
@@ -147,6 +150,7 @@
     <Content Include="Views\Home\Menu.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LandingLayout.cshtml" />
+    <Content Include="AngularWeb\package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
