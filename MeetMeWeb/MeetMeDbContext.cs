@@ -1,17 +1,19 @@
+using MeetMeWeb.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
+
 namespace MeetMeWeb
 {
-    using System;
-    using System.Data.Entity;
-    using System.Linq;
-    using MeetMeWeb.Models;
 
-    public class MeetMeDbContext : DbContext
+    public class MeetMeDbContext : IdentityDbContext<User>
     {
         public MeetMeDbContext()
             : base("name=MeetMeDB")
         {
         }
 
-        public DbSet<User> Users { get; set; }
+        public static MeetMeDbContext Create()
+        {
+            return new MeetMeDbContext();
+        }
     }
 }
