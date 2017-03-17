@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using System.Web.Security;
-using System.Web.SessionState;
 using System.Web.Http;
 using System.Data.Entity;
 using MeetMeWeb.Migrations;
+using MeetMeWeb.App_Start;
 
 namespace MeetMeWeb
 {
@@ -20,7 +17,8 @@ namespace MeetMeWeb
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalFilters.Filters.Add(new RequireHttpsAttribute());
+            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //GlobalFilters.Filters.Add(new RequireHttpsAttribute());
             // Database 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MeetMeDbContext, Configuration>());
         }
