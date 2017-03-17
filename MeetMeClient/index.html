@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MeetMe</title>
+    <!-- Concatenated CSS -->
+    <link href="/dest/lib.css?rev=7b34783481b87b83afa373d828f3ff0a" rel="stylesheet">
+    <link href="/dest/app.css?rev=7942652d5042d1367d81bef8de8aa563" rel="stylesheet">
+</head>
+<body ng-app="meet-me">
+    <div class="navbar navbar-fixed-top" role="navigation" ng-controller="indexController">
+
+    </div>
+
+   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="indexController">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="btn btn-success navbar-toggle" ng-click="navbarExpanded = !navbarExpanded">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+                <a class="navbar-brand" href="/">Home</a>
+            </div>
+            <div class="collapse navbar-collapse" collapse="!navbarExpanded">
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
+                    <li ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()">Logout</a></li>
+                    <li ng-hide="authentication.isAuth"> <a ui-sref="login">Login</a></li>
+                    <li ng-hide="authentication.isAuth"> <a ui-sref="signup">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h1>HeloooooooooO</h1>
+        <div ui-view class="container"></div>
+
+        <!-- Concatenated libraries -->
+        <script src="/dest/lib.js?rev=eab2a09cb8a791be2887a710753123e8"></script>
+        <!-- Concatenated application -->
+        <script src="/dest/src.js?rev=9da2048d407974fa79f8367d27a9761f"></script>
+        <!-- All html templates -->
+        <!--<script src="/dest/templates.js?rev=e10e812c1c54be38f6015cb3ec83fcd6"></script>-->
+    </body>
+</html>
