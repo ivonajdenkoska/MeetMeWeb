@@ -28,7 +28,8 @@ namespace MeetMeWeb.Repositories
                 Email = userModel.Email,
                 FirstName = userModel.FirstName,
                 LastName = userModel.LastName,
-                UserName = userModel.Email
+                UserName = userModel.Email,
+                BirthDate = DateTime.Now
             };
 
             var result = await _userManager.CreateAsync(user, userModel.Password);

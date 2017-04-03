@@ -77,7 +77,7 @@ var API_URL = 'https://localhost:44362/api';
 /**
 * Route to which the API calls will be mapped
 */
-var API_ROUTE = 'https://localhost:44362/api';
+var API_ROUTE = '/api';
 
 /**
 * Task for concatenation of the js libraries used

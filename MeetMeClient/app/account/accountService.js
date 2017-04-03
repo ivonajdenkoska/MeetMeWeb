@@ -11,7 +11,7 @@
         var resource = $resource('https://localhost:44362/api/account', {},
         {
             login: { method: "POST", url: '/api/account/login' },
-            register: { method: "POST", url: '/api/account/register' },
+            register: { method: "POST", url: 'https://localhost:44362/api/account/register' },
             refreshToken: { method: "POST", url: 'api/account/refreshToken', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
             obtainAccessToken: { method: "GET", url: 'api/account/obtainLocalAccessToken' },
             registerExternal: { method: "POST", url: 'api/account/registerExternal' }
