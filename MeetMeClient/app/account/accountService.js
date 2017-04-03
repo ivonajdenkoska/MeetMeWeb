@@ -8,7 +8,8 @@
     AccountServiceFn.$inject = ['$resource', 'localStorageService', 'ngAuthSettings'];
 
     function AccountServiceFn($resource, localStorageService, ngAuthSettings) {
-        var resource = $resource('/api/account', {
+        var resource = $resource('https://localhost:44362/api/account', {},
+        {
             login: { method: "POST", url: '/api/account/login' },
             register: { method: "POST", url: '/api/account/register' },
             refreshToken: { method: "POST", url: 'api/account/refreshToken', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
@@ -69,7 +70,7 @@
             logOutFn();
             return resource.register(registration, function (response) {
                 return response;
-            });
+            }).$promise;
         };
 
         function logOutFn() {

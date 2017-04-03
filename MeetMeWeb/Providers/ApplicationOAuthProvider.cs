@@ -73,12 +73,7 @@ namespace MeetMeWeb.Providers
         {
             if (context.ClientId == _publicClientId)
             {
-                Uri expectedRootUri = new Uri(context.Request.Uri, "/");
-
-                if (expectedRootUri.AbsoluteUri == context.RedirectUri)
-                {
-                    context.Validated();
-                }
+                context.Validated();
             }
 
             return Task.FromResult<object>(null);

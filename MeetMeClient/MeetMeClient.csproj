@@ -68,6 +68,9 @@
   <ItemGroup>
     <Content Include="app\account\loginView.html" />
     <Content Include="app\account\loginState.js" />
+    <Content Include="app\account\registerView.html" />
+    <Content Include="app\account\registerState.js" />
+    <Content Include="app\authComplete.html" />
     <Content Include="app\index\indexController.js" />
     <Content Include="app\account\accountController.js" />
     <Content Include="app\account\accountService.js" />
@@ -85,6 +88,7 @@
     <Content Include="app\app.js" />
     <Content Include="gulpfile.js" />
     <Content Include="index.html" />
+    <Content Include="scripts\authComplete.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

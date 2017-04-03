@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -27,20 +27,18 @@
                     <li ng-hide="!authentication.isAuth"><a href="#">Welcome {{authentication.userName}}</a></li>
                     <li ng-hide="!authentication.isAuth"><a href="" ng-click="logOut()">Logout</a></li>
                     <li ng-hide="authentication.isAuth"> <a ui-sref="login">Login</a></li>
-                    <li ng-hide="authentication.isAuth"> <a ui-sref="signup">Sign Up</a></li>
+                    <li ng-hide="authentication.isAuth"> <a ui-sref="register">Register</a></li>
                 </ul>
             </div>
         </div>
     </div>
+    <div ui-view class="main-page container"></div>
 
-    <h1>HeloooooooooO</h1>
-        <div ui-view class="container"></div>
-
-        <!-- Concatenated libraries -->
-        <script src="/dest/lib.js?rev=eab2a09cb8a791be2887a710753123e8"></script>
-        <!-- Concatenated application -->
-        <script src="/dest/src.js?rev=9da2048d407974fa79f8367d27a9761f"></script>
-        <!-- All html templates -->
-        <!--<script src="/dest/templates.js?rev=e10e812c1c54be38f6015cb3ec83fcd6"></script>-->
+    <!-- Concatenated libraries -->
+    <script src="/dest/lib.js?rev=eab2a09cb8a791be2887a710753123e8"></script>
+    <!-- Concatenated application -->
+    <script src="/dest/src.js?rev=792e4d76b2f3b9de2b122bb889b51be0"></script>
+    <!-- All html templates -->
+    <!--<script src="/dest/templates.js?rev=e10e812c1c54be38f6015cb3ec83fcd6"></script>-->
     </body>
 </html>

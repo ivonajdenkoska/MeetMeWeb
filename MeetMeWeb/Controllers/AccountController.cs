@@ -17,6 +17,7 @@ using MeetMeWeb.App_Start;
 using MeetMeWeb.Models;
 using MeetMeWeb.Results;
 using MeetMeWeb.Providers;
+using MeetMeWeb.Services;
 
 namespace MeetMeWeb.Controllers
 {
@@ -24,6 +25,76 @@ namespace MeetMeWeb.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
+        AccountService _service = null;
+
+        public AccountController()
+        {
+            _service = new AccountService();
+        }
+
+        // POST api/Account/Register
+        [AllowAnonymous]
+        [Route("Register")]
+        public async Task<IHttpActionResult> Register(UserModel userModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            System.Console.WriteLine("Vleze!!!!");
+
+            IdentityResult result = await _service.RegisterUser(userModel);
+
+            IHttpActionResult errorResult = GetErrorResult(result);
+
+            if (errorResult != null)
+            {
+                return errorResult;
+            }
+
+            return Ok();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _service.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        private IHttpActionResult GetErrorResult(IdentityResult result)
+        {
+            if (result == null)
+            {
+                return InternalServerError();
+            }
+
+            if (!result.Succeeded)
+            {
+                if (result.Errors != null)
+                {
+                    foreach (string error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error);
+                    }
+                }
+
+                if (ModelState.IsValid)
+                {
+                    // No ModelState errors are available to send, so just return an empty BadRequest.
+                    return BadRequest();
+                }
+
+                return BadRequest(ModelState);
+            }
+
+            return null;
+        }
+        /*
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
@@ -491,6 +562,7 @@ namespace MeetMeWeb.Controllers
         }
 
         #endregion
+        */
 
     }
 }

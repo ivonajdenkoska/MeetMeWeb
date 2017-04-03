@@ -21,7 +21,8 @@ var JS_APP = [
   'app/index/indexController.js',
   'app/account/accountController.js',
   'app/account/accountService.js',
-  'app/account/loginState.js'
+  'app/account/loginState.js',
+  'app/account/registerState.js'
 ];
 
 var TEMPLATES_SRC = [
@@ -76,7 +77,7 @@ var API_URL = 'https://localhost:44362/api';
 /**
 * Route to which the API calls will be mapped
 */
-var API_ROUTE = '/api';
+var API_ROUTE = 'https://localhost:44362/api';
 
 /**
 * Task for concatenation of the js libraries used

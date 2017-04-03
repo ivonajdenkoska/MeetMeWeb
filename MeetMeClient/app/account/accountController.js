@@ -18,13 +18,34 @@
             password: "",
             useRefreshTokens: false
         };
+        vm.registerData = {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            confirmPassword: ""
+        };
+        vm.savedSuccessfully = false;
         vm.login = login;
+        vm.register = register;
         vm.authExternalProvider = authExternalProvider;
         vm.authCompletedCB = authCompletedCB;
 
+        function register() {
+            console.log('Register');
+            AccountService.saveRegistration(vm.registerData).then(function (response) {
+                vm.savedSuccessfully = true;
+                vm.message = 'Saved successfully.'
+            }, function (err) {
+                vm.message = err.error_description;
+                if (err.exceptionMessage != null)
+                    vm.message = err.exceptionMessage;
+            });
+        };
+
         function login() {
             console.log("LOG");
-            AccountService.login().then(function (response) {
+            AccountService.login(vm.loginData).then(function (response) {
                 $location.path('/');
             }, function (err) {
                 vm.message = err.error_description;

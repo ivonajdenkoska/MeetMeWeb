@@ -17,8 +17,21 @@ namespace MeetMeWeb
         public static string PublicClientId { get; private set; }
 
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
-        public void ConfigureAuth(IAppBuilder app)
+        public void ConfigureOAuth(IAppBuilder app)
         {
+            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
+            {
+                AllowInsecureHttp = true,
+                TokenEndpointPath = new PathString("/token"),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                Provider = new SimpleAuthorizationServerProvider()
+            };
+
+            // Token Generation
+            app.UseOAuthAuthorizationServer(OAuthServerOptions);
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
+            /*
             // Configure the db context and user manager to use a single instance per request
             app.CreatePerOwinContext(MeetMeDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
@@ -61,6 +74,8 @@ namespace MeetMeWeb
                 ClientId = "554910020383-d4foh3220vd51cmmlenk1577a49ac2uj.apps.googleusercontent.com",
                 ClientSecret = "9kOla5a1A3C5UZXnjz5CcPew"
             });
+
+            */
         }
     }
 }
