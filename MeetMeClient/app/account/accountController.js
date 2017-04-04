@@ -39,9 +39,9 @@
                 startTimer();
             }, function (err) {
                 var errors = [];
-                for (var key in response.data.modelState) {
-                    for (var i = 0; i < response.data.modelState[key].length; i++) {
-                        errors.push(response.data.modelState[key][i]);
+                for (var key in err.data.modelState) {
+                    for (var i = 0; i < err.data.modelState[key].length; i++) {
+                        errors.push(err.data.modelState[key][i]);
                     }
                 }
                 vm.message = "Failed to register user due to:" + errors.join(' ');
