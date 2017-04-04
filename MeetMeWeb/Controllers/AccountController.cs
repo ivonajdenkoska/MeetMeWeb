@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using MeetMeWeb.App_Start;
 using MeetMeWeb.Models;
-using MeetMeWeb.Results;
-using MeetMeWeb.Providers;
 using MeetMeWeb.Services;
 
 namespace MeetMeWeb.Controllers
@@ -25,7 +13,12 @@ namespace MeetMeWeb.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        AccountService _service = null;
+        private AccountService _service = null;
+
+        private IAuthenticationManager Authentication
+        {
+            get { return Request.GetOwinContext().Authentication; }
+        }
 
         public AccountController()
         {
@@ -42,9 +35,10 @@ namespace MeetMeWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            System.Console.WriteLine("Vleze!!!!");
 
-            IdentityResult result = await _service.RegisterUser(userModel);
+            var callbackUrl = "https://localhost:44362/api/account/confirmemail";
+
+            IdentityResult result = await _service.RegisterUser(userModel, callbackUrl);
 
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -54,6 +48,28 @@ namespace MeetMeWeb.Controllers
             }
 
             return Ok();
+        }
+
+        [AllowAnonymous]
+        [Route("ConfirmEmail")]
+        public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
+        {
+            if (string.IsNullOrWhiteSpace(userId) || string.IsNullOrWhiteSpace(code))
+            {
+                ModelState.AddModelError("", "User Id and Code are required");
+                return BadRequest(ModelState);
+            }
+
+            IdentityResult result = await _service.ConfirmEmail(userId, code);
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+            else
+            {
+                return GetErrorResult(result);
+            }
         }
 
         protected override void Dispose(bool disposing)

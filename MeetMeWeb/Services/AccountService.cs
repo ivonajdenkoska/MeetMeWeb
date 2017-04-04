@@ -11,15 +11,21 @@ namespace MeetMeWeb.Services
 {
     public class AccountService : IDisposable
     {
-        public AuthRepository _repo = null;
+        private AuthRepository _repo = null;
+
         public AccountService()
         {
             _repo = new AuthRepository();
         }
 
-        public async Task<IdentityResult> RegisterUser(UserModel userModel)
+        public async Task<IdentityResult> RegisterUser(UserModel userModel, string callbackUrl)
         {
-            return await _repo.RegisterUser(userModel);
+            return await _repo.RegisterUser(userModel, callbackUrl);
+        }
+
+        public async Task<IdentityResult> ConfirmEmail(string userId, string code)
+        {
+            return await _repo.ConfirmEmail(userId, code);
         }
 
         public void Dispose()
