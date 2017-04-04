@@ -1,4 +1,5 @@
 ﻿using MeetMeWeb.Models;
+using MeetMeWeb.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -33,6 +34,7 @@ namespace MeetMeWeb.App_Start
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
+            manager.EmailService = new EmailService();
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
