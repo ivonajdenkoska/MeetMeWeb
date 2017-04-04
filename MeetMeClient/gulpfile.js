@@ -21,6 +21,7 @@ var JS_APP = [
   'app/index/indexController.js',
   'app/account/accountController.js',
   'app/account/accountService.js',
+  'app/account/authInterceptorService.js',
   'app/account/loginState.js',
   'app/account/registerState.js'
 ];

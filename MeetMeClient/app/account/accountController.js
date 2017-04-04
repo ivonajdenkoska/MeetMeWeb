@@ -35,20 +35,35 @@
             console.log('Register');
             AccountService.saveRegistration(vm.registerData).then(function (response) {
                 vm.savedSuccessfully = true;
-                vm.message = 'Saved successfully.'
+                vm.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
+                startTimer();
             }, function (err) {
-                vm.message = err.error_description;
-                if (err.exceptionMessage != null)
-                    vm.message = err.exceptionMessage;
+                var errors = [];
+                for (var key in response.data.modelState) {
+                    for (var i = 0; i < response.data.modelState[key].length; i++) {
+                        errors.push(response.data.modelState[key][i]);
+                    }
+                }
+                vm.message = "Failed to register user due to:" + errors.join(' ');
             });
+        };
+
+        var startTimer = function () {
+            var timer = $timeout(function () {
+                $timeout.cancel(timer);
+                $location.path('/login');
+            }, 2000);
         };
 
         function login() {
             console.log("LOG");
             AccountService.login(vm.loginData).then(function (response) {
-                $location.path('/');
+                $location.path('/home');
+                vm.message = "success";
+                console.log("LOG success");
             }, function (err) {
-                vm.message = err.error_description;
+                console.log(err);
+                vm.message = err.data.error_description;
             });
         };
 
