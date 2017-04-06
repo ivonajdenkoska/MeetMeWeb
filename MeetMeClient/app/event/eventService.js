@@ -8,20 +8,20 @@
     EventServiceFn.$inject = ['$resource', 'localStorageService', 'ngAuthSettings'];
 
     function EventServiceFn($resource, localStorageService, ngAuthSettings) {
-        var resource = $resource('https://localhost:44362/api/account', {},
+        var resource = $resource('https://localhost:44362/api/event', {},
         {
-            login: { method: "POST", url: 'https://localhost:44362/token', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
-            register: { method: "POST", url: 'https://localhost:44362/api/account/register' },
-            refreshToken: { method: "POST", url: 'api/account/refreshToken', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
-            obtainAccessToken: { method: "GET", url: 'api/account/obtainLocalAccessToken' },
-            registerExternal: { method: "POST", url: 'api/account/registerExternal' }
+            createEvent: { method: "POST", url: 'https://localhost:44362/api/event/create' },
         });
 
         var service = {
             createEvent: createEvent
         };
 
-        function createEvent() { };
+        function createEvent(event) {
+            return resource.createEvent(event, function (response) {
+                return response;
+            }).$promise;
+        };
 
         return service;
     }
