@@ -1,0 +1,49 @@
+﻿<div class="row">
+<br/>
+<br/>
+<div class="col-md-6 col-md-offset-3"><h1>Schedule event</h1></div>
+<div class="col-md-6 col-md-offset-3">
+    <div class="form-group has-success">
+        <label for="eventName">Event Name</label>
+        <input type="text" id="eventName" class="form-control" aria-describedby="eventName" ng-model="vm.eventData.eventName">
+    </div>
+</div>
+<div class="col-md-6 col-md-offset-3">
+        <div class="form-group has-success">
+            <label for="eventLocation">Event Location</label>
+            <input type="text" id="eventLocation" class="form-control" aria-describedby="eventLocation" ng-model="vm.eventData.eventLocation">
+        </div>
+</div>
+    <div class="col-md-6 col-md-offset-3">
+    <div class="input-append date form_datetime">
+        <label for="eventStart">Event Start</label>
+        <input id="eventStart" class="form-control" type="text" value="" readonly ng-model="vm.eventData.eventStart">
+        <span class="add-on"><i class="icon-th"></i></span>
+    </div>      
+</div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="input-append date form_datetime">
+            <label for="eventEnd">Event End</label>
+            <input id="eventEnd" class="form-control" type="text" value="" readonly ng-model="vm.eventData.eventEnd">
+            <span class="add-on"><i class="icon-th"></i></span>
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+            <label for="eventPriority">Event Priority</label>
+            <select id="eventPriority" class="form-control" ng-model="vm.eventData.eventPriority">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <button type="button" class="btn btn-primary btn-lg" ng-click="vm.createEvent()">Create Event</button>
+    </div>
+    </div>
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii"
+    });
+</script>    

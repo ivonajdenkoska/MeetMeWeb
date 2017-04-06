@@ -7,12 +7,7 @@ namespace MeetMeWeb.Services
 {
     public class EmailService : IIdentityMessageService
     {
-        public async Task SendAsync(IdentityMessage message)
-        {
-            await sendEmailasync(message);
-        }
-
-        private async Task sendEmailasync(IdentityMessage message)
+        public Task SendAsync(IdentityMessage message)
         {
             var emailAddress = ConfigurationManager.AppSettings["emailService:EmailAddress"];
             var password = ConfigurationManager.AppSettings["emailService:Password"];
@@ -27,7 +22,7 @@ namespace MeetMeWeb.Services
             smtp.Host = emailHost;
             smtp.Credentials = new System.Net.NetworkCredential(emailAddress, password);
             smtp.EnableSsl = true;
-            smtp.Send(mailMessage);
+            return smtp.SendMailAsync(mailMessage);
         }
     }
 }

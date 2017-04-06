@@ -23,7 +23,10 @@ var JS_APP = [
   'app/account/accountService.js',
   'app/account/authInterceptorService.js',
   'app/account/loginState.js',
-  'app/account/registerState.js'
+  'app/account/registerState.js',
+  'app/event/eventController.js',
+  'app/event/eventService.js',
+  'app/event/eventState.js',
 ];
 
 var TEMPLATES_SRC = [
@@ -38,7 +41,9 @@ var FONTS_LIB = [
 
 var CSS_LIB = [
     'bower_components/bootstrap/dist/css/bootstrap.css',
-    'bower_components/components-font-awesome/css/font-awesome.min.css'
+    'bower_components/components-font-awesome/css/font-awesome.min.css',
+    'app/event/bootstrap-datetimepicker.css',
+    'bower_components/bootstrap-additions/dist/bootstrap-additions.css',
 ];
 
 var CSS_APP = [
@@ -52,7 +57,8 @@ var JS_LIB = [
     'bower_components/momentjs/moment.js',
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/angular-resource/angular-resource.js',
-    'bower_components/angular-local-storage/dist/angular-local-storage.js'
+    'bower_components/angular-local-storage/dist/angular-local-storage.js',
+    'app/event/bootstrap-datetimepicker.js'
 ];
 
 
