@@ -9,13 +9,14 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.5",
+    "jquery": "^3.2.1",
     "angular": "~1.5.8",
     "momentjs": "~2.10.3",
     "components-font-awesome": "~4.4.0",
     "angular-ui-router": "~0.3.2",
     "angular-resource": "~1.4.1",
     "angular-local-storage": "^0.5.2",
-    "date-time-picker": "*"
+    "bootstrap-datetimepicker": "^0.0.11"
   },
   "resolutions": {
     "angular": "^1.0.8",

@@ -27,6 +27,7 @@ var JS_APP = [
   'app/event/eventController.js',
   'app/event/eventService.js',
   'app/event/eventState.js',
+  'app/directives/date-time-picker/dateTimePickerDirective.js'
 ];
 
 var TEMPLATES_SRC = [
@@ -42,7 +43,7 @@ var FONTS_LIB = [
 var CSS_LIB = [
     'bower_components/bootstrap/dist/css/bootstrap.css',
     'bower_components/components-font-awesome/css/font-awesome.min.css',
-    'app/event/bootstrap-datetimepicker.css',
+    'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
     'bower_components/bootstrap-additions/dist/bootstrap-additions.css',
 ];
 
@@ -58,7 +59,7 @@ var JS_LIB = [
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/angular-resource/angular-resource.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
-    'app/event/bootstrap-datetimepicker.js'
+    'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
 ];
 
 
