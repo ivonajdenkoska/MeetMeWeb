@@ -1,5 +1,7 @@
-﻿<div class="input-append">
-    <label for="datetime">{{vm.label}}</label>
-    <input id="datetime" class="form-control" type="datetime" value="" readonly ng-model="vm.model">
-    <span class="add-on"><i class="icon-th"></i></span>
+﻿<div class="input-group"><label>{{vm.label}}</label></div>
+<div class="input-group input-append date">
+    <input class="form-control" type="text" value="" readonly ng-model="vm.model">
+    <span class="input-group-addon add-on">
+        <i class="fa fa-calendar" data-date-icon="glyphicon glyphicon-calendar"></i>
+    </span>
 </div>

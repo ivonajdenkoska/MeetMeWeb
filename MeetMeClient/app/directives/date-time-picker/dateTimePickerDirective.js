@@ -33,7 +33,8 @@
 
 
         function link(scope, element, attrs, ctrl) {
-            element.datetimepicker({
+            var input = element.eq(0).children().eq(1);
+            input.datetimepicker({
                 format: 'dd/MM/yyyy hh:mm:ss'
             });
         }
