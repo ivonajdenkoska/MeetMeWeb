@@ -43,8 +43,10 @@ var FONTS_LIB = [
 var CSS_LIB = [
     'bower_components/bootstrap/dist/css/bootstrap.css',
     'bower_components/components-font-awesome/css/font-awesome.min.css',
-    'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-    'bower_components/bootstrap-additions/dist/bootstrap-additions.css',
+    //'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+    'bower_components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.css',
+    'bower_components/glyphicons-halflings/css/glyphicons-halflings',
+    'bower_components/bootstrap-additions/dist/bootstrap-additions.css'
 ];
 
 var CSS_APP = [
@@ -59,7 +61,8 @@ var JS_LIB = [
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/angular-resource/angular-resource.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
-    'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+    'bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js',
+    //'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
 ];
 
 

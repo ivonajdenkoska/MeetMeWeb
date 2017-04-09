@@ -72,9 +72,8 @@
     <Content Include="app\account\registerView.html" />
     <Content Include="app\account\registerState.js" />
     <Content Include="app\authComplete.html" />
-    <Content Include="app\event\bootstrap-datetimepicker.css" />
-    <Content Include="app\event\bootstrap-datetimepicker.js" />
-    <Content Include="app\event\bootstrap-datetimepicker.min.js" />
+    <Content Include="app\directives\date-time-picker\dateTimePickerDirective.js" />
+    <Content Include="app\directives\date-time-picker\dateTimePickerView.html" />
     <Content Include="app\event\eventController.js" />
     <Content Include="app\event\eventService.js" />
     <Content Include="app\event\eventState.js" />

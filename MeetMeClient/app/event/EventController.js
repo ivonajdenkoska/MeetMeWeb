@@ -26,6 +26,7 @@
 
         function createEvent() {
             console.log(vm.eventData.eventName);
+            console.log(vm.eventData.eventStart);
             console.log('createEvent');
             EventService.createEvent(vm.eventData);
         };

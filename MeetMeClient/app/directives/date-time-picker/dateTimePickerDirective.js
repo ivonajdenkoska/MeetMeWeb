@@ -13,8 +13,8 @@
             restrict: 'E',
             templateUrl: 'app/directives/date-time-picker/dateTimePickerView.html',
             scope: {
-                model: "=",
-                label: "@"
+                label: "@",
+                model: "="
             },
             controller: DateTimePickerController,
             bindToController: true,
@@ -35,17 +35,19 @@
         function link(scope, element, attrs, ctrl) {
             var input = element.eq(0).children().eq(1);
             input.datetimepicker({
-                format: 'dd/MM/yyyy hh:mm:ss'
+                format: 'yyyy-mm-dd hh:ii'
             });
         }
 
     }
 
-    DateTimePickerController.$inject = [];
+    DateTimePickerController.$inject = ['$scope', '$attrs', '$log'];
 
     /* @ngInject */
-    function DateTimePickerController() {
+    function DateTimePickerController($scope,$attrs,$log) {
         var vm = this;
+        $scope.test = {};
+        vm.model = $scope.test.relation;
     }
 
 

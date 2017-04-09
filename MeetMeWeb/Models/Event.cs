@@ -14,8 +14,8 @@ namespace MeetMeWeb.Models
         public Guid eventID { get; set; }
         public string eventName { get; set; }
         public string eventLocation { get; set; }
-        public String eventStart { get; set; }
-        public String eventEnd { get; set; }
+        public string eventStart { get; set; }
+        public string eventEnd { get; set; }
         public string eventPriority { get; set; }
         public User user { get; set; }
     }
