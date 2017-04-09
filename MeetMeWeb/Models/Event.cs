@@ -11,12 +11,18 @@ namespace MeetMeWeb.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid eventID { get; set; }
-        public string eventName { get; set; }
-        public string eventLocation { get; set; }
-        public string eventStart { get; set; }
-        public string eventEnd { get; set; }
-        public string eventPriority { get; set; }
-        public User user { get; set; }
+        public Guid ID { get; set; }
+        [Required]
+        public string Name { get; set; }
+        public string Location { get; set; }
+        [Required]
+        public DateTime Start { get; set; }
+        [Required]
+        public DateTime End { get; set; }
+        [Required]
+        public Priorities Priority { get; set; }
+        public User User { get; set; }
+
+        public enum Priorities { Low, Medium, High }
     }
 }
