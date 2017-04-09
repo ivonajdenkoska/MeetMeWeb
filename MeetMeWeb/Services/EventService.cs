@@ -1,20 +1,17 @@
 ﻿using MeetMeWeb.Models;
-using MeetMeWeb.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using MeetMeWeb.Repositories.Interfaces;
+using MeetMeWeb.Services.Interfaces;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace MeetMeWeb.Services
 {
-    public class EventService : IDisposable
+    public class EventService : IEventService
     {
-        private EventRepo _repo = null;
+        private IEventRepository _repo;
 
-        public EventService()
+        public EventService(IEventRepository repo)
         {
-            _repo = new EventRepo();
+            _repo = repo;
         }
 
         public async Task<Event> createEvent(Event eventModel)

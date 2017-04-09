@@ -1,5 +1,6 @@
 ﻿using MeetMeWeb.App_Start;
 using MeetMeWeb.Models;
+using MeetMeWeb.Repositories.Interfaces;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MeetMeWeb.Repositories
 {
-    public class AuthRepository : IDisposable
+    public class AuthRepository : IAuthRepository
     {
         private MeetMeDbContext _context;
 
