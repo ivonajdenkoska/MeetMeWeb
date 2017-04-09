@@ -27,7 +27,6 @@ namespace MeetMeWeb.Controllers
         [Route("Create")]
         public async Task<Event> CreateEvent(Event eventModel)
         {
-
             Event e = await _service.createEvent(eventModel);
             return e;
         }

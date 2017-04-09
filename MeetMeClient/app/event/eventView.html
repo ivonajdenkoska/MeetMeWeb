@@ -4,21 +4,21 @@
 <div class="col-md-6 col-md-offset-3"><h1>Schedule event</h1></div>
 <div class="col-md-6 col-md-offset-3">
     <div class="form-group has-success">
-        <label for="eventName">Event Name</label>
-        <input type="text" id="eventName" class="form-control" aria-describedby="eventName" ng-model="vm.eventData.eventName">
+        <label for="eventName">Event Title</label>
+        <input type="text" id="eventName" class="form-control" aria-describedby="eventTitle" ng-model="vm.eventData.title">
     </div>
 </div>
 <div class="col-md-6 col-md-offset-3">
         <div class="form-group has-success">
             <label for="eventLocation">Event Location</label>
-            <input type="text" id="eventLocation" class="form-control" aria-describedby="eventLocation" ng-model="vm.eventData.eventLocation">
+            <input type="text" id="eventLocation" class="form-control" aria-describedby="eventLocation" ng-model="vm.eventData.location">
         </div>
 </div>
     <div class="col-md-6 col-md-offset-3">
-        <date-time-picker label="Event Start" model="vm.eventData.eventStart" />   
+        <date-time-picker label="Event Start" model="vm.eventData.start" />   
     </div>
     <div class="col-md-6 col-md-offset-3">
-        <date-time-picker label="Event End" model="vm.eventData.eventEnd"/>
+        <date-time-picker label="Event End" model="vm.eventData.end"/>
     </div>
     <div class="col-md-6 col-md-offset-3">
         <br />
@@ -26,7 +26,7 @@
         <br />
         <div class="form-group">
             <label for="eventPriority">Event Priority</label>
-            <select id="eventPriority" class="form-control" ng-model="vm.eventData.eventPriority">
+            <select id="eventPriority" class="form-control" ng-model="vm.eventData.priority">
                 <option>Low</option>
                 <option>Medium</option>
                 <option>High</option>

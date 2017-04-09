@@ -10,7 +10,7 @@ namespace MeetMeWeb.Migrations
             DropIndex("dbo.Events", new[] { "user_Id" });
             DropPrimaryKey("dbo.Events");
             AddColumn("dbo.Events", "ID", c => c.Guid(nullable: false, identity: true));
-            AddColumn("dbo.Events", "Name", c => c.String(nullable: false));
+            AddColumn("dbo.Events", "Title", c => c.String(nullable: false));
             AddColumn("dbo.Events", "Location", c => c.String());
             AddColumn("dbo.Events", "Start", c => c.DateTime(nullable: false));
             AddColumn("dbo.Events", "End", c => c.DateTime(nullable: false));

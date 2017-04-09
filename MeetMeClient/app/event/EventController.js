@@ -15,11 +15,11 @@
         vm.message = null;
         
         vm.eventData = {
-            eventName: "",
-            eventLocation: "",
-            eventStart: "",
-            eventEnd: "",
-            eventPriority: ""
+            title: "",
+            location: "",
+            start: "",
+            end: "",
+            priority: ""
         };
 
         vm.createEvent = createEvent;
