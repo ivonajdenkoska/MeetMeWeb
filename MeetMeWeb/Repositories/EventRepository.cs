@@ -1,10 +1,12 @@
 ﻿using MeetMeWeb.Models;
 using MeetMeWeb.Repositories.Interfaces;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace MeetMeWeb.Repositories
 {
-    public class EventRepository : IEventRepository
+    public class EventRepository: IEventRepository
     {
         private MeetMeDbContext _context;
 
@@ -19,6 +21,12 @@ namespace MeetMeWeb.Repositories
             await _context.SaveChangesAsync();
 
             return eventModel;
+        }
+
+        public async Task<List<Event>> getEvents()
+        {
+
+            return _context.Events.ToList();
         }
         public void Dispose()
         {
