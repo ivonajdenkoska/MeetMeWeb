@@ -18,6 +18,7 @@
         var y = date.getFullYear();
         //$scope.events = CalendarService.getEvents();
         //$interval(loadEvents, 3000);
+        $scope.SelectedEvent = null;
         function loadEvents() {
             $scope.events = CalendarService.getEvents();
         };
@@ -123,10 +124,18 @@
                     center: 'title',
                     right: 'today prev,next'
                 },
-                eventClick: $scope.alertOnEventClick,
+               /* timeFormat: {
+                    month: ' ',
+                    agenda: 'h:mm t'
+                },*/
+                eventClick: function(event){
+                    $scope.SelectedEvent=event;
+                },
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,
-                eventRender: $scope.eventRender
+                eventRender: function(event, element) {
+                    $(element).tooltip({title: event.title});             
+                }
             }
         };
 

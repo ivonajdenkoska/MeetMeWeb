@@ -40,7 +40,11 @@ var TEMPLATES_SRC = [
 var FONTS_LIB = [
     'bower_components/components-font-awesome/fonts/fontawesome-webfont.woff2',
     'bower_components/components-font-awesome/fonts/fontawesome-webfont.woff',
-    'bower_components/components-font-awesome/fonts/fontawesome-webfont.ttf'
+    'bower_components/components-font-awesome/fonts/fontawesome-webfont.ttf',
+    'bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf',
+    'bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff',
+    'bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2'
+
 ];
 
 var CSS_LIB = [

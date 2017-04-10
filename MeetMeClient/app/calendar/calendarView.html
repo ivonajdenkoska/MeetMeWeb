@@ -1,4 +1,15 @@
 ﻿<br/>
 <br/>
 <h1>CalendarView</h1>
-<div class="calendar" ui-calendar="uiConfig.calendar"  ng-model="eventSources"></div> 
+<div class="row">
+   <div class="col-md-8">
+       <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
+   </div>
+    <div class="col-md-4">
+       <div ng-show="SelectedEvent" class="alert alert-success" style="margin-top:50px">
+           <h2 style="margin-top:0px">Selected Event:</h2>
+           <h3 style="color:green">{{SelectedEvent.title}}</h3>
+           <p>{{SelectedEvent.start}}</p>
+       </div>
+    </div>     
+</div>
