@@ -16,7 +16,7 @@
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
-        $scope.events = CalendarService.getEvents();
+        //$scope.events = CalendarService.getEvents();
         //$interval(loadEvents, 3000);
         function loadEvents() {
             $scope.events = CalendarService.getEvents();
@@ -25,7 +25,7 @@
         $scope.changeTo = 'Hungarian';
         /* event source that pulls from google.com */
         $scope.eventSource = {
-            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+            url: "https://localhost:44362/api/event/getEvents",
             className: 'gcal-event',           // an option!
             currentTimezone: 'America/Chicago' // an option!
         };
@@ -119,8 +119,8 @@
                 height: 450,
                 editable: true,
                 header: {
-                    left: 'title',
-                    center: '',
+                    left: 'month basicWeek basicDay agendaWeek agendaDay',
+                    center: 'title',
                     right: 'today prev,next'
                 },
                 eventClick: $scope.alertOnEventClick,
@@ -142,7 +142,7 @@
             }
         };
         /* event sources array*/
-        $scope.eventSources = [$scope.events, $scope.eventsF];
+        $scope.eventSources = [$scope.eventSource, $scope.eventsF];
         //$scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 
     }

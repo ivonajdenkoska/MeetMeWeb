@@ -8,7 +8,7 @@
     CalendarServiceFn.$inject = ['$resource', 'localStorageService', 'ngAuthSettings'];
 
     function CalendarServiceFn($resource, localStorageService, ngAuthSettings) {
-        var resource = $resource('https://localhost:44362/api/account', {},
+        var resource = $resource('https://localhost:44362/api/event', {},
         {
             getAll: { method: "GET", isArray:true, url: 'https://localhost:44362/api/event/getEvents', headers: { 'Content-Type': 'application/json; charset=utf8' } },
         });
