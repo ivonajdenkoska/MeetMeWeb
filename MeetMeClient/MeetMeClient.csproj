@@ -72,6 +72,10 @@
     <Content Include="app\account\registerView.html" />
     <Content Include="app\account\registerState.js" />
     <Content Include="app\authComplete.html" />
+    <Content Include="app\calendar\calendarController.js" />
+    <Content Include="app\calendar\calendarService.js" />
+    <Content Include="app\calendar\calendarState.js" />
+    <Content Include="app\calendar\calendarView.html" />
     <Content Include="app\directives\date-time-picker\dateTimePickerDirective.js" />
     <Content Include="app\directives\date-time-picker\dateTimePickerView.html" />
     <Content Include="app\event\eventController.js" />

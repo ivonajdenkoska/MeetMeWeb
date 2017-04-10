@@ -27,7 +27,10 @@ var JS_APP = [
   'app/event/eventController.js',
   'app/event/eventService.js',
   'app/event/eventState.js',
-  'app/directives/date-time-picker/dateTimePickerDirective.js'
+  'app/directives/date-time-picker/dateTimePickerDirective.js',
+   'app/calendar/calendarController.js',
+   'app/calendar/calendarState.js',
+   'app/calendar/calendarService.js'
 ];
 
 var TEMPLATES_SRC = [
@@ -46,7 +49,8 @@ var CSS_LIB = [
     //'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
     'bower_components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.css',
     'bower_components/glyphicons-halflings/css/glyphicons-halflings',
-    'bower_components/bootstrap-additions/dist/bootstrap-additions.css'
+    'bower_components/bootstrap-additions/dist/bootstrap-additions.css',
+    'bower_components/fullcalendar/dist/fullcalendar.css'
 ];
 
 var CSS_APP = [
@@ -63,6 +67,11 @@ var JS_LIB = [
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
     'bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js',
     //'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+    'bower_components/moment/min/moment.min.js',
+    'bower_components/angular-ui-calendar/src/calendar.js',
+    'bower_components/fullcalendar/dist/fullcalendar.min.js',
+    'bower_components/fullcalendar/dist/gcal.js'
+
 ];
 
 

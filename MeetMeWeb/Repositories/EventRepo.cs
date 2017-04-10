@@ -33,6 +33,11 @@ namespace MeetMeWeb.Repositories
 
             return eventModel;
         }
+
+        public async Task<List<Event>> getEvents()
+        {
+            return _context.Events.ToList();
+        }
         public void Dispose()
         {
             _context.Dispose();

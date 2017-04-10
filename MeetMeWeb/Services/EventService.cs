@@ -21,6 +21,12 @@ namespace MeetMeWeb.Services
         {
             return await _repo.CreateEvent(eventModel);
         }
+
+        public async Task<List<Event>> getEvents()
+        {
+            return await _repo.getEvents();
+        }
+
         public void Dispose()
         {
             _repo.Dispose();

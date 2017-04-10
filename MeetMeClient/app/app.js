@@ -5,7 +5,8 @@
                     .module('meet-me', [
                             'ui.router',
                             'ngResource',
-                            'LocalStorageModule'
+                            'LocalStorageModule',
+                            'ui.calendar',
                             ]);
     var serviceBase = 'https://localhost:44362/';
     app.constant('ngAuthSettings', {

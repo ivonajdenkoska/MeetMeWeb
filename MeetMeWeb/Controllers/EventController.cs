@@ -30,5 +30,14 @@ namespace MeetMeWeb.Controllers
             Event e = await _service.createEvent(eventModel);
             return e;
         }
+
+        // GeET api/Event/GetEvents
+        [AllowAnonymous]
+        [Route("getEvents")]
+        public async Task<List<Event>> getEvents()
+        {
+            List<Event> events = await _service.getEvents();
+            return events;
+        }
     }
 }
