@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 using MeetMeWeb.Models;
 using MeetMeWeb.Services;
+using MeetMeWeb.Services.Interfaces;
 
 namespace MeetMeWeb.Controllers
 {
@@ -13,16 +14,16 @@ namespace MeetMeWeb.Controllers
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
-        private AccountService _service = null;
+        private IAccountService _service;
 
         private IAuthenticationManager Authentication
         {
             get { return Request.GetOwinContext().Authentication; }
         }
 
-        public AccountController()
+        public AccountController(IAccountService service)
         {
-            _service = new AccountService();
+            _service = service;
         }
 
         // POST api/Account/Register

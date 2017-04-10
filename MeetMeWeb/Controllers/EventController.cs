@@ -1,11 +1,5 @@
 ﻿using MeetMeWeb.Models;
-using MeetMeWeb.Services;
-using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using MeetMeWeb.Services.Interfaces;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -15,11 +9,11 @@ namespace MeetMeWeb.Controllers
     [RoutePrefix("api/Event")]
     public class EventController : ApiController
     {
-        private EventService _service = null;
+        private IEventService _service;
 
-        public EventController()
+        public EventController(IEventService service)
         {
-            _service = new EventService();
+            _service = service;
         }
 
         // POST api/Event/Create

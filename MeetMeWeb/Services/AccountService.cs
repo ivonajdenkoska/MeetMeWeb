@@ -1,21 +1,18 @@
 ﻿using MeetMeWeb.Models;
-using MeetMeWeb.Repositories;
+using MeetMeWeb.Repositories.Interfaces;
+using MeetMeWeb.Services.Interfaces;
 using Microsoft.AspNet.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace MeetMeWeb.Services
 {
-    public class AccountService : IDisposable
+    public class AccountService : IAccountService
     {
-        private AuthRepository _repo = null;
+        private IAuthRepository _repo;
 
-        public AccountService()
+        public AccountService(IAuthRepository repo)
         {
-            _repo = new AuthRepository();
+            _repo = repo;
         }
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel, string callbackUrl)
