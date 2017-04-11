@@ -18,7 +18,7 @@ namespace MeetMeWeb.Repositories
         public async Task<Event> CreateEvent(Event eventModel)
         {
             _context.Events.Add(eventModel);
-            await _context.SaveChangesAsync();
+            var result = await _context.SaveChangesAsync();
 
             return eventModel;
         }

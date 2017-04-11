@@ -8,9 +8,9 @@
       .module('meet-me')
       .controller('EventController', EventController);
 
-    EventController.$inject = ['$log', '$scope', '$location', 'EventService', 'ngAuthSettings'];
+    EventController.$inject = ['$q', 'EventService', 'UserService', 'AccountService'];
 
-    function EventController($log, $scope, $location, EventService, ngAuthSettings) {
+    function EventController($q, EventService, UserService, AccountService) {
         var vm = this;
         vm.message = null;
         
@@ -19,18 +19,36 @@
             location: "",
             start: "",
             end: "",
-            priority: ""
+            priority: "",
+            user: null
         };
 
+        getLoggedUser();
         vm.createEvent = createEvent;
 
         function createEvent() {
             console.log(vm.eventData.title);
             console.log(vm.eventData.start);
             console.log('createEvent');
+            if (AccountService.authentication.isAuth == false) {
+                // TODO: redirect to login
+                return null;
+            }
             EventService.createEvent(vm.eventData);
         };
         
-
+        function getLoggedUser() {
+            if (AccountService.authentication.isAuth == false) {
+                // TODO: redirect to login
+                return null;
+            }
+            var username = AccountService.authentication.userName;
+            var promise = UserService.getUserByUsername(username);
+            console.log(promise.data);
+            promise.then(function (data) {
+                vm.eventData.user = data.toJSON();
+            });
+            return;
+        }
     }
 })(angular);

@@ -21,6 +21,7 @@
 
             var authData = localStorageService.get('authorizationData');
             if (authData) {
+                console.log(authData);
                 config.headers.Authorization = 'Bearer ' + authData.token;
             }
 

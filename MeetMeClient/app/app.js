@@ -9,9 +9,14 @@
                             'ui.calendar',
                             ]);
     var serviceBase = 'https://localhost:44362/';
+
     app.constant('ngAuthSettings', {
         apiServiceBaseUri: serviceBase,
-        clientId: 'ngAuthApp'
+        clientId: 'meetMeApp'
+    });
+
+    app.config(function ($httpProvider) {
+        $httpProvider.interceptors.push('AuthInterceptorService');
     });
 
     app.run(['AccountService', function (AccountService) {

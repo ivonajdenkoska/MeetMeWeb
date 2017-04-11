@@ -5,8 +5,6 @@ using MeetMeWeb.Services;
 using MeetMeWeb.Services.Interfaces;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json.Serialization;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
@@ -22,8 +20,10 @@ namespace MeetMeWeb
             var container = new UnityContainer();
             container.RegisterType<IAccountService, AccountService>(new HierarchicalLifetimeManager());
             container.RegisterType<IEventService, EventService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserService, UserService>(new HierarchicalLifetimeManager());
             container.RegisterType<IAuthRepository, AuthRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IEventRepository, EventRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API routes

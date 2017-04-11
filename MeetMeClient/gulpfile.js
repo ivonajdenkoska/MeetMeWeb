@@ -19,6 +19,7 @@ var fs = require("fs");
 var JS_APP = [
   'app/app.js',
   'app/index/indexController.js',
+  'app/account/authInterceptorService.js',
   'app/account/accountController.js',
   'app/account/accountService.js',
   'app/account/authInterceptorService.js',
@@ -28,9 +29,10 @@ var JS_APP = [
   'app/event/eventService.js',
   'app/event/eventState.js',
   'app/directives/date-time-picker/dateTimePickerDirective.js',
-   'app/calendar/calendarController.js',
-   'app/calendar/calendarState.js',
-   'app/calendar/calendarService.js'
+  'app/user/userService.js',
+  'app/calendar/calendarController.js',
+  'app/calendar/calendarState.js',
+  'app/calendar/calendarService.js'
 ];
 
 var TEMPLATES_SRC = [
@@ -50,7 +52,6 @@ var FONTS_LIB = [
 var CSS_LIB = [
     'bower_components/bootstrap/dist/css/bootstrap.css',
     'bower_components/components-font-awesome/css/font-awesome.min.css',
-    //'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
     'bower_components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.css',
     'bower_components/glyphicons-halflings/css/glyphicons-halflings',
     'bower_components/bootstrap-additions/dist/bootstrap-additions.css',
@@ -69,8 +70,7 @@ var JS_LIB = [
     'bower_components/angular-ui-router/release/angular-ui-router.js',
     'bower_components/angular-resource/angular-resource.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
-    'bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js',
-    //'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+    'bower_components/smalot-bootstrap-datetimepicker/js/bootstrap-datetimepicker.js'
     'bower_components/moment/min/moment.min.js',
     'bower_components/angular-ui-calendar/src/calendar.js',
     'bower_components/fullcalendar/dist/fullcalendar.min.js',
