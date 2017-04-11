@@ -4,3 +4,14 @@
 .main-page__margins {
     padding-top: 70px;
 }
+
+.navbar__style {
+    background-color: #bef4f3;
+    height: 55px;
+}
+
+.logo__size {
+    width: 150px;
+    height: 33px;
+    margin-top: -5px;
+}
