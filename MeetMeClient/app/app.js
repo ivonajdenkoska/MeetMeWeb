@@ -12,7 +12,7 @@
 
     app.constant('ngAuthSettings', {
         apiServiceBaseUri: serviceBase,
-        clientId: 'meetMeApp'
+        clientId: 'MeetMeApp'
     });
 
     app.config(function ($httpProvider) {
