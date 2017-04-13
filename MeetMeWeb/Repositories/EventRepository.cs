@@ -17,7 +17,8 @@ namespace MeetMeWeb.Repositories
 
         public async Task<Event> CreateEvent(Event eventModel)
         {
-            _context.Events.Add(eventModel);
+            _context.Entry(eventModel.User).State = System.Data.Entity.EntityState.Unchanged;
+            _context.Entry(eventModel).State = System.Data.Entity.EntityState.Added;
             var result = await _context.SaveChangesAsync();
 
             return eventModel;

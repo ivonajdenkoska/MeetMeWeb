@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace MeetMeWeb.Models
 {
@@ -21,6 +18,7 @@ namespace MeetMeWeb.Models
         public DateTime End { get; set; }
         [Required]
         public Priorities Priority { get; set; }
+        [Required]
         public User User { get; set; }
 
         public enum Priorities { Low, Medium, High }
