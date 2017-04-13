@@ -27,9 +27,9 @@ namespace MeetMeWeb.Controllers
 
         // GET api/Event/GetEvents
         [Route("getEvents")]
-        public async Task<List<Event>> getEvents()
+        public List<Event> getEvents([FromUri] string username)
         {
-            List<Event> events = await _service.getEvents();
+            List<Event> events =_service.getEvents(username);
             return events;
         }
     }

@@ -8,6 +8,6 @@ namespace MeetMeWeb.Repositories.Interfaces
     public interface IEventRepository : IDisposable
     {
          Task<Event> CreateEvent(Event eventModel);
-         Task<List<Event>> getEvents();
+         List<Event> getEvents(string username);
     }
 }

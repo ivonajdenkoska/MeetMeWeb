@@ -8,9 +8,9 @@
       .module('meet-me')
       .controller('CalendarController', CalendarController);
 
-    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig','CalendarService','$interval'];
+    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService','UserService'];
 
-    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService,$interval) {
+    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService,$interval,AccountService,UserService) {
         var vm = this;
         var date = new Date();
         var d = date.getDate();
@@ -19,14 +19,33 @@
         //$scope.events = CalendarService.getEvents();
         //$interval(loadEvents, 3000);
         $scope.SelectedEvent = null;
-        function loadEvents() {
-            $scope.events = CalendarService.getEvents();
+        vm.user = {};
+        vm.events=[];
+        vm.loadEvents = loadEvents;
+        vm.getLoggedUser = getLoggedUser;
+        getLoggedUser();
+        loadEvents(vm.user.username);
+        function loadEvents(username) {
+            var promise = CalendarService.getEvents(username);
+            console.log(promise.data);
+            promise.then(function (data) {
+                vm.events = data;
+            });
+        };
+        function getLoggedUser() {
+            var username = AccountService.authentication.userName;
+            var promise = UserService.getUserByUsername(username);
+            console.log(promise.data);
+            promise.then(function (data) {
+                vm.user = data.toJSON();
+            });
+            return;
         };
 
         $scope.changeTo = 'Hungarian';
         /* event source that pulls from google.com */
         $scope.eventSource = {
-            url: "https://localhost:44362/api/event/getEvents",
+            url: "https://localhost:44362/api/event/getEvents?username='"+vm.user.userName+"'",
             className: 'gcal-event',           // an option!
             currentTimezone: 'America/Chicago' // an option!
         };
@@ -151,7 +170,7 @@
             }
         };
         /* event sources array*/
-        $scope.eventSources = [$scope.eventSource, $scope.eventsF];
+        $scope.eventSources = [vm.events, $scope.eventsF];
         //$scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 
     }

@@ -24,10 +24,10 @@ namespace MeetMeWeb.Repositories
             return eventModel;
         }
 
-        public async Task<List<Event>> getEvents()
+        public List<Event> getEvents(string username)
         {
 
-            return _context.Events.ToList();
+            return _context.Events.Where(o => o.User.UserName == username).ToList();
         }
         public void Dispose()
         {
