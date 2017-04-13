@@ -1,11 +1,12 @@
 ﻿using MeetMeWeb.Models;
 using MeetMeWeb.Services.Interfaces;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Web.Http;
 
 namespace MeetMeWeb.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/User")]
     public class UserController : ApiController
     {

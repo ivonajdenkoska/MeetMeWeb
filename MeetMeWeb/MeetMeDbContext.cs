@@ -7,7 +7,6 @@ namespace MeetMeWeb
 
     public class MeetMeDbContext : IdentityDbContext<User>
     {
-        public DbSet<Event> Events { get; set; }
         public MeetMeDbContext()
             : base("name=MeetMeDB")
         {
@@ -17,5 +16,7 @@ namespace MeetMeWeb
         {
             return new MeetMeDbContext();
         }
+
+        public DbSet<Event> Events { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using MeetMeWeb.Repositories;
 using MeetMeWeb.Repositories.Interfaces;
 using MeetMeWeb.Services;
 using MeetMeWeb.Services.Interfaces;
+using Microsoft.Owin.Security.OAuth;
 using Microsoft.Practices.Unity;
 using Newtonsoft.Json.Serialization;
 using System.Linq;
@@ -25,6 +26,11 @@ namespace MeetMeWeb
             container.RegisterType<IEventRepository, EventRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
+
+            // Web API configuration and services
+            // Configure Web API to use only bearer token authentication.
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
             config.MapHttpAttributeRoutes();

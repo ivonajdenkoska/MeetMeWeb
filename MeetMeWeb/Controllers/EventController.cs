@@ -6,7 +6,7 @@ using System.Web.Http;
 
 namespace MeetMeWeb.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [RoutePrefix("api/Event")]
     public class EventController : ApiController
     {
@@ -25,8 +25,7 @@ namespace MeetMeWeb.Controllers
             return e;
         }
 
-        // GeET api/Event/GetEvents
-        [AllowAnonymous]
+        // GET api/Event/GetEvents
         [Route("getEvents")]
         public async Task<List<Event>> getEvents()
         {
