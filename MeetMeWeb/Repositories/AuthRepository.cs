@@ -1,6 +1,7 @@
 ﻿using MeetMeWeb.App_Start;
 using MeetMeWeb.Models;
 using MeetMeWeb.Repositories.Interfaces;
+using MeetMeWeb.Services;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -22,6 +23,7 @@ namespace MeetMeWeb.Repositories
             _userManager = new ApplicationUserManager(new UserStore<User>(_context));
             var provider = new DpapiDataProtectionProvider("MeetMe");
             _userManager.UserTokenProvider = new DataProtectorTokenProvider<User>(provider.Create("EmailConfirmation"));
+            _userManager.EmailService = new EmailService();
         }
 
         public async Task<IdentityResult> RegisterUser(UserModel userModel, string callbackUrl)
@@ -40,10 +42,10 @@ namespace MeetMeWeb.Repositories
             if (result.Succeeded)
             {
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
-
+                
                 var url = String.Format("{0}?userId={1}&code={2}", callbackUrl, user.Id, code);
 
-                _userManager.SendEmail(user.Id,
+               await _userManager.SendEmailAsync(user.Id,
                    "Confirm your account",
                    "Please confirm your account by clicking this link: <a href=\""
                                                    + url + "\">link</a>");

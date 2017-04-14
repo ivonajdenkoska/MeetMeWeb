@@ -13,8 +13,8 @@ namespace MeetMeWeb.Services
             var password = ConfigurationManager.AppSettings["emailService:Password"];
             var emailHost = ConfigurationManager.AppSettings["emailService:EmailHost"];
             MailMessage mailMessage = new MailMessage();
-            mailMessage.From = new MailAddress(emailAddress, "SmartSet");
-            mailMessage.To.Add(emailAddress);
+            mailMessage.From = new MailAddress(emailAddress, "MeetMe");
+            mailMessage.To.Add(message.Destination);
             mailMessage.Subject = message.Subject;
             mailMessage.Body = message.Body;
             mailMessage.IsBodyHtml = true;

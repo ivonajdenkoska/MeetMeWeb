@@ -25,14 +25,8 @@ namespace MeetMeWeb.Controllers
         private const string LocalLoginProvider = "Local";
         private ApplicationUserManager _userManager;
 
-        public AccountController()
-        {
-        }
-
         public AccountController(IAccountService service)
         {
-            // UserManager = userManager;
-            // AccessTokenFormat = accessTokenFormat;
             _service = service;
         }
 
@@ -68,7 +62,7 @@ namespace MeetMeWeb.Controllers
             }
 
 
-            var callbackUrl = "https://localhost:44362/api/account/confirmemail";
+            var callbackUrl = Url.Content("~/api/account/confirmemail");
 
             IdentityResult result = await _service.RegisterUser(userModel, callbackUrl);
 
@@ -83,6 +77,8 @@ namespace MeetMeWeb.Controllers
         }
 
         [AllowAnonymous]
+        [AcceptVerbs("GET", "POST")]
+        [HttpGet]
         [Route("ConfirmEmail")]
         public async Task<IHttpActionResult> ConfirmEmail(string userId = "", string code = "")
         {
@@ -106,7 +102,7 @@ namespace MeetMeWeb.Controllers
 
         // GET api/Account/ExternalLogin
         [OverrideAuthentication]
-        // [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
+        [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
         [AllowAnonymous]
         [Route("ExternalLogin", Name = "ExternalLogin")]
         public async Task<IHttpActionResult> GetExternalLogin(string provider, string error = null)
