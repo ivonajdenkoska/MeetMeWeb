@@ -13,3 +13,17 @@
        </div>
     </div>     
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log('Script loaded');
+        $('.fc-right').click(function () {
+            $('#calendar').fullCalendar('refetchEvents');
+            console.log('Clicked prev button');
+        });
+
+        $('.fc-next-button').click(function () {
+            $('#calendar').fullCalendar('refetchEvents');
+            console.log('Clicked next button');
+        });
+    });
+</script>

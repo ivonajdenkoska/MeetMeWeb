@@ -16,22 +16,39 @@
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
+        /*var events_array = [{
+            id: 'available',
+            start: new Date(y, m, d + 1, 9, 0),
+            end: new Date(y, m, d + 1, 18, 0),
+            rendering: 'background'
+        }, {
+            id: 'available',
+            start: new Date(y, m, d + 2, 9, 0),
+            end: new Date(y, m, d + 2, 18, 0),
+            rendering: 'background'
+        }, {
+            constraint: 'available',
+            id: 99,
+            title: 'Foo',
+            start: new Date(y, m, d + 1, 10, 0),
+            end: new Date(y, m, d + 1, 11, 0),
+            durationEditable: false,
+            editable: true
+        }];*/
         //$scope.events = CalendarService.getEvents();
         //$interval(loadEvents, 3000);
         $scope.SelectedEvent = null;
-        vm.user = {};
-        vm.events=[];
-        vm.loadEvents = loadEvents;
+        //vm.loadEvents = loadEvents;
         vm.getLoggedUser = getLoggedUser;
+        $scope.username = AccountService.authentication.userName;
         getLoggedUser();
-        loadEvents(vm.user.username);
-        function loadEvents(username) {
-            var promise = CalendarService.getEvents(username);
-            console.log(promise.data);
-            promise.then(function (data) {
-                vm.events = data;
-            });
-        };
+        $scope.events = CalendarService.getEvents($scope.username);
+        console.log($scope.events);
+        getLoggedUser();
+       /* function loadEvents(username) {
+            $scope.events = CalendarService.getEvents(username);
+            console.log($scope.events);
+        };*/
         function getLoggedUser() {
             var username = AccountService.authentication.userName;
             var promise = UserService.getUserByUsername(username);
@@ -45,7 +62,7 @@
         $scope.changeTo = 'Hungarian';
         /* event source that pulls from google.com */
         $scope.eventSource = {
-            url: "https://localhost:44362/api/event/getEvents?username='"+vm.user.userName+"'",
+            url: "https://localhost:44362/api/event/getEvents?username='"+"m.nacev@yahoo.com"+"'",
             className: 'gcal-event',           // an option!
             currentTimezone: 'America/Chicago' // an option!
         };
@@ -143,18 +160,19 @@
                     center: 'title',
                     right: 'today prev,next'
                 },
-               /* timeFormat: {
-                    month: ' ',
-                    agenda: 'h:mm t'
-                },*/
+                /* timeFormat: {
+                     month: ' ',
+                     agenda: 'h:mm t'
+                 },*/
+                events: $scope.events,
                 eventClick: function(event){
                     $scope.SelectedEvent=event;
                 },
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,
-                eventRender: function(event, element) {
-                    $(element).tooltip({title: event.title});             
-                }
+               eventRender: function(event, element) {
+                    $(element).tooltip({ title: event.title });
+               }
             }
         };
 
@@ -170,7 +188,7 @@
             }
         };
         /* event sources array*/
-        $scope.eventSources = [vm.events, $scope.eventsF];
+        $scope.eventSources = [];
         //$scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 
     }
