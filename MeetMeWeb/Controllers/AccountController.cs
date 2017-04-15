@@ -100,6 +100,14 @@ namespace MeetMeWeb.Controllers
             }
         }
 
+        [Route("GetLoggedUser", Name = "GetLoggedUser")]
+        public async Task<User> getLoggedUser()
+        {
+            var username = RequestContext.Principal.Identity.Name;
+            var user =  await UserManager.FindByNameAsync(username);
+            return user;
+        }
+
         // GET api/Account/ExternalLogin
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]

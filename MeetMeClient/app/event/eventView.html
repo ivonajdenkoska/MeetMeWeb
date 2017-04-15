@@ -5,7 +5,7 @@
 <div class="col-md-6 col-md-offset-3">
     <div class="form-group has-success">
         <label for="eventName">Event Title</label>
-        <input type="text" id="eventName" class="form-control" aria-describedby="eventTitle" ng-model="vm.eventData.title">
+        <input type="text" id="eventName" class="form-control" aria-describedby="eventTitle" ng-model="vm.eventData.title" required>
     </div>
 </div>
 <div class="col-md-6 col-md-offset-3">
@@ -15,15 +15,12 @@
         </div>
 </div>
     <div class="col-md-6 col-md-offset-3">
-        <date-time-picker label="Event Start" model="vm.eventData.start" />   
+        <date-time-picker label="Event Start" model="vm.eventData.start"/>   
     </div>
     <div class="col-md-6 col-md-offset-3">
         <date-time-picker label="Event End" model="vm.eventData.end"/>
     </div>
     <div class="col-md-6 col-md-offset-3">
-        <br />
-        <br />
-        <br />
         <div class="form-group">
             <label for="eventPriority">Event Priority</label>
             <select id="eventPriority" class="form-control" ng-model="vm.eventData.priority">
@@ -35,5 +32,8 @@
     </div>
     <div class="col-md-6 col-md-offset-3">
         <button type="button" class="btn btn-primary btn-lg" ng-click="vm.createEvent()">Create Event</button>
+        <div ng-hide="vm.message == null" class="alert alert-danger">
+            {{vm.message}}
+        </div>
     </div>
 </div>

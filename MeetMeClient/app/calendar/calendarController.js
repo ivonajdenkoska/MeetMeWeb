@@ -1,16 +1,13 @@
-﻿/**
- * Created by Nacev on 10.04.2017.
- */
-(function (angular) {
+﻿(function (angular) {
     'use strict';
 
     angular
       .module('meet-me')
       .controller('CalendarController', CalendarController);
 
-    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService','UserService'];
+    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService'];
 
-    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService,$interval,AccountService,UserService) {
+    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService, $interval, AccountService) {
         var vm = this;
         var date = new Date();
         var d = date.getDate();
@@ -39,25 +36,14 @@
         //$interval(loadEvents, 3000);
         $scope.SelectedEvent = null;
         //vm.loadEvents = loadEvents;
-        vm.getLoggedUser = getLoggedUser;
         $scope.username = AccountService.authentication.userName;
-        getLoggedUser();
         $scope.events = CalendarService.getEvents($scope.username);
         console.log($scope.events);
-        getLoggedUser();
+        vm.user = AccountService.authentication.user;
        /* function loadEvents(username) {
             $scope.events = CalendarService.getEvents(username);
             console.log($scope.events);
         };*/
-        function getLoggedUser() {
-            var username = AccountService.authentication.userName;
-            var promise = UserService.getUserByUsername(username);
-            console.log(promise.data);
-            promise.then(function (data) {
-                vm.user = data.toJSON();
-            });
-            return;
-        };
 
         $scope.changeTo = 'Hungarian';
         /* event source that pulls from google.com */

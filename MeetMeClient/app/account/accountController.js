@@ -15,8 +15,7 @@
         vm.message = null;
         vm.loginData = {
             userName: "",
-            password: "",
-            useRefreshTokens: false
+            password: ""
         };
         vm.registerData = {
             firstName: "",

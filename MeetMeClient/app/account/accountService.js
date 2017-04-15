@@ -12,15 +12,15 @@
         {
             login: { method: "POST", url: 'https://localhost:44362/token', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
             register: { method: "POST", url: 'https://localhost:44362/api/account/register' },
-            refreshToken: { method: "POST", url: 'api/account/refreshToken', headers: { 'Content-Type': 'application/x-www-form-urlencoded' } },
             obtainAccessToken: { method: "GET", url: 'api/account/obtainLocalAccessToken' },
-            registerExternal: { method: "POST", url: 'api/account/registerExternal' }
+            registerExternal: { method: "POST", url: 'api/account/registerExternal' },
+            getLoggedUser: { method: "GET", url: 'https://localhost:44362/api/account/getLoggedUser' }
         });
 
         var _authentication = {
             isAuth: false,
             userName: "",
-            useRefreshTokens: false
+            user: null
         };
 
         var _externalAuthData = {
@@ -34,7 +34,6 @@
             saveRegistration: saveRegistrationFn,
             logOut: logOutFn,
             fillAuthData: fillAuthDataFn,
-            refreshToken: refreshTokenFn,
             obtainAccessToken: obtainAccessTokenFn,
             registerExternal: registerExternalFn,
             authentication: _authentication,
@@ -46,25 +45,24 @@
         function loginFn(loginData) {
             var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
 
-            if (loginData.useRefreshTokens) {
-                data = data + "&client_id=" + ngAuthSettings.clientId;
-            }
-
             return resource.login(data, function (response) {
-                console.log("success loging in");
-                if (loginData.useRefreshTokens) {
-                    localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: response.refresh_token, useRefreshTokens: true });
-                }
-                else {
-                    localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName, refreshToken: "", useRefreshTokens: false });
-                }
+                var user = resource.getLoggedUser();
+                console.log(user);
+                localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName});
+                
                 _authentication.isAuth = true;
                 _authentication.userName = loginData.userName;
-                _authentication.useRefreshTokens = loginData.useRefreshTokens;
+                getCurrentlyLoggedUserFn();
 
             }, function (err) {
                 console.log("failure loging in");
                 logOutFn();
+            }).$promise;
+        };
+
+        function getCurrentlyLoggedUserFn() {
+            return resource.getLoggedUser(function (data) {
+                _authentication.user = data;
             }).$promise;
         };
 
@@ -76,14 +74,12 @@
         };
 
         function logOutFn() {
-
             console.log("Log out");
-
             localStorageService.remove('authorizationData');
 
             _authentication.isAuth = false;
             _authentication.userName = "";
-            _authentication.useRefreshTokens = false;
+            _authentication.user = null;
 
         };
 
@@ -92,39 +88,17 @@
             if (authData) {
                 _authentication.isAuth = true;
                 _authentication.userName = authData.userName;
-                _authentication.useRefreshTokens = authData.useRefreshTokens;
-            }
-        };
-
-        function refreshTokenFn() {
-            var authData = localStorageService.get('authorizationData');
-
-            if (authData) {
-
-                if (authData.useRefreshTokens) {
-
-                    var data = "grant_type=refresh_token&refresh_token=" + authData.refreshToken + "&client_id=" + ngAuthSettings.clientId;
-
-                    localStorageService.remove('authorizationData');
-
-                    return resource.refreshToken(data, function (response) {
-
-                        localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: response.refresh_token, useRefreshTokens: true });
-
-                    }, function (err, status) {
-                        logOutFn();
-                    }).$promise();
-                }
+                getCurrentlyLoggedUserFn();
             }
         };
 
         function obtainAccessTokenFn(externalData) {
             return resource.obtainAccessToken({ provider: externalData.provider, externalAccessToken: externalData.externalAccessToken }, function (response) {
-                localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
+                localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName });
 
                 _authentication.isAuth = true;
                 _authentication.userName = response.userName;
-                _authentication.useRefreshTokens = false;
+                getCurrentlyLoggedUserFn();
             }, function (error, status) {
                 logOutFn();
             }).$promise();
@@ -132,11 +106,11 @@
 
         function registerExternalFn(registerExternalData) {
             return resource.externalAccessToken(registerExternalData, function () {
-                localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName, refreshToken: "", useRefreshTokens: false });
+                localStorageService.set('authorizationData', { token: response.access_token, userName: response.userName });
 
                 _authentication.isAuth = true;
                 _authentication.userName = response.userName;
-                _authentication.useRefreshTokens = false;
+                getCurrentlyLoggedUserFn();
             }, function (err, status) {
                 logOutFn();
             }).$promise();
