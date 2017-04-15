@@ -34,7 +34,7 @@ namespace MeetMeWeb.App_Start
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
-            manager.EmailService = new EmailService();   // ne rabotiii !!!!
+            manager.EmailService = new EmailService(); 
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
