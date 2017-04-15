@@ -12,6 +12,7 @@
 
         $stateProvider.state('calendar', {
             url: '/calendar',
+            authenticate: true,
             templateUrl: 'app/calendar/calendarView.html',
             controller: 'CalendarController',
             controllerAs: 'vm'

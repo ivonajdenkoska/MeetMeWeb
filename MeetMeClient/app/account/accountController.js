@@ -8,9 +8,9 @@
       .module('meet-me')
       .controller('AccountController', AccountController);
 
-    AccountController.$inject = ['$log', '$scope', '$location', 'AccountService', 'ngAuthSettings'];
+    AccountController.$inject = ['$log', '$scope', '$state', '$location', '$timeout', 'AccountService', 'ngAuthSettings'];
 
-    function AccountController($log, $scope, $location, AccountService, ngAuthSettings) {
+    function AccountController($log, $scope, $state, $location, $timeout, AccountService, ngAuthSettings) {
         var vm = this;
         vm.message = null;
         vm.loginData = {
@@ -56,11 +56,14 @@
         };
 
         function login() {
-            console.log("LOG");
             AccountService.login(vm.loginData).then(function (response) {
-                $location.path('/home');
                 vm.message = "success";
-                console.log("LOG success");
+                if ($state.previous) {
+                    $state.go($state.previous.name, $state.previous.params);
+                } else {
+                    //redirect all others after login to /calendar
+                    $state.go('calendar');
+                }
             }, function (err) {
                 console.log(err);
                 vm.message = err.data.error_description;

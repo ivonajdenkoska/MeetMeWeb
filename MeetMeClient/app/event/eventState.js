@@ -12,6 +12,7 @@
 
         $stateProvider.state('event', {
             url: '/event',
+            authenticate: true,
             templateUrl: 'app/event/eventView.html',
             controller: 'EventController',
             controllerAs: 'vm'

@@ -6,7 +6,7 @@
                             'ui.router',
                             'ngResource',
                             'LocalStorageModule',
-                            'ui.calendar',
+                            'ui.calendar'
                             ]);
     var serviceBase = 'https://localhost:44362/';
 
@@ -22,5 +22,17 @@
     app.run(['AccountService', function (AccountService) {
         AccountService.fillAuthData();
     }]);
+
+    app.run(function ($rootScope, $state, AccountService) {
+        // Redirect to login if route requires auth and you're not logged in
+        $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+            var loggedIn = AccountService.authentication.isAuth;
+            if (toState.authenticate && !loggedIn) {
+                $state.previous = toState;
+                event.preventDefault();
+                $state.go('login');
+            }
+        });
+    });
 
 })(angular);
