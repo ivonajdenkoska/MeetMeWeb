@@ -37,7 +37,7 @@
             obtainAccessToken: obtainAccessTokenFn,
             registerExternal: registerExternalFn,
             authentication: _authentication,
-            externalAuthData: _externalAuthData
+            externalAuthData: _externalAuthData,
         };
 
         return service;

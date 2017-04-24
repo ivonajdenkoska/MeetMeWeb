@@ -32,7 +32,9 @@ var JS_APP = [
   'app/user/userService.js',
   'app/calendar/calendarController.js',
   'app/calendar/calendarState.js',
-  'app/calendar/calendarService.js'
+  'app/calendar/calendarService.js',
+  'app/profile/profileState.js',
+  'app/profile/profileController.js'
 ];
 
 var TEMPLATES_SRC = [
@@ -55,7 +57,9 @@ var CSS_LIB = [
     'bower_components/smalot-bootstrap-datetimepicker/css/bootstrap-datetimepicker.css',
     'bower_components/glyphicons-halflings/css/glyphicons-halflings',
     'bower_components/bootstrap-additions/dist/bootstrap-additions.css',
-    'bower_components/fullcalendar/dist/fullcalendar.css'
+    'bower_components/fullcalendar/dist/fullcalendar.css',
+    'bower_components/angucomplete-alt/angucomplete-alt.css'
+
 ];
 
 var CSS_APP = [
@@ -74,7 +78,8 @@ var JS_LIB = [
     'bower_components/moment/min/moment.min.js',
     'bower_components/angular-ui-calendar/src/calendar.js',
     'bower_components/fullcalendar/dist/fullcalendar.min.js',
-    'bower_components/fullcalendar/dist/gcal.js'
+    'bower_components/fullcalendar/dist/gcal.js',
+    'bower_components/angucomplete-alt/angucomplete-alt.js'
 
 ];
 

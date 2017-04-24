@@ -2,6 +2,7 @@
 using System;
 using MeetMeWeb.Models;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace MeetMeWeb.Repositories
 {
@@ -29,6 +30,11 @@ namespace MeetMeWeb.Repositories
                 user = _context.Users.Where(x => x.UserName == username).SingleOrDefault();
             }
             return user;
+        }
+
+        public List<User> getAll()
+        {
+            return _context.Users.ToList();
         }
 
         public void Dispose()

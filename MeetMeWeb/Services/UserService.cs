@@ -2,6 +2,7 @@
 using MeetMeWeb.Models;
 using MeetMeWeb.Services.Interfaces;
 using MeetMeWeb.Repositories.Interfaces;
+using System.Collections.Generic;
 
 namespace MeetMeWeb.Services
 {
@@ -22,6 +23,11 @@ namespace MeetMeWeb.Services
         public User getUserByUsername(string username)
         {
             return _repo.getUserByUsername(username);
+        }
+
+        public List<User> getAll()
+        {
+            return _repo.getAll();
         }
 
         public void Dispose()

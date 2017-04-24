@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Web;
 using System.Web.Http;
+using System.Collections.Generic;
 
 namespace MeetMeWeb.Controllers
 {
@@ -31,6 +32,12 @@ namespace MeetMeWeb.Controllers
         {
             User user = _service.getUserByUsername(username);
             return user;
+        }
+
+        [Route("GetAll")]
+        public List<User> getAll()
+        {
+            return _service.getAll();
         }
     }
 }

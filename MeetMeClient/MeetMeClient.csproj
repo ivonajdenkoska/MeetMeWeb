@@ -85,6 +85,9 @@
     <Content Include="app\index\indexController.js" />
     <Content Include="app\account\accountController.js" />
     <Content Include="app\account\accountService.js" />
+    <Content Include="app\profile\profileController.js" />
+    <Content Include="app\profile\profileState.js" />
+    <Content Include="app\profile\profileView.html" />
     <Content Include="app\user\userService.js" />
     <Content Include="packages.config" />
     <Content Include="package.json" />
