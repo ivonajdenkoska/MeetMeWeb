@@ -1,6 +1,5 @@
 ﻿html {
     height: 100%;
-    box-sizing: border-box;
 }
 
 body {
@@ -17,19 +16,17 @@ body {
 
 .navbar__style {
     background-color: #6c727a;
-    height: 55px;
+    height: 50px;
 }
 
 .demo {
   margin: 0 auto;
   padding-top: 64px;
-  max-width: 640px;
-  width: 94%;
 }
 
 .logo__size {
-    width: 160px;
-    height: 36px;
+    width: 155px;
+    height: 33px;
     margin-top: -5px;
 }
 
@@ -47,6 +44,12 @@ body {
 
 .btn-style {
     border-radius: 0px;
+}
+
+.heading__style {
+    color: #6c727a;
+    font-weight: bold;
+    padding-bottom:20px;
 }
 
 /* Footer */
