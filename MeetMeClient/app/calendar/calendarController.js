@@ -5,14 +5,31 @@
       .module('meet-me')
       .controller('CalendarController', CalendarController);
 
-    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService'];
+    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService', 'EventService','$state'];
 
-    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService, $interval, AccountService) {
+    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService, $interval, AccountService, EventService,$state) {
         var vm = this;
         var date = new Date();
         var d = date.getDate();
         var m = date.getMonth();
         var y = date.getFullYear();
+
+        vm.deleteEvent = deleteEvent;
+
+        function deleteEvent() {
+            
+            EventService.deleteEvent($scope.SelectedEvent.title, $scope.SelectedEvent.id).then(function (data) {
+                $scope.username = AccountService.authentication.userName;
+                $scope.events = CalendarService.getEvents($scope.username);
+                console.log($scope.SelectedEvent);
+                $state.reload();
+            }, function (err) {
+                vm.message = err;
+            });
+
+            $scope.username = AccountService.authentication.userName;
+            $scope.events = CalendarService.getEvents($scope.username);
+        };
         /*var events_array = [{
             id: 'available',
             start: new Date(y, m, d + 1, 9, 0),

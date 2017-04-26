@@ -1,5 +1,6 @@
 ﻿using MeetMeWeb.Models;
 using MeetMeWeb.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -22,6 +23,15 @@ namespace MeetMeWeb.Controllers
         public async Task<Event> CreateEvent(Event eventModel)
         {
             Event e = await _service.createEvent(eventModel);
+            return e;
+        }
+
+        // POST api/Event/Delete
+        [Route("Delete")]
+        [HttpPost]
+        public async Task<Event> DeleteEvent(string title,Guid id)
+        {
+            Event e = await _service.deleteEvent(title,id);
             return e;
         }
 

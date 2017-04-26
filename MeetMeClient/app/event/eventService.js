@@ -11,14 +11,22 @@
         var resource = $resource('https://localhost:44362/api/event', {},
         {
             createEvent: { method: "POST", url: 'https://localhost:44362/api/event/create' },
+            deleteEvent: { method: "POST", url: 'https://localhost:44362/api/event/delete', params:{title: '@title',id: '@id'}, headers: { 'Content-Type': 'application/json; charset=utf8' } }
         });
 
         var service = {
-            createEvent: createEvent
+            createEvent: createEvent,
+            deleteEvent: deleteEvent
         };
 
         function createEvent(event) {
             return resource.createEvent(event, function (response) {
+                return response;
+            }).$promise;
+        };
+
+        function deleteEvent(title,id) {
+            return resource.deleteEvent({ title: title, id: id}, function (response) {
                 return response;
             }).$promise;
         };

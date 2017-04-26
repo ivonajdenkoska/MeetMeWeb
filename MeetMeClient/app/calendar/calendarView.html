@@ -6,13 +6,37 @@
        <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
    </div>
     <div class="col-md-4">
-       <div ng-show="SelectedEvent" class="alert alert-success" style="margin-top:50px">
-           <h2 style="margin-top:0px">Selected Event:</h2>
-           <h3 style="color:green">{{SelectedEvent.title}}</h3>
-           <p>{{SelectedEvent.start}}</p>
-       </div>
+        <div ng-show="SelectedEvent" class="alert alert-success" style="margin-top:50px">
+            <h2 style="margin-top:0px">Selected Event:</h2>
+            <h3 style="color:green">{{SelectedEvent.title}}</h3>
+            <p>Priority: {{SelectedEvent.priority}}</p>
+            <button type="button" class="btn btn-danger btn-large" data-toggle="modal" data-target="#myModal">Remove Event</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Delete Event?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete event {{SelectedEvent.title}} ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.deleteEvent()">Yes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
     </div>     
-</div>
 <script type="text/javascript">
     $(document).ready(function () {
         console.log('Script loaded');

@@ -20,7 +20,8 @@
     "angular-ui-calendar": "1.0.2",
     "angular-bootstrap": "2.5.0",
     "glyphicons-halflings": "*",
-    "angucomplete-alt": "*"
+    "angucomplete-alt": "*",
+    "circular-json": "*"
   },
   "resolutions": {
     "angular": "^1.0.8",

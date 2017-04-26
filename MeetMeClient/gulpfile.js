@@ -59,7 +59,8 @@ var CSS_LIB = [
     'bower_components/glyphicons-halflings/css/glyphicons-halflings',
     'bower_components/bootstrap-additions/dist/bootstrap-additions.css',
     'bower_components/fullcalendar/dist/fullcalendar.css',
-    'bower_components/angucomplete-alt/angucomplete-alt.css'
+    'bower_components/angucomplete-alt/angucomplete-alt.css',
+    'bower_components/circular-json/build/circular-json.js'
 
 ];
 
