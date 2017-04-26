@@ -34,7 +34,8 @@ var JS_APP = [
   'app/calendar/calendarState.js',
   'app/calendar/calendarService.js',
   'app/profile/profileState.js',
-  'app/profile/profileController.js'
+  'app/profile/profileController.js',
+  'app/home/homeState.js'
 ];
 
 var TEMPLATES_SRC = [

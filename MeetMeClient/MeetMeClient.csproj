@@ -83,6 +83,8 @@
     <Content Include="app\event\eventService.js" />
     <Content Include="app\event\eventState.js" />
     <Content Include="app\event\eventView.html" />
+    <Content Include="app\home\homeState.js" />
+    <Content Include="app\home\homeView.html" />
     <Content Include="app\images\logo.png" />
     <Content Include="app\index\indexController.js" />
     <Content Include="app\account\accountController.js" />

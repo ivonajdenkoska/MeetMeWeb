@@ -10,7 +10,9 @@
 
         $scope.logOut = function () {
             AccountService.logOut();
-            $location.path('/home');
+            //$state.previous = toState;
+            //event.preventDefault();
+            $location.path('');
         }
 
         $scope.authentication = AccountService.authentication;

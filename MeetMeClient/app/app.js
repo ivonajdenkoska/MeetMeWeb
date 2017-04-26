@@ -28,11 +28,21 @@
         // Redirect to login if route requires auth and you're not logged in
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
             var loggedIn = AccountService.authentication.isAuth;
-            if (toState.authenticate && !loggedIn) {
+         if (toState.url == "" && loggedIn) {
+             console.log("Calendar");
+             $state.previous = toState;
+             event.preventDefault();
+                $state.go('calendar');
+                
+            }
+           else if (toState.authenticate && !loggedIn) {
                 $state.previous = toState;
                 event.preventDefault();
                 $state.go('login');
             }
+            
+            console.log("yes");
+            console.log(toState);
         });
     });
 
