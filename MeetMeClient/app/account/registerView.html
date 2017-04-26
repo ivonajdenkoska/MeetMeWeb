@@ -1,11 +1,11 @@
-﻿<form class="form-login" role="form">
+﻿<form class="form-login col-md-offset-2 col-md-8" role="form">
     <h2 class="form-login-heading">Register</h2>
-    <input type="text" class="form-control" placeholder="First Name" ng-model="vm.registerData.firstName" required autofocus>
-    <input type="text" class="form-control" placeholder="Last Name" ng-model="vm.registerData.lastName" required>
-    <input type="text" class="form-control" placeholder="Email" ng-model="vm.registerData.email" required>
-    <input type="password" class="form-control" placeholder="Password" ng-model="vm.registerData.password" required>
-    <input type="password" class="form-control" placeholder="Confirm Password" ng-model="vm.registerData.confirmPassword" required>
-    <button class="btn btn-lg btn-info btn-block" type="submit" ng-click="vm.register()">Submit</button>
+    <input type="text" class="form-control elements-padding btn-style" placeholder="First Name" ng-model="vm.registerData.firstName" required autofocus>
+    <input type="text" class="form-control elements-padding btn-style" placeholder="Last Name" ng-model="vm.registerData.lastName" required>
+    <input type="text" class="form-control elements-padding btn-style" placeholder="Email" ng-model="vm.registerData.email" required>
+    <input type="password" class="form-control elements-paddingv btn-style" placeholder="Password" ng-model="vm.registerData.password" required>
+    <input type="password" class="form-control elements-padding btn-style" placeholder="Confirm Password" ng-model="vm.registerData.confirmPassword" required>
+    <button class="btn btn-lg btn-info btn-block elements-padding btn-style " type="submit" ng-click="vm.register()">Submit</button>
     <div ng-hide="vm.message == null" ng-class="(vm.savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
         {{vm.message}}
     </div>

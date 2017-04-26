@@ -76,12 +76,14 @@
     <Content Include="app\calendar\calendarService.js" />
     <Content Include="app\calendar\calendarState.js" />
     <Content Include="app\calendar\calendarView.html" />
+    <Content Include="app\css\custom.css" />
     <Content Include="app\directives\date-time-picker\dateTimePickerDirective.js" />
     <Content Include="app\directives\date-time-picker\dateTimePickerView.html" />
     <Content Include="app\event\eventController.js" />
     <Content Include="app\event\eventService.js" />
     <Content Include="app\event\eventState.js" />
     <Content Include="app\event\eventView.html" />
+    <Content Include="app\images\logo.png" />
     <Content Include="app\index\indexController.js" />
     <Content Include="app\account\accountController.js" />
     <Content Include="app\account\accountService.js" />
