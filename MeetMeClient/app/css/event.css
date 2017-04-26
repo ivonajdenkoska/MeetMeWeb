@@ -1,0 +1,19 @@
+﻿.event__space {
+    height: 600px;
+}
+
+.label__color {
+    color: #4f4f4f;
+    font-size: 16px;
+}
+
+.label__padding {
+    padding-bottom:15px;
+}
+
+.btn__style {
+    border-radius: 0px;
+    border-radius-color: #4cc44a;
+    color: white;
+    background-color: #4cc44a;
+}
