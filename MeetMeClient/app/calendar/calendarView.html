@@ -10,6 +10,7 @@
                 <h3 style="color:green">{{SelectedEvent.title}}</h3>
                 <p>{{SelectedEvent.start}}</p>
 				 <button type="button" class="btn btn-danger btn-large" data-toggle="modal" data-target="#myModal">Remove Event</button>
+                 <button type="button" class="btn btn-success btn-large" data-toggle="modal" data-target="#myModal1" ng-click="vm.init()">Edit Event</button>
             </div>
         </div>
     </div>
@@ -34,10 +35,43 @@
 
             </div>
         </div>
+
+    <!-- Modal2 -->
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Event</h4>
+                </div>
+                <div class="modal-body">
+                   
+                        <div class="form-group has-success">
+                            <label for="eventName" class="label__color">Event Title</label>
+                            <input type="text" id="eventName" class="form-control" aria-describedby="eventTitle" ng-model="vm.eventData.title" required>
+                        </div>
+                    <div class="form-group">
+                        <date-time-picker label="Event Start" model="vm.eventData.start" />    
+                    </div>
+                    <div class="form-group">
+                        <date-time-picker label="Event End" model="vm.eventData.end" />
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.editEvent()">Submit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 
        
-
+<script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         console.log('Script loaded');

@@ -26,6 +26,11 @@ namespace MeetMeWeb.Services
             return await _repo.DeleteEvent(title,id);
         }
 
+        public Event editEvent(string title, Guid id, DateTime start, DateTime end)
+        {
+            return _repo.EditEvent(title,id,start,end);
+        }
+
         public List<Event> getEvents(string username)
         {
             return  _repo.getEvents(username);

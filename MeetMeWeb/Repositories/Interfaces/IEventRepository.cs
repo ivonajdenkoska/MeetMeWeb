@@ -9,6 +9,7 @@ namespace MeetMeWeb.Repositories.Interfaces
     {
          Task<Event> CreateEvent(Event eventModel);
          Task<Event> DeleteEvent(string title,Guid id);
+         Event EditEvent(string title, Guid id, DateTime start, DateTime end);
          List<Event> getEvents(string username);
     }
 }

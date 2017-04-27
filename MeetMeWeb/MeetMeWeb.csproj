@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201704131644075_UserRequiredInEvent.Designer.cs">
       <DependentUpon>201704131644075_UserRequiredInEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201704272309075_EventChange.cs" />
+    <Compile Include="Migrations\201704272309075_EventChange.Designer.cs">
+      <DependentUpon>201704272309075_EventChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -282,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704131644075_UserRequiredInEvent.resx">
       <DependentUpon>201704131644075_UserRequiredInEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704272309075_EventChange.resx">
+      <DependentUpon>201704272309075_EventChange.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

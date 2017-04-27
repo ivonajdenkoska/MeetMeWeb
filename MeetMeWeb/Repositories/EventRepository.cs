@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
+using System.Data.Entity.Migrations;
 
 namespace MeetMeWeb.Repositories
 {
@@ -31,6 +32,35 @@ namespace MeetMeWeb.Repositories
             _context.Events.Remove(toDelete);
             _context.SaveChanges();
             return toDelete;
+        }
+
+        public Event EditEvent(string title, Guid id, DateTime start, DateTime end)
+        {
+            Event toUpdate = _context.Events.Find(id);
+            toUpdate.Title = title;
+            toUpdate.Start = start;
+            toUpdate.End = end;
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+            {
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+            }
+            return toUpdate;
         }
 
         public List<Event> getEvents(string username)

@@ -15,6 +15,15 @@
         var y = date.getFullYear();
 
         vm.deleteEvent = deleteEvent;
+        vm.init = init;
+        vm.editEvent = editEvent;
+
+        vm.eventData = {
+            title: "",
+            id:"",
+            start: "",
+            end: ""
+        };
 
         function deleteEvent() {
             
@@ -29,6 +38,23 @@
 
             $scope.username = AccountService.authentication.userName;
             $scope.events = CalendarService.getEvents($scope.username);
+        };
+
+        function init() {
+            vm.eventData.title = $scope.SelectedEvent.title;
+            vm.eventData.id = $scope.SelectedEvent.id;
+            vm.eventData.start = new Date($scope.SelectedEvent.start).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+            vm.eventData.end = new Date($scope.SelectedEvent.end).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+            console.log(vm.eventData.start);
+        };
+
+        function editEvent() {
+            EventService.editEvent(vm.eventData.title, vm.eventData.id,vm.eventData.start,vm.eventData.end).then(function (data) {
+                console.log(vm.eventData);
+                $state.reload();
+            }, function (err) {
+                vm.message = err;
+            });
         };
         /*var events_array = [{
             id: 'available',

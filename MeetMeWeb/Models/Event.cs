@@ -18,7 +18,6 @@ namespace MeetMeWeb.Models
         public DateTime End { get; set; }
         [Required]
         public Priorities Priority { get; set; }
-        [Required]
         public User User { get; set; }
 
         public enum Priorities { Low, Medium, High }

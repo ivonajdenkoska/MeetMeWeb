@@ -35,6 +35,14 @@ namespace MeetMeWeb.Controllers
             return e;
         }
 
+        // POST api/Event/Edit
+        [Route("Edit")]
+        public Event EditEvent(string title, Guid id,DateTime start,DateTime end)
+        {
+            Event e = _service.editEvent(title, id, start, end);
+            return e;
+        }
+
         // GET api/Event/GetEvents
         [Route("getEvents")]
         public List<Event> getEvents([FromUri] string username)
