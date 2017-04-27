@@ -1,4 +1,9 @@
-﻿.profile__space {
+﻿.profile__loader{
+    margin: auto;
+    width: 10%;
+}
+
+.profile__space {
     height: 600px;
 }
 

@@ -1,5 +1,12 @@
 ﻿<div class="profile__space">
-    <div class="row">
+    <div class="row" ng-hide="vm.done">
+        <div class="col-md-12">
+            <div class="profile__loader">
+                <img src="../app/images/ellipsis.gif" />
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-hide="!vm.done">
         <div class="col-md-6">
             <h2 class="heading__style">My Profile</h2>
             <div class="">
