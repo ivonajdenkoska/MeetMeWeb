@@ -65,7 +65,10 @@ var CSS_LIB = [
 ];
 
 var CSS_APP = [
-   
+    'css/custom.css',
+    'css/calendar.css',
+    'css/event.css',
+    'css/profile.css'
 ];
 
 var JS_LIB = [
