@@ -1,5 +1,5 @@
 ﻿.calendar__space {
-    height: 600px;
+    height: 650px;
 }
 
 .fc-center {
@@ -9,17 +9,17 @@
 
 .btn-remove__style {
     border-radius: 0px;
-    border-color: red;
-    color: white;
-    background-color: red;
+    border-color: #e2a5a5;
+    color: black;
+    background-color: #e2a5a5;
     float:right;
 }
 
 .btn-edit__style{
     border-radius: 0px;
-    border-color: #60aa22;
-    color: white;
-    background-color: #60aa22;
+    border-color: #d6eac5;
+    color: black;
+    background-color: #d6eac5;
     
 }
 
@@ -37,8 +37,8 @@
 .panel__style {
     width: 270px;
     border-radius: 0px;
-    border-color: #6c727a;
-    background-color: #c8efa7;
+    border-color: #e3e4ea;
+    background-color: #e3e4ea;
 }
 
 .btn__add-event {
