@@ -15,23 +15,31 @@ body {
 }
 
 .navbar__style {
-    background-color: #6c727a;
-    height: 50px;
+    background-color: #c4c24c;
+    height: 60px;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: #eee;
+    height: 60px !important;
 }
 
 .demo {
   margin: 0 auto;
-  padding-top: 64px;
+  padding-top: 60px;
 }
 
 .logo__size {
     width: 155px;
-    height: 33px;
+    height: 37px;
     margin-top: -5px;
 }
 
 .text-style {
     color: white;
+    padding-top: 20px !important;
+    font-size: 17px;
 }
 
 .form-control {
@@ -52,6 +60,10 @@ body {
     padding-bottom:20px;
 }
 
+.img__size {
+    width:100%;
+}
+
 /* Footer */
 
 .footer {
@@ -60,7 +72,7 @@ body {
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: #6c727a;
+  background-color: #c4c24c;
   text-align: center;
 }
 
@@ -83,7 +95,7 @@ body {
 }
 
 .left-footer {
-    padding: 30px 0px 0px 40px;
+    padding: 20px 0px 0px 40px;
     color: white;
     padding-right: 40px;
     font-size: 14px;
