@@ -17,6 +17,7 @@
         vm.deleteEvent = deleteEvent;
         vm.init = init;
         vm.editEvent = editEvent;
+        vm.goToState = goToState;
 
         vm.eventData = {
             title: "",
@@ -24,6 +25,7 @@
             start: "",
             end: ""
         };
+
 
         function deleteEvent() {
             
@@ -55,6 +57,10 @@
             }, function (err) {
                 vm.message = err;
             });
+        };
+
+        function goToState() {
+            $state.go("event");
         };
         /*var events_array = [{
             id: 'available',
@@ -196,7 +202,9 @@
                  },*/
                 events: $scope.events,
                 eventClick: function(event){
-                    $scope.SelectedEvent=event;
+                    $scope.SelectedEvent = event;
+                    vm.selectedStart = new Date($scope.SelectedEvent.start).toISOString().replace(/T/, ' ').replace(/\..+/, '');
+                    vm.selectedEnd = new Date($scope.SelectedEvent.end).toISOString().replace(/T/, ' ').replace(/\..+/, '');
                 },
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,
