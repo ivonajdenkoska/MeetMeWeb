@@ -6,3 +6,36 @@
     color: #6c727a;
     padding-bottom:15px;
 }
+
+.btn-remove__style {
+    border-radius: 0px;
+    border-color: red;
+    color: white;
+    background-color: red;
+    float:right;
+}
+
+.btn-edit__style{
+    border-radius: 0px;
+    border-color: #60aa22;
+    color: white;
+    background-color: #60aa22;
+    
+}
+
+.title__style {
+    color: #6c727a;
+    font-weight: bold;
+}
+
+.text-small__style {
+    color: #6c727a;
+    font-size: 15px;
+}
+
+.panel__style {
+    width: 270px;
+    border-radius: 0px;
+    border-color: #6c727a;
+    background-color: #c8efa7;
+}

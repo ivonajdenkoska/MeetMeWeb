@@ -5,11 +5,14 @@
             <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
         </div>
         <div class="col-md-4">
-            <div ng-show="SelectedEvent" class="alert alert-success" style="margin-top:50px">
-                <h2 style="margin-top:0px">Selected Event:</h2>
+            <div ng-show="SelectedEvent" class="alert alert-success panel__style" style="margin-top:50px">
+                <h3 class="title__style">Selected Event:</h3>
                 <h3 style="color:green">{{SelectedEvent.title}}</h3>
-                <p>{{SelectedEvent.start}}</p>
-				 <button type="button" class="btn btn-danger btn-large" data-toggle="modal" data-target="#myModal">Remove Event</button>
+                <p class="text-small__style">Start: {{SelectedEvent.start}}</p>
+                <p class="text-small__style">End: {{SelectedEvent.end}}</p>
+                <br/>
+                <button type="button" class="btn btn-edit__style btn-large" data-toggle="modal" data-target="#">Edit</button>
+				<button type="button" class="btn btn-remove__style btn-large" data-toggle="modal" data-target="#myModal">Remove</button>
             </div>
         </div>
     </div>
