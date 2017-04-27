@@ -88,6 +88,7 @@
             console.log($scope.events);
         };*/
 
+
         $scope.changeTo = 'Hungarian';
         /* event source that pulls from google.com */
         $scope.eventSource = {

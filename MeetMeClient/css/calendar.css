@@ -1,8 +1,80 @@
 ﻿.calendar__space {
-    height: 600px;
+    height: 650px;
 }
 
 .fc-center {
     color: #6c727a;
     padding-bottom:15px;
+}
+
+.btn-remove__style {
+    border-radius: 0px;
+    border-color: #e2a5a5;
+    color: black;
+    background-color: #e2a5a5;
+    float:right;
+}
+
+.btn-edit__style{
+    border-radius: 0px;
+    border-color: #d6eac5;
+    color: black;
+    background-color: #d6eac5;
+    
+}
+
+.title__style {
+    color: #6c727a;
+    font-weight: bold;
+    margin-top: 0px !important;
+} 
+
+.text-small__style {
+    color: #6c727a;
+    font-size: 15px;
+}
+
+.panel__style {
+    width: 270px;
+    border-radius: 0px;
+    border-color: #e3e4ea;
+    background-color: #e3e4ea;
+}
+
+.btn__add-event {
+    border-radius: 0px;
+    border-color: #c8efa7;
+    background-color: #c8efa7;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+}
+
+.btn__add-event:hover {
+    border-radius: 0px;
+    border-color: #d6eac5;
+    background-color: #d6eac5;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+}
+
+.btn__add-meeting {
+    border-radius: 0px;
+    border-color: #e2a5a5;
+    background-color: #e2a5a5;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+    margin-top: 23px;
+}
+
+.btn__add-meeting:hover {
+    border-radius: 0px;
+    border-color: #e5c3c3;
+    background-color: #e5c3c3;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+    margin-top: 23px;
 }
