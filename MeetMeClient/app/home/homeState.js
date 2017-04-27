@@ -13,6 +13,9 @@
         $stateProvider.state('home', {
             url: '',
             templateUrl: 'app/home/homeView.html'
+        }).state('root', {
+            url: '/',
+            templateUrl: 'app/home/homeView.html'
         });
     }
 
