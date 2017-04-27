@@ -76,7 +76,10 @@
     <Content Include="app\calendar\calendarService.js" />
     <Content Include="app\calendar\calendarState.js" />
     <Content Include="app\calendar\calendarView.html" />
-    <Content Include="app\css\custom.css" />
+    <Content Include="css\calendar.css" />
+    <Content Include="css\custom.css" />
+    <Content Include="css\event.css" />
+    <Content Include="css\profile.css" />
     <Content Include="app\directives\date-time-picker\dateTimePickerDirective.js" />
     <Content Include="app\directives\date-time-picker\dateTimePickerView.html" />
     <Content Include="app\event\eventController.js" />
@@ -85,7 +88,8 @@
     <Content Include="app\event\eventView.html" />
     <Content Include="app\home\homeState.js" />
     <Content Include="app\home\homeView.html" />
-    <Content Include="app\images\logo.png" />
+    <Content Include="images\ellipsis.gif" />
+    <Content Include="images\logo.png" />
     <Content Include="app\index\indexController.js" />
     <Content Include="app\account\accountController.js" />
     <Content Include="app\account\accountService.js" />
