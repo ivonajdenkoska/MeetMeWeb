@@ -26,7 +26,8 @@
 .title__style {
     color: #6c727a;
     font-weight: bold;
-}
+    margin-top: 0px !important;
+} 
 
 .text-small__style {
     color: #6c727a;
