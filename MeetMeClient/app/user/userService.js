@@ -11,6 +11,7 @@
         var resource = $resource('https://localhost:44362/api/user', {},
         {
             getByUsername: { method: "GET", url: 'https://localhost:44362/api/user/get', params: { username: '@username' } },
+            getConnection: { method: "GET", url: 'https://localhost:44362/api/user/getConnection', params: { user1: '@user1', user2: '@user2' } },
             getAll: { method: "GET", url: 'https://localhost:44362/api/user/getAll', isArray: true}
         });
 
@@ -19,6 +20,8 @@
 
         var service = {
             getUserByUsername: getUserByUsernameFn,
+            getUserByID: getUserByIDFn,
+            getConnection: getConnectionFn,
             getAllUsers: getAllUsers,
             user: _user,
             users: _users
@@ -29,6 +32,14 @@
                 _user = response;
             }).$promise;
         };
+
+        function getUserByIDFn(id) {
+            return resource.get({ id: id }).$promise;
+        };
+
+        function getConnectionFn(user1, user2) {
+            return resource.getConnection({ user1: user1, user2: user2 }).$promise;
+        }
 
         function getAllUsers() {
             return resource.getAll(function (response) {

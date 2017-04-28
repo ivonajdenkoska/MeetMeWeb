@@ -15,7 +15,7 @@ namespace MeetMeWeb.Repositories
             _context = new MeetMeDbContext();
         }
 
-        public User getUserById(Guid id)
+        public User getUserById(string id)
         {
             User user = _context.Users.Find(id);
             return user;

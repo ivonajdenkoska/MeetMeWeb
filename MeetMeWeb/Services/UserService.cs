@@ -15,7 +15,7 @@ namespace MeetMeWeb.Services
             _repo = repo;
         }
 
-        public User getUserById(Guid id)
+        public User getUserById(string id)
         {
             return _repo.getUserById(id);
         }

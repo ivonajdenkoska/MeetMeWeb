@@ -6,7 +6,7 @@ namespace MeetMeWeb.Services.Interfaces
 {
     public interface IUserService : IDisposable
     {
-        User getUserById(Guid id);
+        User getUserById(string id);
         User getUserByUsername(string username);
         List<User> getAll();
     }

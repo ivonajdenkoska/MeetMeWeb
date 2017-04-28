@@ -27,7 +27,7 @@ namespace MeetMeWeb.Controllers
 
         public AccountController(IAccountService service)
         {
-            _service = service;
+            _userService = service;
         }
 
         public ApplicationUserManager UserManager
@@ -44,7 +44,7 @@ namespace MeetMeWeb.Controllers
 
         public ISecureDataFormat<AuthenticationTicket> AccessTokenFormat { get; private set; }
 
-        private IAccountService _service;
+        private IAccountService _userService;
 
         private IAuthenticationManager Authentication
         {
@@ -64,7 +64,7 @@ namespace MeetMeWeb.Controllers
 
             var callbackUrl = Url.Content("~/api/account/confirmemail");
 
-            IdentityResult result = await _service.RegisterUser(userModel, callbackUrl);
+            IdentityResult result = await _userService.RegisterUser(userModel, callbackUrl);
 
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -88,7 +88,7 @@ namespace MeetMeWeb.Controllers
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await _service.ConfirmEmail(userId, code);
+            IdentityResult result = await _userService.ConfirmEmail(userId, code);
 
             if (result.Succeeded)
             {
@@ -169,7 +169,7 @@ namespace MeetMeWeb.Controllers
         {
             if (disposing)
             {
-                _service.Dispose();
+                _userService.Dispose();
             }
 
             base.Dispose(disposing);

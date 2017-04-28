@@ -11,7 +11,7 @@
     function registerState($stateProvider) {
 
         $stateProvider.state('profile', {
-            url: '/profile',
+            url: '/profile/{id}',
             authenticate: true,
             templateUrl: 'app/profile/profileView.html',
             controller: 'ProfileController',

@@ -11,18 +11,18 @@ namespace MeetMeWeb.Controllers
     [RoutePrefix("api/Event")]
     public class EventController : ApiController
     {
-        private IEventService _service;
+        private IEventService _userService;
 
         public EventController(IEventService service)
         {
-            _service = service;
+            _userService = service;
         }
 
         // POST api/Event/Create
         [Route("Create")]
         public async Task<Event> CreateEvent(Event eventModel)
         {
-            Event e = await _service.createEvent(eventModel);
+            Event e = await _userService.createEvent(eventModel);
             return e;
         }
 
@@ -31,7 +31,7 @@ namespace MeetMeWeb.Controllers
         [HttpPost]
         public async Task<Event> DeleteEvent(string title,Guid id)
         {
-            Event e = await _service.deleteEvent(title,id);
+            Event e = await _userService.deleteEvent(title,id);
             return e;
         }
 
@@ -39,7 +39,7 @@ namespace MeetMeWeb.Controllers
         [Route("Edit")]
         public Event EditEvent(string title, Guid id,DateTime start,DateTime end)
         {
-            Event e = _service.editEvent(title, id, start, end);
+            Event e = _userService.editEvent(title, id, start, end);
             return e;
         }
 
@@ -47,7 +47,7 @@ namespace MeetMeWeb.Controllers
         [Route("getEvents")]
         public List<Event> getEvents([FromUri] string username)
         {
-            List<Event> events =_service.getEvents(username);
+            List<Event> events =_userService.getEvents(username);
             return events;
         }
     }
