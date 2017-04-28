@@ -1,11 +1,8 @@
-﻿<form role="form">
+﻿<form role="form" class="container">
     <div class="row">
-        <div class="">
-            &nbsp;
-        </div>
         <div class="col-md-12">
-            <div class="col-md-offset-2 col-md-8">
-                <h2 class="form-login-heading">Login</h2>
+            <div class="col-md-offset-3 col-md-6">
+                <h2 class="heading__style">Login</h2>
                 <input type="text" class="form-control elements-padding" placeholder="Email" ng-model="vm.loginData.userName" required autofocus>
                 <input type="password" class="form-control elements-padding" placeholder="Password" ng-model="vm.loginData.password" required>
                 <button class="btn btn-md btn-info btn-block elements-padding btn-style" type="submit" ng-click="vm.login()">Login</button>
@@ -15,8 +12,8 @@
             </div>
         </div>
         <div class="col-md-12">
-            <div class="col-md-offset-2 col-md-8">
-                <h2 class="form-login-heading">Social Logins</h2>
+            <div class="col-md-offset-3 col-md-6">
+                <h2 class="heading__style">Social Logins</h2>
                 <p>Or you can login using one of the social logins bleow</p>
                 <button class="btn btn-large btn-facebook btn-block elements-padding" type="button" ng-click="vm.authExternalProvider('Facebook')"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
                 <button class="btn btn-large btn-google-plus btn-block elements-padding btn-style" type="button" ng-click="vm.authExternalProvider('Google')"><i class="fa fa-google-plus"></i> | Connect with Google+</button>
