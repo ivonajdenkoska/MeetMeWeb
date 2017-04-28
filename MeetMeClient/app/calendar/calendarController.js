@@ -209,7 +209,18 @@
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize,
                eventRender: function(event, element) {
-                    $(element).tooltip({ title: event.title });
+                   $(element).tooltip({ title: event.title });
+                   if (event.priority == 1) {
+                       $(element).css("background-color", "orange");  //Medium priority
+                   }
+                   else if (event.priority == 2) {
+                       $(element).css("background-color", "red"); //High priority
+                   }
+                   else {
+                       $(element).css("background-color", "yellow");  //Low priority
+                   }
+                   $(element).css("color", "black");
+
                }
             }
         };
