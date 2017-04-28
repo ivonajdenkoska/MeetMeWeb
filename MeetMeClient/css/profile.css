@@ -9,6 +9,45 @@
 
 .label__style {
     color: #4f4f4f;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
+}
+
+
+.btn__add-event-pr {
+    border-radius: 0px;
+    border-color: #c8efa7;
+    background-color: #c8efa7;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+}
+
+.btn__add-event-pr:hover {
+    border-radius: 0px;
+    border-color: #d6eac5;
+    background-color: #d6eac5;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+}
+
+.btn__add-meeting-pr {
+    border-radius: 0px;
+    border-color: #e2a5a5;
+    background-color: #e2a5a5;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+    margin-top: 23px;
+}
+
+.btn__add-meeting-pr:hover {
+    border-radius: 0px;
+    border-color: #e5c3c3;
+    background-color: #e5c3c3;
+    padding: 10px 35px;
+    font-size: 16px;
+    width: 163px;
+    margin-top: 23px;
 }
