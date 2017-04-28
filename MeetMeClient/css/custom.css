@@ -103,6 +103,18 @@ body {
     border: 2px solid white;
 }
 
+.btn__main-2 {
+    position: absolute; 
+    top: 250px; 
+    left: 760px;
+    background-color:  #c9c35e;
+    color:white;
+    font-size: 20px;
+    padding: 25px 70px;
+    border-radius: 0px;
+    border: 2px solid white;
+}
+
 /* Footer */
 
 .footer {

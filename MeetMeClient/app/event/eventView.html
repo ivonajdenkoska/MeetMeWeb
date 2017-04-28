@@ -1,39 +1,41 @@
-﻿<div class="row event__space">
-<div class="col-md-6 col-md-offset-3">
-    <h2 class="heading__style">Schedule event</h2>
-</div>
-<div class="col-md-6 col-md-offset-3">
-    <div class="form-group has-success">
-        <label for="eventName" class="label__color">Event Title</label>
-        <input type="text" id="eventName" class="form-control" aria-describedby="eventTitle" ng-model="vm.eventData.title" required>
-    </div>
-</div>
-<div class="col-md-6 col-md-offset-3">
-        <div class="form-group has-success">
-            <label for="eventLocation" class="label__color">Event Location</label>
-            <input type="text" id="eventLocation" class="form-control" aria-describedby="eventLocation" ng-model="vm.eventData.location">
+﻿<div class="container">
+    <div class="row event__space">
+        <div class="col-md-6 col-md-offset-3">
+            <h2 class="heading__style">Schedule event</h2>
         </div>
-</div>
-    <div class="col-md-6 col-md-offset-3 label__padding">
-        <date-time-picker label="Event Start" class="label__color" model="vm.eventData.start"/>   
-    </div>
-    <div class="col-md-6 col-md-offset-3 label__padding">
-        <date-time-picker label="Event End" class="label__color" model="vm.eventData.end"/>
-    </div>
-    <div class="col-md-6 col-md-offset-3">
-        <div class="form-group">
-            <label for="eventPriority" class="label__color">Event Priority</label>
-            <select id="eventPriority" class="form-control" ng-model="vm.eventData.priority">
-                <option>Low</option>
-                <option>Medium</option>
-                <option>High</option>
-            </select>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group has-success">
+                <label for="eventName" class="label__color">Event Title</label>
+                <input type="text" id="eventName" class="form-control" aria-describedby="eventTitle" ng-model="vm.eventData.title" required>
+            </div>
         </div>
-    </div>
-    <div class="col-md-6 col-md-offset-3">
-        <button type="button" class="btn btn-lg btn__style" ng-click="vm.createEvent()">Create Event</button>
-        <div ng-hide="vm.message == null" class="alert alert-danger">
-            {{vm.message}}
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group has-success">
+                <label for="eventLocation" class="label__color">Event Location</label>
+                <input type="text" id="eventLocation" class="form-control" aria-describedby="eventLocation" ng-model="vm.eventData.location">
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-3 label__padding">
+            <date-time-picker label="Event Start" class="label__color" model="vm.eventData.start" />
+        </div>
+        <div class="col-md-6 col-md-offset-3 label__padding">
+            <date-time-picker label="Event End" class="label__color" model="vm.eventData.end" />
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group">
+                <label for="eventPriority" class="label__color">Event Priority</label>
+                <select id="eventPriority" class="form-control" ng-model="vm.eventData.priority">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <button type="button" class="btn btn-lg btn__style" ng-click="vm.createEvent()">Create Event</button>
+            <div ng-hide="vm.message == null" class="alert alert-danger">
+                {{vm.message}}
+            </div>
         </div>
     </div>
 </div>
