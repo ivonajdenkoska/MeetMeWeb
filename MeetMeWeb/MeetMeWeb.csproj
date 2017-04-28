@@ -233,17 +233,10 @@
     <Compile Include="Migrations\201704131644075_UserRequiredInEvent.Designer.cs">
       <DependentUpon>201704131644075_UserRequiredInEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704272309075_EventChange.cs" />
-    <Compile Include="Migrations\201704272309075_EventChange.Designer.cs">
-      <DependentUpon>201704272309075_EventChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704280147194_Fix.cs" />
-    <Compile Include="Migrations\201704280147194_Fix.Designer.cs">
-      <DependentUpon>201704280147194_Fix.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -251,16 +244,20 @@
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\GoogleAuthProvider.cs" />
     <Compile Include="Repositories\AuthRepository.cs" />
+    <Compile Include="Repositories\ConnectionRepository.cs" />
     <Compile Include="Repositories\EventRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAuthRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IConnectionRepository.cs" />
     <Compile Include="Repositories\Interfaces\IEventRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Services\AccountService.cs" />
+    <Compile Include="Services\ConnectionService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\EventService.cs" />
     <Compile Include="Services\Interfaces\IAccountService.cs" />
+    <Compile Include="Services\Interfaces\IConnectionService.cs" />
     <Compile Include="Services\Interfaces\IEventService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -290,12 +287,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201704131644075_UserRequiredInEvent.resx">
       <DependentUpon>201704131644075_UserRequiredInEvent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704272309075_EventChange.resx">
-      <DependentUpon>201704272309075_EventChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704280147194_Fix.resx">
-      <DependentUpon>201704280147194_Fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
