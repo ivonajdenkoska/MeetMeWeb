@@ -76,6 +76,10 @@
     <Content Include="app\calendar\calendarService.js" />
     <Content Include="app\calendar\calendarState.js" />
     <Content Include="app\calendar\calendarView.html" />
+    <Content Include="app\meeting\meetingController.js" />
+    <Content Include="app\meeting\meetingService.js" />
+    <Content Include="app\meeting\meetingState.js" />
+    <Content Include="app\meeting\meetingView.html" />
     <Content Include="css\calendar.css" />
     <Content Include="css\custom.css" />
     <Content Include="css\event.css" />

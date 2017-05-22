@@ -35,7 +35,10 @@ var JS_APP = [
   'app/calendar/calendarService.js',
   'app/profile/profileState.js',
   'app/profile/profileController.js',
-  'app/home/homeState.js'
+  'app/home/homeState.js',
+  'app/meeting/meetingController.js',
+  'app/meeting/meetingState.js',
+  'app/meeting/meetingService.js'
 ];
 
 var TEMPLATES_SRC = [
