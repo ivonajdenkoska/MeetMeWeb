@@ -21,7 +21,9 @@
     "angular-bootstrap": "2.5.0",
     "glyphicons-halflings": "*",
     "angucomplete-alt": "*",
-    "circular-json": "*"
+    "circular-json": "*",
+    "bootstrap-select": "*",
+    "angular-ui-select": "*"
   },
   "resolutions": {
     "angular": "^1.0.8",

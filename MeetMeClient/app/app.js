@@ -7,7 +7,8 @@
                             'ngResource',
                             'LocalStorageModule',
                             'ui.calendar',
-                            'angucomplete-alt'
+                            'angucomplete-alt',
+                            'ui.select'
                             ]);
     var serviceBase = 'https://localhost:44362/';
 

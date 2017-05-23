@@ -18,6 +18,7 @@
         vm.init = init;
         vm.editEvent = editEvent;
         vm.goToState = goToState;
+        vm.goToMeeting = goToMeeting;
 
         vm.eventData = {
             title: "",
@@ -61,6 +62,10 @@
 
         function goToState() {
             $state.go("event");
+        };
+
+        function goToMeeting() {
+            $state.go("meeting");
         };
         /*var events_array = [{
             id: 'available',
