@@ -250,6 +250,7 @@
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\ConnectionNotification.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Meeting.cs" />
     <Compile Include="Models\User.cs" />

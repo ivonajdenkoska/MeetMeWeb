@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeetMeWeb.Models
 {
-	public class Connection
-	{
+    public class ConnectionNotification
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID { get; set; }
@@ -14,12 +14,8 @@ namespace MeetMeWeb.Models
         [Required]
         public User User2;
         [Required]
-        public Status Status;
-        public DateTime StartDate;
-    }
-
-    public enum Status
-    {
-        Waiting, Accepted
+        public string Content;
+        public DateTime Date;
+        public bool Read;
     }
 }
