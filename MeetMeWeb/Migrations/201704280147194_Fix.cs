@@ -12,19 +12,10 @@ namespace MeetMeWeb.Migrations
             AlterColumn("dbo.Events", "User_Id", c => c.String(maxLength: 128));
             CreateIndex("dbo.Events", "User_Id");
             AddForeignKey("dbo.Events", "User_Id", "dbo.AspNetUsers", "Id");
-            DropTable("dbo.Connections");
         }
         
         public override void Down()
         {
-            CreateTable(
-                "dbo.Connections",
-                c => new
-                    {
-                        ID = c.Guid(nullable: false, identity: true),
-                    })
-                .PrimaryKey(t => t.ID);
-            
             DropForeignKey("dbo.Events", "User_Id", "dbo.AspNetUsers");
             DropIndex("dbo.Events", new[] { "User_Id" });
             AlterColumn("dbo.Events", "User_Id", c => c.String(nullable: false, maxLength: 128));

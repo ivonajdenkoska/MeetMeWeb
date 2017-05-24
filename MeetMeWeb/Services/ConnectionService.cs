@@ -32,12 +32,12 @@ namespace MeetMeWeb.Services
 
         public void DeleteConnection(string user1, string user2)
         {
-            _repo.DeleteConnection();
+            _repo.DeleteConnection(user1, user2);
         }
 
-        public Task<Connection> AcceptConnection(string user1, string user2)
+        public void AcceptConnection(string user1, string user2)
         {
-            throw new NotImplementedException();
+            _repo.AcceptConnection(user1, user2);
         }
     }
 }

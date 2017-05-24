@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeetMeWeb.Models
 {
-	public class Connection
-	{
+    public class Connection
+    {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID { get; set; }
@@ -15,6 +15,7 @@ namespace MeetMeWeb.Models
         public User User2;
         [Required]
         public Status Status;
+        [Required]
         public DateTime StartDate;
     }
 

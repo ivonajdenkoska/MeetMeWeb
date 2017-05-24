@@ -15,6 +15,7 @@ namespace MeetMeWeb.Models
         public User User2;
         [Required]
         public string Content;
+        [Required]
         public DateTime Date;
         public bool Read;
     }

@@ -20,5 +20,6 @@ namespace MeetMeWeb
         public DbSet<Event> Events { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<Connection> Connections { get; set; }
+        public DbSet<ConnectionNotification> ConnectionNotifications { get; set; }
     }
 }

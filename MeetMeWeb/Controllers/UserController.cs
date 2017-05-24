@@ -44,7 +44,7 @@ namespace MeetMeWeb.Controllers
         [Route("GetConnection")]
         public Connection GetConnection([FromUri]string user1, [FromUri]string user2)
         {
-            var connection = _connectionService.getConnection(user1, user2);
+            var connection = _connectionService.GetConnection(user1, user2);
             return connection;
         }
     }
