@@ -51,10 +51,10 @@ namespace MeetMeWeb.Controllers
 
         // POST api/User/ConnectUsers
         [Route("ConnectUsers")]
-        public Task<Connection> ConnectUsers(string user1, string user2)
+        public Task<Connection> ConnectUsers(Connection connection)
         {
-            var connection = _connectionService.CreateConnection(user1, user2);
-            return connection;
+            var res = _connectionService.CreateConnection(connection);
+            return res;
         }
     }
 }

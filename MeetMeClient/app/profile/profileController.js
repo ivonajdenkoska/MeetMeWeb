@@ -15,12 +15,16 @@
         vm.user = null;
         vm.loggedUser = null;
         vm.selectedUser;
-        vm.connected = "Connect";
+        vm.connected = false;
+        vm.waiting = false;
+        vm.connect = true;
         vm.users = UserService.getAllUsers();
         vm.done = false;
         vm.errMsg = "";
         vm.connection = null;
-        vm.connect = connect;
+        vm.connectUsers = connectUsers;
+        vm.acceptConnection = acceptConnection;
+        vm.deleteConnection = deleteConnection;
 
         getUser();
 
@@ -46,10 +50,11 @@
                     console.log(response);
                     if (response.id != undefined) {
                         vm.connection = response;
-                        if (vm.connection.status == "Waiting")
-                            vm.connected = "Waiting";
-                        else if(vm.connection.status == "Accepted")
-                            vm.connected = "Connected";
+                        vm.connect = false;
+                        if (vm.connection.status == 0)
+                            vm.waiting = true;
+                        else if (vm.connection.status == 1)
+                            vm.connected = true;
                     }
                 }, function (response) {
                     vm.errMsg = "Error occurred: " + response.data;
@@ -57,15 +62,31 @@
             }
         }
 
-        function connect() {
-            console.log("Connect clicked");
-            console.log(vm.connection);
+        function connectUsers() {
             if (vm.connection == null) {
-                UserService.connectUsers(vm.loggedUser.id, vm.user.id).then(function (data) {
+                vm.connection = { user1: vm.loggedUser, user2: vm.user, status: "Waiting", startDate: new Date() };
+                UserService.connectUsers(vm.connection).then(function (data) {
                         vm.connected = "Waiting";
                 }, function (response) {
                     vm.errMsg = "Error occurred: " + response.data;
                 });
+            }
+        }
+
+        function acceptConnection() {
+            if (vm.connection != null && !vm.waiting) {
+                UserService.deleteConnection(vm.connection).then(function (data) {
+                    vm.connect = true;
+                    vm.connected = false;
+                }, function (response) {
+                    vm.errMsg = "Error occurred: " + response.data;
+                });
+            }
+        }
+
+        function deleteConnection() {
+            if (vm.connection != null) {
+
             }
         }
 

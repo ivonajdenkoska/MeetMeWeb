@@ -6,7 +6,7 @@ namespace MeetMeWeb.Services.Interfaces
     public interface IConnectionService
     {
         Connection GetConnection(string user1, string user2);
-        Task<Connection> CreateConnection(string user1, string user2);
+        Task<Connection> CreateConnection(Connection connection);
         void DeleteConnection(string user1, string user2);
         void AcceptConnection(string user1, string user2);
     }

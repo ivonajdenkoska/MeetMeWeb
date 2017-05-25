@@ -28,7 +28,6 @@ namespace MeetMeWeb.Repositories
 
         public async Task<Connection> CreateConnection(Connection connection)
         {
-           // _context.Set<Connection>().Attach(connection);
             _context.Entry(connection.User1).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(connection.User2).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(connection).State = System.Data.Entity.EntityState.Added;
@@ -47,18 +46,10 @@ namespace MeetMeWeb.Repositories
 
         public Connection GetConnection(string user1, string user2)
         {
-            var connection = _context.Connections.Local.Where(x => x.User1.Id == user1 && x.User2.Id == user2).SingleOrDefault();
+            var connection = _context.Connections.Include("User1").Include("User2").Where(x => x.User1.Id == user1 && x.User2.Id == user2).FirstOrDefault();
             if(connection == null)
             {
-                connection = _context.Connections.Local.Where(x => x.User1.Id == user2 && x.User2.Id == user1).SingleOrDefault();
-            }
-            if (connection == null)
-            {
-                connection = _context.Connections.Where(x => x.User1.Id == user1 && x.User2.Id == user2).SingleOrDefault();
-            }
-            if(connection == null)
-            {
-                connection = _context.Connections.Where(x => x.User1.Id == user2 && x.User2.Id == user1).SingleOrDefault();
+                connection = _context.Connections.Include("User1").Include("User2").Where(x => x.User1.Id == user2 && x.User2.Id == user1).FirstOrDefault();
             }
             return connection;
         }

@@ -22,9 +22,9 @@ namespace MeetMeWeb.Services
             return _repo.GetConnection(user1, user2);
         }
 
-        public async Task<Connection> CreateConnection(string user1, string user2)
+        public async Task<Connection> CreateConnection(Connection connection)
         {
-            return await _repo.CreateConnection(new Connection { User1 = _userRepo.getUserById(user1), User2 = _userRepo.getUserById(user2), StartDate = DateTime.Now, Status = Status.Waiting });
+            return await _repo.CreateConnection(connection);
         }
 
         public void DeleteConnection(string user1, string user2)
