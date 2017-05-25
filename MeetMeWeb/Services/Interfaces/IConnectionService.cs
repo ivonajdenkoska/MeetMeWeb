@@ -7,7 +7,7 @@ namespace MeetMeWeb.Services.Interfaces
     {
         Connection GetConnection(string user1, string user2);
         Task<Connection> CreateConnection(Connection connection);
-        void DeleteConnection(string user1, string user2);
-        void AcceptConnection(string user1, string user2);
+        void DeleteConnection(Connection connection);
+        Task<Connection> AcceptConnection(Connection connection);
     }
 }

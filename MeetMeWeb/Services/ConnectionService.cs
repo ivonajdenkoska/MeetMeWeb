@@ -27,14 +27,14 @@ namespace MeetMeWeb.Services
             return await _repo.CreateConnection(connection);
         }
 
-        public void DeleteConnection(string user1, string user2)
+        public void DeleteConnection(Connection connection)
         {
-            _repo.DeleteConnection(user1, user2);
+            _repo.DeleteConnection(connection);
         }
 
-        public void AcceptConnection(string user1, string user2)
+        public Task<Connection> AcceptConnection(Connection connection)
         {
-            _repo.AcceptConnection(user1, user2);
+            return _repo.AcceptConnection(connection);
         }
     }
 }

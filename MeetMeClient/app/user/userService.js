@@ -12,7 +12,9 @@
         {
             getByUsername: { method: "GET", url: 'https://localhost:44362/api/user/get', params: { username: '@username' } },
             getConnection: { method: "GET", url: 'https://localhost:44362/api/user/getConnection', params: { user1: '@user1', user2: '@user2' } },
-            setConnection: { method: "POST", url: 'https://localhost:44362/api/user/connectUsers'},
+            setConnection: { method: "POST", url: 'https://localhost:44362/api/user/connectUsers' },
+            acceptConnection: { method: "POST", url: 'https://localhost:44362/api/user/acceptConnection' },
+            deleteConnection: { method: "POST", url: 'https://localhost:44362/api/user/deleteConnection', headers: { 'Content-Type': 'application/json; charset=utf8' }},
             getAll: { method: "GET", url: 'https://localhost:44362/api/user/getAll', isArray: true}
         });
 
@@ -24,6 +26,8 @@
             getUserByID: getUserByIDFn,
             getConnection: getConnectionFn,
             connectUsers: connectUsersFn,
+            acceptConnection: acceptConnectionFn,
+            deleteConnection: deleteConnectionFn,
             getAllUsers: getAllUsers,
             user: _user,
             users: _users
@@ -45,6 +49,14 @@
 
         function connectUsersFn(connection) {
             return resource.setConnection(connection).$promise;
+        }
+
+        function acceptConnectionFn(connection) {
+            return resource.acceptConnection(connection).$promise;
+        }
+
+        function deleteConnectionFn(connection) {
+            return resource.deleteConnection(connection).$promise;
         }
 
         function getAllUsers() {

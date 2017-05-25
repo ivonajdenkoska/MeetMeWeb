@@ -20,12 +20,14 @@
             <button class="btn btn__add-meeting-pr">Add meeting</button>
         </div>
         <div class="col-md-6" ng-hide="vm.loggedUser.id == vm.user.id">
+            <br />
             <button class="btn btn-default" ng-show="vm.connect" ng-click="vm.connectUsers()">Connect</button>
-            <button class="btn btn-default disabled" ng-show="!vm.connected && vm.waiting">Waiting for response</button>
-            <button class="btn btn-default" ng-show="!vm.connected && !vm.waiting" ng-click="vm.acceptConnection()">Accept</button>
+            <button class="btn btn-default disabled" ng-show="!vm.connect && vm.waiting">Waiting for response</button>
+            <button class="btn btn-default" ng-show="!vm.connect && !vm.waiting" ng-click="vm.acceptConnection()">Accept</button>
             <button class="btn btn-default disabled" ng-show="vm.connected">Connected</button>
             <button class="btn btn-danger" ng-show="!vm.connect" ng-click="vm.deleteConnection()">Delete</button>
-            <br/>
+            <br />
+            <br />
             <button class="btn btn__add-meeting-pr">Add meeting</button>
         </div>
         <div class="col-md-6">

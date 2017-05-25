@@ -56,5 +56,22 @@ namespace MeetMeWeb.Controllers
             var res = _connectionService.CreateConnection(connection);
             return res;
         }
+
+        // POST api/User/AcceptConnection
+        [Route("AcceptConnection")]
+        [HttpPost]
+        public Task<Connection> AcceptConnection(Connection connection)
+        {
+            var result = _connectionService.AcceptConnection(connection);
+            return result;
+        }
+
+        // POST api/User/DeleteConnection
+        [Route("DeleteConnection")]
+        [HttpPost]
+        public void DeleteEvent(Connection connection)
+        {
+            _connectionService.DeleteConnection(connection);
+        }
     }
 }
