@@ -2,19 +2,25 @@
 using System;
 using MeetMeWeb.Models;
 using System.Threading.Tasks;
+using MeetMeWeb.Repositories.Interfaces;
 
 namespace MeetMeWeb.Services
 {
     public class MeetingService : IMeetingService
     {
-        public Task<Meeting> createMeeting(Meeting meetingModel)
+        private IMeetingRepository _repository;
+        public MeetingService(IMeetingRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+        public async Task<Meeting> createMeeting(Meeting meetingModel)
+        {
+            return await _repository.CreateMeeting(meetingModel);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _repository.Dispose();
         }
     }
 }

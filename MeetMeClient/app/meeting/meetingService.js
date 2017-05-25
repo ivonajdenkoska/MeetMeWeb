@@ -10,7 +10,7 @@
     function MeetingServiceFn($resource, localStorageService, ngAuthSettings) {
         var resource = $resource('https://localhost:44362/api/event', {},
         {
-            createMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/create' },
+            createMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/create' }
             /*deleteMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/delete', params: { title: '@title', id: '@id' }, headers: { 'Content-Type': 'application/json; charset=utf8' } },
             editMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/edit', params: { title: '@title', id: '@id', start: '@start', end: '@end' }, headers: { 'Content-Type': 'application/json; charset=utf8' } }
             */

@@ -17,9 +17,9 @@
             start: "",
             end: "",
             priority: "",
-            participants:[],
-            user: null
+            creator: null
         };
+        vm.participants = [];
 
         vm.names = ["Emil", "Tobias", "Linus"];
         vm.users = UserService.getAllUsers();
@@ -28,9 +28,16 @@
         vm.createMeeting = createMeeting;
 
         function createMeeting() {
-            vm.meetingData.user = AccountService.authentication.user;
+            vm.meetingData.creator = AccountService.authentication.user;
+            console.log()
             console.log(vm.meetingData);
-            console.log(vm.meetingData.participants);
+            console.log(vm.participants);
+            MeetingService.createMeeting(vm.meetingData).then(function (data) {
+                // redirect to calendar
+                //$state.go("calendar");
+            }, function (err) {
+                vm.message = err;
+            });
         };
     }
 })(angular);
