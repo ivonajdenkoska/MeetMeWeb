@@ -1,0 +1,21 @@
+﻿<div class="container">
+    <div class="row" ng-hide="vm.done">
+        <div class="col-md-12">
+            <div class="profile__loader">
+                <img src="../images/ellipsis.gif" />
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-hide="!vm.done">
+        <div class="col-md-12">
+            <h2 class="heading__style">Notifications</h2>
+            <div ng-repeat="n in vm.notifications" class="card">
+                <div class="card-block">
+                    <a ui-sref="profile({ id: n.user1.id })">{{n.user1.name}}</a> 
+                    <span>&nbsp; {{n.content}} &nbsp;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

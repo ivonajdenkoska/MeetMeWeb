@@ -38,7 +38,9 @@ var JS_APP = [
   'app/home/homeState.js',
   'app/meeting/meetingController.js',
   'app/meeting/meetingState.js',
-  'app/meeting/meetingService.js'
+  'app/meeting/meetingService.js',
+  'app/connection-notification/connectionNotificationController.js',
+  'app/connection-notification/connectionNotificationState.js'
 ];
 
 var TEMPLATES_SRC = [
@@ -52,7 +54,6 @@ var FONTS_LIB = [
     'bower_components/bootstrap/fonts/glyphicons-halflings-regular.ttf',
     'bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff',
     'bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2'
-
 ];
 
 var CSS_LIB = [
@@ -65,9 +66,7 @@ var CSS_LIB = [
     'bower_components/angucomplete-alt/angucomplete-alt.css',
     'bower_components/bootstrap-select/dist/css/bootstrap-select.css',
     'bower_components/angular-ui-select/dist/select.css',
-    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.css',
-
-
+    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.css'
 ];
 
 var CSS_APP = [
@@ -94,8 +93,7 @@ var JS_LIB = [
     'bower_components/bootstrap-select/js/bootstrap-select.js',
     'bower_components/circular-json/build/circular-json.js',
     'bower_components/angular-ui-select/dist/select.js',
-    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.js',
-
+    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.js'
 ];
 
 

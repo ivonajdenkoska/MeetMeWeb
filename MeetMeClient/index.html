@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MeetMe</title>
     <!-- Concatenated CSS -->
-    <link href="/dest/lib.css?rev=7e208e34097826c4926116d60ef981b6" rel="stylesheet">
+    <link href="/dest/lib.css?rev=a4f2f927f65ee7d6e6611a40b8be1a93" rel="stylesheet">
     <link href="/dest/app.css?rev=ae6da3c8ed1f5cfdeaea714fef1fbfdf" rel="stylesheet">
 </head>
 <body ng-app="meet-me">
@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
                     <li ng-hide="!authentication.isAuth"><a class="text-style"><i class="fa fa-bell fa-2x"></i></a></li>
-                    <li ng-hide="!authentication.isAuth"><a class="text-style"><notification-icon animation="shake" count="count"> <i class="fa fa-envelope-o fa-2x"></i></notification-icon></a></li>
+                    <li ng-hide="!authentication.isAuth"><a ui-sref="connectionNotifications" class="text-style"><notification-icon animation="shake" count="count"> <i class="fa fa-envelope-o fa-2x"></i></notification-icon></a></li>
                     <li ng-hide="!authentication.isAuth"><a ui-sref="profile({ id: authentication.user.id })" class="text-style"><i class="fa fa-user fa-2x"></i></a></li>
                     <li ng-hide="!authentication.isAuth"><a href="" class="text-style" ng-click="logOut()">Logout</a></li>
                     <li ng-hide="authentication.isAuth"> <a ui-sref="login" class="text-style">Login</a></li>
@@ -61,10 +61,10 @@
     </footer>
 
     <!-- Concatenated libraries -->
-    <script src="/dest/lib.js?rev=a1bdd967658da6892b3b5fe3feb84a50"></script>
+    <script src="/dest/lib.js?rev=4ecb21786d6ff0a4f1aa476b506307a1"></script>
     <!-- Concatenated application -->
 
-    <script src="/dest/src.js?rev=189022a612e94f3da71de1a907f13b3c"></script>
+    <script src="/dest/src.js?rev=6f52f13fcd93cb81d9445123c6ec475c"></script>
 
     <!-- All html templates -->
     <!--<script src="/dest/templates.js?rev=e10e812c1c54be38f6015cb3ec83fcd6"></script>-->

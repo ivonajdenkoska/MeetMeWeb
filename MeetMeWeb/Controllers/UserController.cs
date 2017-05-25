@@ -73,5 +73,13 @@ namespace MeetMeWeb.Controllers
         {
             _connectionService.DeleteConnection(connection);
         }
+
+        // GET api/User/GetConnestionNotifications
+        [Route("GetConnestionNotifications")]
+        [HttpGet]
+        public List<ConnectionNotification> GetConnestionNotifications(string userId)
+        {
+            return _userService.getConnectionNotifications(userId);
+        }
     }
 }

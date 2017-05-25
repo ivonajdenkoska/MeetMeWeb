@@ -9,5 +9,6 @@ namespace MeetMeWeb.Services.Interfaces
         User getUserById(string id);
         User getUserByUsername(string username);
         List<User> getAll();
+        List<ConnectionNotification> getConnectionNotifications(string userId);
     }
 }

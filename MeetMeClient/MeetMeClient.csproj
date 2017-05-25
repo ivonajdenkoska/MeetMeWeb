@@ -76,10 +76,13 @@
     <Content Include="app\calendar\calendarService.js" />
     <Content Include="app\calendar\calendarState.js" />
     <Content Include="app\calendar\calendarView.html" />
+    <Content Include="app\connection-notification\connectionNotificationController.js" />
+    <Content Include="app\connection-notification\connectionNotificationState.js" />
     <Content Include="app\meeting\meetingController.js" />
     <Content Include="app\meeting\meetingService.js" />
     <Content Include="app\meeting\meetingState.js" />
     <Content Include="app\meeting\meetingView.html" />
+    <Content Include="app\connection-notification\connectionNotificationView.html" />
     <Content Include="css\calendar.css" />
     <Content Include="css\custom.css" />
     <Content Include="css\event.css" />
@@ -121,6 +124,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

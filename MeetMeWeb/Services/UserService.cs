@@ -29,6 +29,11 @@ namespace MeetMeWeb.Services
         {
             return _repo.getAll();
         }
+        
+        public List<ConnectionNotification> getConnectionNotifications(string userId)
+        {
+            return _repo.getConnectionNotifications(userId);
+        }
 
         public void Dispose()
         {
