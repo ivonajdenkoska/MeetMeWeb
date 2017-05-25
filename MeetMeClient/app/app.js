@@ -8,7 +8,8 @@
                             'LocalStorageModule',
                             'ui.calendar',
                             'angucomplete-alt',
-                            'ui.select'
+                            'ui.select',
+                            'angular-notification-icons',
                             ]);
     var serviceBase = 'https://localhost:44362/';
 

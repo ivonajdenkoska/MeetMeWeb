@@ -23,7 +23,10 @@
     "angucomplete-alt": "*",
     "circular-json": "*",
     "bootstrap-select": "*",
-    "angular-ui-select": "*"
+    "angular-ui-select": "*",
+    "angular-notification-icons": "*",
+    "angular-animate": "*",
+    "angular-desktop-notification": "*"
   },
   "resolutions": {
     "angular": "^1.0.8",

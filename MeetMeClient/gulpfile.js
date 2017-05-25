@@ -64,7 +64,9 @@ var CSS_LIB = [
     'bower_components/fullcalendar/dist/fullcalendar.css',
     'bower_components/angucomplete-alt/angucomplete-alt.css',
     'bower_components/bootstrap-select/dist/css/bootstrap-select.css',
-    'bower_components/angular-ui-select/dist/select.css'
+    'bower_components/angular-ui-select/dist/select.css',
+    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.css',
+
 
 ];
 
@@ -92,6 +94,7 @@ var JS_LIB = [
     'bower_components/bootstrap-select/js/bootstrap-select.js',
     'bower_components/circular-json/build/circular-json.js',
     'bower_components/angular-ui-select/dist/select.js',
+    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.js',
 
 ];
 
