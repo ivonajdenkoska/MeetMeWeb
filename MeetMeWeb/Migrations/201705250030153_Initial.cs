@@ -3,25 +3,26 @@ namespace MeetMeWeb.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Events",
+                "dbo.ConnectionNotifications",
                 c => new
                     {
-                        eventID = c.Guid(nullable: false, identity: true),
-                        eventName = c.String(),
-                        eventLocation = c.String(),
-                        eventStart = c.String(),
-                        eventEnd = c.String(),
-                        eventPriority = c.String(),
-                        user_Id = c.String(maxLength: 128),
+                        ID = c.Guid(nullable: false, identity: true),
+                        Content = c.String(nullable: false),
+                        Date = c.DateTime(nullable: false),
+                        Read = c.Boolean(nullable: false),
+                        User1_Id = c.String(maxLength: 128),
+                        User2_Id = c.String(nullable: false, maxLength: 128),
                     })
-                .PrimaryKey(t => t.eventID)
-                .ForeignKey("dbo.AspNetUsers", t => t.user_Id)
-                .Index(t => t.user_Id);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.AspNetUsers", t => t.User1_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.User2_Id, cascadeDelete: true)
+                .Index(t => t.User1_Id)
+                .Index(t => t.User2_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -85,6 +86,54 @@ namespace MeetMeWeb.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Connections",
+                c => new
+                    {
+                        ID = c.Guid(nullable: false, identity: true),
+                        Status = c.Int(nullable: false),
+                        StartDate = c.DateTime(nullable: false),
+                        User1_Id = c.String(maxLength: 128),
+                        User2_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.AspNetUsers", t => t.User1_Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.User2_Id)
+                .Index(t => t.User1_Id)
+                .Index(t => t.User2_Id);
+            
+            CreateTable(
+                "dbo.Events",
+                c => new
+                    {
+                        ID = c.Guid(nullable: false, identity: true),
+                        Title = c.String(nullable: false),
+                        Location = c.String(),
+                        Start = c.DateTime(nullable: false),
+                        End = c.DateTime(nullable: false),
+                        Priority = c.Int(nullable: false),
+                        User_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
+                .Index(t => t.User_Id);
+            
+            CreateTable(
+                "dbo.Meetings",
+                c => new
+                    {
+                        ID = c.Guid(nullable: false, identity: true),
+                        Title = c.String(nullable: false),
+                        Location = c.String(),
+                        Start = c.DateTime(nullable: false),
+                        End = c.DateTime(nullable: false),
+                        Priority = c.Int(nullable: false),
+                        creator_Id = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.AspNetUsers", t => t.creator_Id)
+                .Index(t => t.creator_Id);
+            
+            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -99,23 +148,36 @@ namespace MeetMeWeb.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.Events", "user_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Meetings", "creator_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Events", "User_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Connections", "User2_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Connections", "User1_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.ConnectionNotifications", "User2_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.ConnectionNotifications", "User1_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Meetings", new[] { "creator_Id" });
+            DropIndex("dbo.Events", new[] { "User_Id" });
+            DropIndex("dbo.Connections", new[] { "User2_Id" });
+            DropIndex("dbo.Connections", new[] { "User1_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Events", new[] { "user_Id" });
+            DropIndex("dbo.ConnectionNotifications", new[] { "User2_Id" });
+            DropIndex("dbo.ConnectionNotifications", new[] { "User1_Id" });
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Meetings");
+            DropTable("dbo.Events");
+            DropTable("dbo.Connections");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Events");
+            DropTable("dbo.ConnectionNotifications");
         }
     }
 }

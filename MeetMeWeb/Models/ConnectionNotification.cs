@@ -9,14 +9,13 @@ namespace MeetMeWeb.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID { get; set; }
+        public User User1{get;set;}
         [Required]
-        public User User1;
+        public User User2{get;set;}
         [Required]
-        public User User2;
+        public string Content{get;set;}
         [Required]
-        public string Content;
-        [Required]
-        public DateTime Date;
-        public bool Read;
+        public DateTime Date { get; set; }
+        public bool Read { get; set; }
     }
 }

@@ -209,6 +209,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Migrations\201705250030153_Initial.cs" />
+    <Compile Include="Migrations\201705250030153_Initial.Designer.cs">
+      <DependentUpon>201705250030153_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConnectionNotification.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
@@ -218,43 +223,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="MeetMeDbContext.cs" />
-    <Compile Include="Migrations\201704062241217_InitialCreate.cs" />
-    <Compile Include="Migrations\201704062241217_InitialCreate.Designer.cs">
-      <DependentUpon>201704062241217_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704092243232_AddEvent.cs" />
-    <Compile Include="Migrations\201704092243232_AddEvent.Designer.cs">
-      <DependentUpon>201704092243232_AddEvent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704092257167_AddEventModel.cs" />
-    <Compile Include="Migrations\201704092257167_AddEventModel.Designer.cs">
-      <DependentUpon>201704092257167_AddEventModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704131644075_UserRequiredInEvent.cs" />
-    <Compile Include="Migrations\201704131644075_UserRequiredInEvent.Designer.cs">
-      <DependentUpon>201704131644075_UserRequiredInEvent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704272309075_EventChange.cs" />
-    <Compile Include="Migrations\201704272309075_EventChange.Designer.cs">
-      <DependentUpon>201704272309075_EventChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704280147194_Fix.cs" />
-    <Compile Include="Migrations\201704280147194_Fix.Designer.cs">
-      <DependentUpon>201704280147194_Fix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705221848276_Meeting.cs" />
-    <Compile Include="Migrations\201705221848276_Meeting.Designer.cs">
-      <DependentUpon>201705221848276_Meeting.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705241942256_Connection.cs" />
-    <Compile Include="Migrations\201705241942256_Connection.Designer.cs">
-      <DependentUpon>201705241942256_Connection.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\ConnectionNotification.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Meeting.cs" />
     <Compile Include="Models\User.cs" />
@@ -297,29 +269,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704062241217_InitialCreate.resx">
-      <DependentUpon>201704062241217_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704092243232_AddEvent.resx">
-      <DependentUpon>201704092243232_AddEvent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704092257167_AddEventModel.resx">
-      <DependentUpon>201704092257167_AddEventModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704131644075_UserRequiredInEvent.resx">
-      <DependentUpon>201704131644075_UserRequiredInEvent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704272309075_EventChange.resx">
-      <DependentUpon>201704272309075_EventChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704280147194_Fix.resx">
-      <DependentUpon>201704280147194_Fix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705221848276_Meeting.resx">
-      <DependentUpon>201705221848276_Meeting.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705241942256_Connection.resx">
-      <DependentUpon>201705241942256_Connection.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705250030153_Initial.resx">
+      <DependentUpon>201705250030153_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
