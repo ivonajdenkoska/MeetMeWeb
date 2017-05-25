@@ -2,6 +2,7 @@
 using MeetMeWeb.Services.Interfaces;
 using System.Web.Http;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MeetMeWeb.Controllers
 {
@@ -45,6 +46,14 @@ namespace MeetMeWeb.Controllers
         public Connection GetConnection([FromUri]string user1, [FromUri]string user2)
         {
             var connection = _connectionService.GetConnection(user1, user2);
+            return connection;
+        }
+
+        // POST api/User/ConnectUsers
+        [Route("ConnectUsers")]
+        public Task<Connection> ConnectUsers(string user1, string user2)
+        {
+            var connection = _connectionService.CreateConnection(user1, user2);
             return connection;
         }
     }

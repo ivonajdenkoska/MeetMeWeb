@@ -13,10 +13,15 @@
                 <h3 class="label__style">Name: {{vm.user.firstName}} {{vm.user.lastName}}</h3>
                 <h3 class="label__style">Email: {{vm.user.email}}</h3>
             </div>
-            <div class="col-md-2" style="margin-top: 68px;">
-                <button class="btn btn__add-event-pr" onclick="goToEvent()">Add event</button>
-                <button class="btn btn__add-meeting-pr">Add meeting</button>
-            </div>
+        </div>
+
+        <div class="col-md-6" ng-hide="vm.loggedUser.id != vm.user.id">
+            <button class="btn btn__add-event-pr" onclick="goToEvent()">Add event</button>
+            <button class="btn btn__add-meeting-pr">Add meeting</button>
+        </div>
+        <div class="col-md-6" ng-hide="vm.loggedUser.id == vm.user.id">
+            <button class="btn btn__add-event-pr" ng-click="vm.connect()">{{vm.connected}}</button>
+            <button class="btn btn__add-meeting-pr">Add meeting</button>
         </div>
         <div class="col-md-6">
             <h2 class="heading__style">Search Users:</h2>

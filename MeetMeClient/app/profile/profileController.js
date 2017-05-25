@@ -15,10 +15,12 @@
         vm.user = null;
         vm.loggedUser = null;
         vm.selectedUser;
+        vm.connected = "Connect";
         vm.users = UserService.getAllUsers();
         vm.done = false;
         vm.errMsg = "";
-        vm.connected = "";
+        vm.connection = null;
+        vm.connect = connect;
 
         getUser();
 
@@ -38,14 +40,33 @@
         };
 
         function getConnection() {
-            UserService.getConnection(vm.loggedUser.id, vm.user.id).then(function (data) {
-                if (data == null)
-                    vm.connected = "not";
-                else
-                    vm.connected = data.status;
-            }, function (response) {
-                vm.errMsg = "Error occurred: " + response.data;
-            });
+            if (vm.loggedUser.id != vm.user.id) {
+                UserService.getConnection(vm.loggedUser.id, vm.user.id).then(function (data) {
+                    var response = data.toJSON();
+                    console.log(response);
+                    if (response.id != undefined) {
+                        vm.connection = response;
+                        if (vm.connection.status == "Waiting")
+                            vm.connected = "Waiting";
+                        else if(vm.connection.status == "Accepted")
+                            vm.connected = "Connected";
+                    }
+                }, function (response) {
+                    vm.errMsg = "Error occurred: " + response.data;
+                });
+            }
+        }
+
+        function connect() {
+            console.log("Connect clicked");
+            console.log(vm.connection);
+            if (vm.connection == null) {
+                UserService.connectUsers(vm.loggedUser.id, vm.user.id).then(function (data) {
+                        vm.connected = "Waiting";
+                }, function (response) {
+                    vm.errMsg = "Error occurred: " + response.data;
+                });
+            }
         }
 
         $timeout(function () {

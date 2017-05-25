@@ -24,10 +24,7 @@ namespace MeetMeWeb.Services
 
         public async Task<Connection> CreateConnection(string user1, string user2)
         {
-            var User1 = _userRepo.getUserById(user1);
-            var User2 = _userRepo.getUserById(user2);
-            Connection connection = new Connection { User1 = User1, User2 = User2, StartDate = DateTime.Now, Status = Status.Waiting };
-            return await _repo.CreateConnection(connection);
+            return await _repo.CreateConnection(new Connection { User1 = _userRepo.getUserById(user1), User2 = _userRepo.getUserById(user2), StartDate = DateTime.Now, Status = Status.Waiting });
         }
 
         public void DeleteConnection(string user1, string user2)

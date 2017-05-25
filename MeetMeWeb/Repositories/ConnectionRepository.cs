@@ -28,6 +28,7 @@ namespace MeetMeWeb.Repositories
 
         public async Task<Connection> CreateConnection(Connection connection)
         {
+           // _context.Set<Connection>().Attach(connection);
             _context.Entry(connection.User1).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(connection.User2).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(connection).State = System.Data.Entity.EntityState.Added;
