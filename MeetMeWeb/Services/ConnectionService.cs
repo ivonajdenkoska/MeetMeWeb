@@ -37,9 +37,9 @@ namespace MeetMeWeb.Services
             _repo.DeleteConnection(connection);
         }
 
-        public Task<Connection> AcceptConnection(Connection connection)
+        public async Task<Connection> AcceptConnection(Connection connection)
         {
-            var result = _repo.AcceptConnection(connection);
+            var result = await _repo.AcceptConnection(connection);
             var notification = new ConnectionNotification { User1 = connection.User2, User2 = connection.User1, Date = DateTime.Now, Read = false, Content = "accepted your request for connection" };
             _notificationRepo.createNotification(notification);
             return result;

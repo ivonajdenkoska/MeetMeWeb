@@ -18,20 +18,19 @@
 
         function getLoggedUser() {
             vm.loggedUser = AccountService.authentication.user;
-            getNotifications();
         };
 
         function getNotifications() {
             UserService.getConnectionNotifications(vm.loggedUser.id).then(function (data) {
-                console.log(data);
-                // vm.notifications = data;
+                vm.notifications = data;
             }, function (response) {
                 vm.errMsg = "Error occurred: " + response.data;
             });
+            vm.done = true;
         };
 
         $timeout(function () {
-            vm.done = true;
+            getNotifications();
         }, 5000);
 
     }

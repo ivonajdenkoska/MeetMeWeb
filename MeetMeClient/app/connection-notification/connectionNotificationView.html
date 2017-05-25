@@ -9,10 +9,12 @@
     <div class="row" ng-hide="!vm.done">
         <div class="col-md-12">
             <h2 class="heading__style">Notifications</h2>
-            <div ng-repeat="n in vm.notifications" class="card">
-                <div class="card-block">
-                    <a ui-sref="profile({ id: n.user1.id })">{{n.user1.name}}</a> 
-                    <span>&nbsp; {{n.content}} &nbsp;</span>
+            <div ng-repeat="n in vm.notifications">
+                <div class="card">
+                    <div class="card-block">
+                        <a ui-sref="profile({ id: n.user1.id })" class="card-link">{{n.user1.firstName}}&nbsp;{{n.user1.lastName}}</a>
+                        <span class="card-text">&nbsp;{{n.content}}.</span>
+                    </div>
                 </div>
             </div>
         </div>
