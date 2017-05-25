@@ -27,8 +27,8 @@ namespace MeetMeWeb
             container.RegisterType<IAuthRepository, AuthRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IEventRepository, EventRepository>(new HierarchicalLifetimeManager());
             container.RegisterType<IUserRepository, UserRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<IConnectionRepository, ConnectionRepository>(new HierarchicalLifetimeManager());
-            container.RegisterType<IMeetingRepository, MeetingRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<IConnectionRepository, ConnectionRepository>(new HierarchicalLifetimeManager()); 
+            container.RegisterType<IConnectionNotificationRepository, ConnectionNotificationRepository>(new HierarchicalLifetimeManager());
             config.DependencyResolver = new UnityResolver(container);
 
             // Web API configuration and services

@@ -1,8 +1,8 @@
 ﻿using MeetMeWeb.Repositories.Interfaces;
 using MeetMeWeb.Services.Interfaces;
-using System;
 using MeetMeWeb.Models;
 using System.Threading.Tasks;
+using System;
 
 namespace MeetMeWeb.Services
 {
@@ -10,11 +10,13 @@ namespace MeetMeWeb.Services
 	{
         private IConnectionRepository _repo;
         private IUserRepository _userRepo;
+        private IConnectionNotificationRepository _notificationRepo;
 
-        public ConnectionService(IConnectionRepository repo, IUserRepository userRepo)
+        public ConnectionService(IConnectionRepository repo, IUserRepository userRepo, IConnectionNotificationRepository notificationRepo)
         {
             _repo = repo;
             _userRepo = userRepo;
+            _notificationRepo = notificationRepo;
         }
 
         public Connection GetConnection(string user1, string user2)
@@ -24,7 +26,10 @@ namespace MeetMeWeb.Services
 
         public async Task<Connection> CreateConnection(Connection connection)
         {
-            return await _repo.CreateConnection(connection);
+            var result = await _repo.CreateConnection(connection);
+            var notification = new ConnectionNotification { User1 = connection.User1, User2 = connection.User2, Date = DateTime.Now, Read = false, Content = "send you request for connection"};
+            _notificationRepo.createNotification(notification);
+            return result;
         }
 
         public void DeleteConnection(Connection connection)
@@ -34,7 +39,10 @@ namespace MeetMeWeb.Services
 
         public Task<Connection> AcceptConnection(Connection connection)
         {
-            return _repo.AcceptConnection(connection);
+            var result = _repo.AcceptConnection(connection);
+            var notification = new ConnectionNotification { User1 = connection.User2, User2 = connection.User1, Date = DateTime.Now, Read = false, Content = "accepted your request for connection" };
+            _notificationRepo.createNotification(notification);
+            return result;
         }
     }
 }
