@@ -51,8 +51,10 @@
                     if (response.id != undefined) {
                         vm.connection = response;
                         vm.connect = false;
-                        if (vm.connection.status == 0)
-                            vm.waiting = true;
+                        if (vm.connection.status == 0) {
+                            if(response.user1.id == vm.loggedUser.id)
+                                vm.waiting = true;
+                        }
                         else if (vm.connection.status == 1)
                             vm.connected = true;
                     }
