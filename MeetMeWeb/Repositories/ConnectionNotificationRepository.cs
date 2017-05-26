@@ -13,6 +13,15 @@ namespace MeetMeWeb.Repositories
         {
             _context = new MeetMeDbContext();
         }
+
+        public void readConnestionNotification(ConnectionNotification notification)
+        {
+            _context.Entry(notification.User1).State = System.Data.Entity.EntityState.Unchanged;
+            _context.Entry(notification.User2).State = System.Data.Entity.EntityState.Unchanged;
+            _context.Entry(notification).State = System.Data.Entity.EntityState.Modified;
+            var result = _context.SaveChanges();
+        }
+
         public void createNotification(ConnectionNotification notification)
         {
             _context.Entry(notification.User1).State = System.Data.Entity.EntityState.Unchanged;

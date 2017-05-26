@@ -34,7 +34,12 @@ namespace MeetMeWeb.Services
         
         public List<ConnectionNotification> getConnectionNotifications(string userId, int startPostion, int size)
         {
-            return _repoNotif.getConnectionNotifications(userId, startPostion, size);
+            var list =  _repoNotif.getConnectionNotifications(userId, startPostion, size);
+            foreach(ConnectionNotification n in list)
+            {
+                _repoNotif.readConnestionNotification(n);
+            }
+            return list;
         }
 
         public void Dispose()

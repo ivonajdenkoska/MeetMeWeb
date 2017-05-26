@@ -7,7 +7,7 @@
 
     function IndexController($scope, $location, AccountService){
         var vm = this;
-        $scope.count = 8;
+        $scope.count = '0';
 
         $scope.logOut = function () {
             AccountService.logOut();
