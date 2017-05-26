@@ -9,6 +9,6 @@ namespace MeetMeWeb.Services.Interfaces
 {
     public interface IMeetingRequestService:IDisposable
     {
-        Task<MeetingRequest> createMeetingRequest(MeetingRequest meetingRequest);
+        void createMeetingRequest(MeetingRequest meetingRequest);
     }
 }

@@ -15,13 +15,12 @@ namespace MeetMeWeb.Repositories
         {
             _context = new MeetMeDbContext();
         }
-        public async Task<Meeting> CreateMeeting(Meeting meetingModel)
+        public Meeting CreateMeeting(Meeting meetingModel)
         {
             _context.Entry(meetingModel.creator).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(meetingModel).State = System.Data.Entity.EntityState.Added;
-            var result = await _context.SaveChangesAsync();
-
-            return meetingModel;
+            _context.SaveChanges();
+            return _context.Meetings.SingleOrDefault(x => x.Title == meetingModel.Title);
         }
 
         public Meeting getByTitle(string title)

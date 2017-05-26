@@ -21,18 +21,18 @@ namespace MeetMeWeb.Controllers
 
         // POST api/Meeting/Create
         [Route("Create")]
-        public async Task<Meeting> CreateMeeting(Meeting meetingModel)
+        public MeetingModel CreateMeeting(MeetingModel meetingModel)
         {
-            Meeting m = await _meetingService.createMeeting(meetingModel);
-            return m;
+            _meetingService.createMeeting(meetingModel);
+            return meetingModel;
         }
-        //POST api/Meeting/SendRequest
+        /*//POST api/Meeting/SendRequest
         [Route("Send")]
         public async Task<MeetingRequest> SendRequest(MeetingRequest meetingRequest)
         {
-            MeetingRequest mr = await _meetingRequestService.createMeetingRequest(meetingRequest);
+            MeetingRequest mr = _meetingRequestService.createMeetingRequest(meetingRequest);
             return mr;
-        }
+        }*/
 
         [Route("Get")]
         public Meeting GetByTitle([FromUri]string title)

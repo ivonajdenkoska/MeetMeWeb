@@ -19,15 +19,14 @@ namespace MeetMeWeb.Repositories
         {
             _context = new MeetMeDbContext();
         }
-        public async Task<MeetingRequest> createMeetingRequest(MeetingRequest meetingRequest)
+        public void createMeetingRequest(MeetingRequest meetingRequest)
         {
             
             _context.Entry(meetingRequest.User).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(meetingRequest.Meeting).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(meetingRequest).State = System.Data.Entity.EntityState.Added;
-          
-                var result = await _context.SaveChangesAsync();
-            return meetingRequest;
+
+            var result = _context.SaveChanges();
         }
 
         public void Dispose()

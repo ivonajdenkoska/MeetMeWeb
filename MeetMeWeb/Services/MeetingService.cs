@@ -9,13 +9,21 @@ namespace MeetMeWeb.Services
     public class MeetingService : IMeetingService
     {
         private IMeetingRepository _repository;
-        public MeetingService(IMeetingRepository repository)
+        private IMeetingRequestRepository _repositoryMR;
+        public MeetingService(IMeetingRepository repository, IMeetingRequestRepository repositoryMR)
         {
             _repository = repository;
+            _repositoryMR = repositoryMR;
         }
-        public async Task<Meeting> createMeeting(Meeting meetingModel)
+        public void createMeeting(MeetingModel meetingModel)
         {
-            return await _repository.CreateMeeting(meetingModel);
+            var meeting = new Meeting { Title = meetingModel.Title, Start = meetingModel.Start, End = meetingModel.End, Location = meetingModel.Location, Priority = meetingModel.Priority, creator = meetingModel.creator };
+            var result= _repository.CreateMeeting(meeting);
+            foreach(var participant in meetingModel.participants)
+            {
+                var notification = new MeetingRequest { Meeting = result, Content = "Do you want to accept request for " + meetingModel.Title, Status = false, User=participant };
+                _repositoryMR.createMeetingRequest(notification);
+            }
         }
 
         public Meeting getByTitle(string title)

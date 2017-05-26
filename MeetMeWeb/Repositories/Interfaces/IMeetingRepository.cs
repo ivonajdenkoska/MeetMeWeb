@@ -9,7 +9,7 @@ namespace MeetMeWeb.Repositories.Interfaces
 {
     public interface IMeetingRepository: IDisposable
     {
-        Task<Meeting> CreateMeeting(Meeting meetingModel);
+        Meeting CreateMeeting(Meeting meetingModel);
         Meeting getByTitle(string title);
     }
 }

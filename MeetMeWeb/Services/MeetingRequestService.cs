@@ -18,9 +18,9 @@ namespace MeetMeWeb.Services
             _repository = repository;
         }
 
-        public Task<MeetingRequest> createMeetingRequest(MeetingRequest meetingRequest)
+        public void createMeetingRequest(MeetingRequest meetingRequest)
         {
-            return _repository.createMeetingRequest(meetingRequest);
+            _repository.createMeetingRequest(meetingRequest);
         }
 
         public void Dispose()

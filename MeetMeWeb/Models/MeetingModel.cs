@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace MeetMeWeb.Models
 {
-    public class Meeting
+    public class MeetingModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ID { get; set; }
         [Required]
         public string Title { get; set; }
         public string Location { get; set; }
@@ -22,7 +18,7 @@ namespace MeetMeWeb.Models
         [Required]
         public PrioritiesY Priority { get; set; }
         public User creator { get; set; }
-        public virtual IList<MeetingRequest> requests { get; set; }
+        public List<User> participants { get; set; }
 
     }
 }
