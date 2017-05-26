@@ -12,6 +12,9 @@
         vm.loggedUser = null;
         vm.notifications = [];
         vm.done = false;
+        vm.size = 10;
+        vm.startPosition = 0;
+        vm.loadMore = loadMore;
         vm.errMsg = "";
 
         function getLoggedUser() {
@@ -21,7 +24,7 @@
 
         function getNotifications() {
             vm.loggedUser = AccountService.authentication.user;
-            UserService.getConnectionNotifications(vm.loggedUser.id).then(function (data) {
+            UserService.getConnectionNotifications(vm.loggedUser.id, vm.startPosition, vm.size).then(function (data) {
                 vm.notifications = data;
             }, function (response) {
                 vm.errMsg = "Error occurred: " + response.data;
@@ -32,6 +35,19 @@
             });
             vm.done = true;
         };
+
+        function loadMore() {
+            vm.startPosition = vm.startPosition + vm.size;
+            UserService.getConnectionNotifications(vm.loggedUser.id, vm.startPosition, vm.size).then(function (data) {
+                vm.notifications = vm.notifications.concat(data);
+            }, function (response) {
+                vm.errMsg = "Error occurred: " + response.data;
+                ngNotify.set(vm.errMsg, {
+                    sticky: true,
+                    type: 'error'
+                });
+            });
+        }
 
         $timeout(function () {
             getLoggedUser();

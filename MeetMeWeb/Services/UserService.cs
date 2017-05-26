@@ -8,11 +8,13 @@ namespace MeetMeWeb.Services
 {
     public class UserService : IUserService
     {
-        private IUserRepository _repo; 
+        private IUserRepository _repo;
+        private IConnectionNotificationRepository _repoNotif;
 
-        public UserService(IUserRepository repo)
+        public UserService(IUserRepository repo, IConnectionNotificationRepository repoNotif)
         {
             _repo = repo;
+            _repoNotif = repoNotif;
         }
 
         public User getUserById(string id)
@@ -30,9 +32,9 @@ namespace MeetMeWeb.Services
             return _repo.getAll();
         }
         
-        public List<ConnectionNotification> getConnectionNotifications(string userId)
+        public List<ConnectionNotification> getConnectionNotifications(string userId, int startPostion, int size)
         {
-            return _repo.getConnectionNotifications(userId);
+            return _repoNotif.getConnectionNotifications(userId, startPostion, size);
         }
 
         public void Dispose()

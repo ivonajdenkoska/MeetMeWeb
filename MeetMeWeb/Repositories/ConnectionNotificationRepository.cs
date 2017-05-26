@@ -1,9 +1,7 @@
 ﻿using MeetMeWeb.Repositories.Interfaces;
-using System;
+using MeetMeWeb.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using MeetMeWeb.Models;
 
 namespace MeetMeWeb.Repositories
 {
@@ -21,6 +19,11 @@ namespace MeetMeWeb.Repositories
             _context.Entry(notification.User2).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(notification).State = System.Data.Entity.EntityState.Added;
             var result = _context.SaveChanges();
+        }
+
+        public List<ConnectionNotification> getConnectionNotifications(string userId, int startPostion, int size)
+        {
+            return _context.ConnectionNotifications.Include("User1").Where(x => x.User2.Id == userId).OrderByDescending(x => x.Date).Skip(startPostion).Take(size).ToList();
         }
     }
 }
