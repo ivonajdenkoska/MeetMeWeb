@@ -1,7 +1,4 @@
-﻿/**
- * Created by Nacev on 24.04.2017.
- */
-(function (angular) {
+﻿(function (angular) {
     'use strict';
 
     angular
@@ -20,7 +17,7 @@
         vm.connect = true;
         vm.users = UserService.getAllUsers();
         vm.done = false;
-        vm.errMsg = "";
+        vm.message = "";
         vm.connection = null;
         vm.connectUsers = connectUsers;
         vm.acceptConnection = acceptConnection;
@@ -34,7 +31,11 @@
                 vm.user = data;
                 getLoggedUser();
             }, function (response) {
-                vm.errMsg = "Error occurred: " + response.data;
+                vm.message = "Error occurred: " + response.data;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
         };
 
@@ -59,7 +60,11 @@
                             vm.connected = true;
                     }
                 }, function (response) {
-                    vm.errMsg = "Error occurred: " + response.data;
+                    vm.message = "Error occurred: " + response.data;
+                    ngNotify.set(vm.message, {
+                        sticky: true,
+                        type: 'success'
+                    });
                 });
             }
         }
@@ -70,8 +75,17 @@
                 UserService.connectUsers(vm.connection).then(function (data) {
                     vm.connect = false;
                     vm.waiting = true;
+                    vm.message = "Connection request was sent.";
+                    ngNotify.set(vm.message, {
+                        sticky: true,
+                        type: 'success'
+                    });
                 }, function (response) {
                     vm.errMsg = "Error occurred: " + response.data;
+                    ngNotify.set(vm.message, {
+                        sticky: true,
+                        type: 'error'
+                    });
                 });
             }
         }
@@ -80,8 +94,17 @@
             if (vm.connection != null && !vm.waiting) {
                 UserService.acceptConnection(vm.connection).then(function (data) {
                     vm.connected = true;
+                    vm.message = "Accepted connection request. You are now connected.";
+                    ngNotify.set(vm.message, {
+                        sticky: true,
+                        type: 'success'
+                    });
                 }, function (response) {
-                    vm.errMsg = "Error occurred: " + response.data;
+                    vm.message = "Error occurred: " + response.data; 
+                    ngNotify.set(vm.message, {
+                        sticky: true,
+                        type: 'error'
+                    });
                 });
             }
         }
@@ -93,8 +116,17 @@
                     vm.connected = false;
                     vm.waiting = false;
                     vm.connection = null;
+                    vm.message = "Connection deleted successfully.";
+                    ngNotify.set(vm.message, {
+                        sticky: true,
+                        type: 'success'
+                    });
                 }, function (response) {
-                    vm.errMsg = "Error occurred: " + response.data;
+                    vm.message = "Error occurred: " + response.data;
+                    ngNotify.set(vm.message, {
+                        sticky: true,
+                        type: 'error'
+                    });
                 });
             }
         }

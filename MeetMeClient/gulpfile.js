@@ -66,7 +66,8 @@ var CSS_LIB = [
     'bower_components/angucomplete-alt/angucomplete-alt.css',
     'bower_components/bootstrap-select/dist/css/bootstrap-select.css',
     'bower_components/angular-ui-select/dist/select.css',
-    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.css'
+    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.css',
+    'bower_components/ng-notify/dist/ng-notify.min.css'
 ];
 
 var CSS_APP = [
@@ -93,7 +94,8 @@ var JS_LIB = [
     'bower_components/bootstrap-select/js/bootstrap-select.js',
     'bower_components/circular-json/build/circular-json.js',
     'bower_components/angular-ui-select/dist/select.js',
-    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.js'
+    'bower_components/angular-notification-icons/dist/angular-notification-icons.min.js',
+    'bower_components/ng-notify/dist/ng-notify.min.js'
 ];
 
 

@@ -5,9 +5,9 @@
       .module('meet-me')
       .controller('CalendarController', CalendarController);
 
-    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService', 'EventService','$state'];
+    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService', 'EventService', '$state', 'ngNotify'];
 
-    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService, $interval, AccountService, EventService,$state) {
+    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService, $interval, AccountService, EventService, $state, ngNotify) {
         var vm = this;
         var date = new Date();
         var d = date.getDate();
@@ -37,6 +37,10 @@
                 $state.reload();
             }, function (err) {
                 vm.message = err;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
 
             $scope.username = AccountService.authentication.userName;
@@ -57,6 +61,10 @@
                 $state.reload();
             }, function (err) {
                 vm.message = err;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
         };
 
