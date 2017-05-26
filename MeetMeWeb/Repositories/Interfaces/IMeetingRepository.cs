@@ -11,5 +11,6 @@ namespace MeetMeWeb.Repositories.Interfaces
     {
         Meeting CreateMeeting(Meeting meetingModel);
         Meeting getByTitle(string title);
+        List<MeetingRequest> getById(string guid);
     }
 }

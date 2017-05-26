@@ -40,7 +40,9 @@ var JS_APP = [
   'app/meeting/meetingState.js',
   'app/meeting/meetingService.js',
   'app/connection-notification/connectionNotificationController.js',
-  'app/connection-notification/connectionNotificationState.js'
+  'app/connection-notification/connectionNotificationState.js',
+  'app/meeting-request/meetingRequestController.js',
+  'app/meeting-request/meetingRequestState.js'
 ];
 
 var TEMPLATES_SRC = [

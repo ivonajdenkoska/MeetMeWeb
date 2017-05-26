@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MeetMe</title>
     <!-- Concatenated CSS -->
-    <link href="/dest/lib.css?rev=7e208e34097826c4926116d60ef981b6" rel="stylesheet">
+    <link href="/dest/lib.css?rev=793777265526fa7e11fdb9030913296d" rel="stylesheet">
     <link href="/dest/app.css?rev=ae6da3c8ed1f5cfdeaea714fef1fbfdf" rel="stylesheet">
 </head>
 <body ng-app="meet-me">
@@ -26,7 +26,7 @@
             </div>
             <div class="collapse navbar-collapse" collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-hide="!authentication.isAuth"><a class="text-style"><i class="fa fa-bell fa-2x"></i></a></li>
+                    <li ng-hide="!authentication.isAuth"><a ui-sref="meetingRequests" class="text-style"><i class="fa fa-bell fa-2x"></i></a></li>
                     <li ng-hide="!authentication.isAuth"><a ui-sref="connectionNotifications" class="text-style"><notification-icon animation="shake" count="count"> <i class="fa fa-envelope-o fa-2x"></i></notification-icon></a></li>
                     <li ng-hide="!authentication.isAuth"><a ui-sref="profile({ id: authentication.user.id })" class="text-style"><i class="fa fa-user fa-2x"></i></a></li>
                     <li ng-hide="!authentication.isAuth"><a href="" class="text-style" ng-click="logOut()">Logout</a></li>
@@ -61,10 +61,10 @@
     </footer>
 
     <!-- Concatenated libraries -->
-    <script src="/dest/lib.js?rev=a1bdd967658da6892b3b5fe3feb84a50"></script>
+    <script src="/dest/lib.js?rev=2bb679d712a50646635eb1f13d0b21b7"></script>
     <!-- Concatenated application -->
 
-    <script src="/dest/src.js?rev=40501eb262ff82dab15ce38b42d15263"></script>
+    <script src="/dest/src.js?rev=bd5f8f915ec6b191d25083987ee6dbf5"></script>
 
     <!-- All html templates -->
     <!--<script src="/dest/templates.js?rev=e10e812c1c54be38f6015cb3ec83fcd6"></script>-->

@@ -3,6 +3,7 @@ using System;
 using MeetMeWeb.Models;
 using System.Threading.Tasks;
 using MeetMeWeb.Repositories.Interfaces;
+using System.Collections.Generic;
 
 namespace MeetMeWeb.Services
 {
@@ -29,6 +30,11 @@ namespace MeetMeWeb.Services
         public Meeting getByTitle(string title)
         {
             return _repository.getByTitle(title);
+        }
+
+        public List<MeetingRequest> getById(string id)
+        {
+            return _repository.getById(id);
         }
 
         public void Dispose()
