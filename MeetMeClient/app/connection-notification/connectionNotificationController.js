@@ -14,13 +14,13 @@
         vm.done = false;
         vm.errMsg = "";
 
-        getLoggedUser();
-
         function getLoggedUser() {
             vm.loggedUser = AccountService.authentication.user;
+            getNotifications();
         };
 
         function getNotifications() {
+            vm.loggedUser = AccountService.authentication.user;
             UserService.getConnectionNotifications(vm.loggedUser.id).then(function (data) {
                 vm.notifications = data;
             }, function (response) {
@@ -34,7 +34,7 @@
         };
 
         $timeout(function () {
-            getNotifications();
+            getLoggedUser();
         }, 5000);
 
     }
