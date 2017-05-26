@@ -22,6 +22,7 @@ namespace MeetMeWeb.Models
         [Required]
         public PrioritiesY Priority { get; set; }
         public User creator { get; set; }
+        public virtual IList<MeetingRequest> requests { get; set; }
 
         public enum PrioritiesY { Low, Medium, High }
     }

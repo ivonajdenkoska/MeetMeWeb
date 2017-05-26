@@ -10,11 +10,13 @@ namespace MeetMeWeb.Controllers
     public class MeetingController : ApiController
     {
         private IMeetingService _meetingService;
+        private IMeetingRequestService _meetingRequestService;
 
         public MeetingController() { }
-        public MeetingController(IMeetingService service)
+        public MeetingController(IMeetingService service,IMeetingRequestService meetingRequestService)
         {
             _meetingService = service;
+            _meetingRequestService = meetingRequestService;
         }
 
         // POST api/Meeting/Create
@@ -23,6 +25,20 @@ namespace MeetMeWeb.Controllers
         {
             Meeting m = await _meetingService.createMeeting(meetingModel);
             return m;
+        }
+        //POST api/Meeting/SendRequest
+        [Route("Send")]
+        public async Task<MeetingRequest> SendRequest(MeetingRequest meetingRequest)
+        {
+            MeetingRequest mr = await _meetingRequestService.createMeetingRequest(meetingRequest);
+            return mr;
+        }
+
+        [Route("Get")]
+        public Meeting GetByTitle([FromUri]string title)
+        {
+            Meeting meeting = _meetingService.getByTitle(title);
+            return meeting;
         }
     }
 }

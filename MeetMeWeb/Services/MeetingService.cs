@@ -18,9 +18,15 @@ namespace MeetMeWeb.Services
             return await _repository.CreateMeeting(meetingModel);
         }
 
+        public Meeting getByTitle(string title)
+        {
+            return _repository.getByTitle(title);
+        }
+
         public void Dispose()
         {
             _repository.Dispose();
         }
+
     }
 }

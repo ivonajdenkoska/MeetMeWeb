@@ -24,9 +24,15 @@ namespace MeetMeWeb.Repositories
             return meetingModel;
         }
 
+        public Meeting getByTitle(string title)
+        {
+            return _context.Meetings.Single(x => x.Title == title);
+        }
+
         public void Dispose()
         {
             _context.Dispose();
         }
+
     }
 }

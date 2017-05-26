@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Newtonsoft.Json;
 using Owin;
 using System.Web.Http;
 
@@ -15,6 +16,7 @@ namespace MeetMeWeb
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Re‌​ferenceLoopHandling = ReferenceLoopHandling.Ignore;
         }
     }
 }

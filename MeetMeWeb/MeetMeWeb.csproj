@@ -213,6 +213,14 @@
     <Compile Include="Migrations\201705250030153_Initial.Designer.cs">
       <DependentUpon>201705250030153_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705261441451_MeetingRequests.cs" />
+    <Compile Include="Migrations\201705261441451_MeetingRequests.Designer.cs">
+      <DependentUpon>201705261441451_MeetingRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705261648526_Fix_meetingR.cs" />
+    <Compile Include="Migrations\201705261648526_Fix_meetingR.Designer.cs">
+      <DependentUpon>201705261648526_Fix_meetingR.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ConnectionNotification.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -229,6 +237,7 @@
     <Compile Include="Models\Connection.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Meeting.cs" />
+    <Compile Include="Models\MeetingRequest.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -243,8 +252,10 @@
     <Compile Include="Repositories\Interfaces\IEventRepository.cs" />
     <Compile Include="Repositories\Interfaces\IMeetingRepository.cs" />
     <Compile Include="Repositories\Interfaces\IConnectionNotificationRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IMeetingRequestRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Repositories\MeetingRepository.cs" />
+    <Compile Include="Repositories\MeetingRequestRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
     <Compile Include="Services\AccountService.cs" />
@@ -254,8 +265,10 @@
     <Compile Include="Services\Interfaces\IAccountService.cs" />
     <Compile Include="Services\Interfaces\IConnectionService.cs" />
     <Compile Include="Services\Interfaces\IEventService.cs" />
+    <Compile Include="Services\Interfaces\IMeetingRequestService.cs" />
     <Compile Include="Services\Interfaces\IMeetingService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
+    <Compile Include="Services\MeetingRequestService.cs" />
     <Compile Include="Services\MeetingService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
@@ -275,6 +288,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705250030153_Initial.resx">
       <DependentUpon>201705250030153_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705261441451_MeetingRequests.resx">
+      <DependentUpon>201705261441451_MeetingRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705261648526_Fix_meetingR.resx">
+      <DependentUpon>201705261648526_Fix_meetingR.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

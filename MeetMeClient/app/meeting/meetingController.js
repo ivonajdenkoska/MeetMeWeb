@@ -5,9 +5,9 @@
       .module('meet-me')
       .controller('MeetingController', MeetingController);
 
-    MeetingController.$inject = ['$scope','$state', 'MeetingService', 'AccountService','UserService'];
+    MeetingController.$inject = ['$scope','$state', 'MeetingService', 'AccountService','UserService','EventService','$timeout'];
 
-    function MeetingController($scope, $state, MeetingService, AccountService, UserService) {
+    function MeetingController($scope, $state, MeetingService, AccountService, UserService, EventService,$timeout) {
         var vm = this;
         vm.message = null;
 
@@ -29,7 +29,6 @@
 
         function createMeeting() {
             vm.meetingData.creator = AccountService.authentication.user;
-            console.log()
             console.log(vm.meetingData);
             console.log(vm.participants);
             MeetingService.createMeeting(vm.meetingData).then(function (data) {
@@ -38,6 +37,24 @@
             }, function (err) {
                 vm.message = err;
             });
+
+
+            EventService.createEvent({title: vm.meetingData.title, location: vm.meetingData.location, start: vm.meetingData.start, end: vm.meetingData.end, priority:vm.meetingData.priority, user: vm.meetingData.creator}).then(function (data) {
+                // redirect to calendar
+               // $state.go("calendar");
+            }, function (err) {
+                vm.message = err;
+            });
+
+            for (let index = 0, len = vm.participants.length; index < len; ++index) {
+                console.log(vm.participants[index]);
+                MeetingService.createMeetingRequest({ User: vm.participants[index], Meeting: vm.meetingData, Content: "Do you want to accept the request for " + vm.meetingData.title + "?", Status: false }).then(function (data) {
+                    // redirect to calendar
+                    //$state.go("calendar");
+                }, function (err) {
+                    vm.message = err;
+                });
+            }
         };
     }
 })(angular);

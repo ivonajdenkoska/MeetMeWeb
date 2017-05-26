@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace MeetMeWeb.Repositories.Interfaces
 {
-    public interface IMeetingRepository: IDisposable
+    public interface IMeetingRequestRepository:IDisposable
     {
-        Task<Meeting> CreateMeeting(Meeting meetingModel);
-        Meeting getByTitle(string title);
+        Task<MeetingRequest> createMeetingRequest(MeetingRequest meetingRequest);
     }
 }

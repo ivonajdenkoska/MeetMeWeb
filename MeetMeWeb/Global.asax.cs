@@ -21,6 +21,9 @@ namespace MeetMeWeb
             //GlobalFilters.Filters.Add(new RequireHttpsAttribute());
             // Database 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<MeetMeDbContext, Configuration>());
+            HttpConfiguration config = GlobalConfiguration.Configuration;
+
+            config.Formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling= Newtonsoft.Json.PreserveReferencesHandling.Objects;
         }
     }
 }

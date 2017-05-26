@@ -10,14 +10,20 @@
     function MeetingServiceFn($resource, localStorageService, ngAuthSettings) {
         var resource = $resource('https://localhost:44362/api/event', {},
         {
-            createMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/create' }
+            createMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/create', },
+            sendMeetingRequest: { method: "POST", url: 'https://localhost:44362/api/meeting/send' },
+            getByTitle: { method: "GET", url: 'https://localhost:44362/api/meeting/get', params: { meeting: '@meeting' } },
             /*deleteMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/delete', params: { title: '@title', id: '@id' }, headers: { 'Content-Type': 'application/json; charset=utf8' } },
             editMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/edit', params: { title: '@title', id: '@id', start: '@start', end: '@end' }, headers: { 'Content-Type': 'application/json; charset=utf8' } }
             */
         });
 
+        var _meeting = null;
         var service = {
             createMeeting: createMeeting,
+            createMeetingRequest: createMeetingRequest,
+            getByTitle: getByTitle,
+            meeting: _meeting
            // deleteMeeting: deleteMeeting,
            // editMeeting: editMeeting
         };
@@ -25,6 +31,18 @@
         function createMeeting(meeting) {
             return resource.createMeeting(meeting, function (response) {
                 return response;
+            }).$promise;
+        };
+
+        function createMeetingRequest(meetingRequest) {
+            return resource.sendMeetingRequest(meetingRequest, function (response) {
+                return response;
+            }).$promise;
+        };
+
+        function getByTitle(title) {
+            return resource.getByTitle({ title: title }, function (response) {
+                _meeting = response;
             }).$promise;
         };
 
