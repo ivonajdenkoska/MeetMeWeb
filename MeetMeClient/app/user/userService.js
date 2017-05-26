@@ -16,6 +16,7 @@
             acceptConnection: { method: "POST", url: 'https://localhost:44362/api/user/acceptConnection' },
             deleteConnection: { method: "POST", url: 'https://localhost:44362/api/user/deleteConnection', headers: { 'Content-Type': 'application/json; charset=utf8' } },
             getConnectionNotifications: { method: "GET", url: 'https://localhost:44362/api/user/getConnestionNotifications', params: { userId: '@userId', startPosition: '@startPosition', size: '@size' }, isArray: true },
+            countUnreadConenctionNotifications: { method: "GET", url: 'https://localhost:44362/api/user/countUnreadConnestionNotifications', params: { userId: '@userId'} },
             getAll: { method: "GET", url: 'https://localhost:44362/api/user/getAll', isArray: true}
         });
 
@@ -30,6 +31,7 @@
             acceptConnection: acceptConnectionFn,
             deleteConnection: deleteConnectionFn,
             getConnectionNotifications: getConnectionNotificationsFn,
+            countUnreadConenctionNotifications: countUnreadConenctionNotificationsFn,
             getAllUsers: getAllUsers,
             user: _user,
             users: _users
@@ -63,6 +65,10 @@
 
         function getConnectionNotificationsFn(userId, startPosition, size) {
             return resource.getConnectionNotifications({ userId: userId, startPosition: startPosition, size: size}).$promise;
+        }
+
+        function countUnreadConenctionNotificationsFn(userId) {
+            return resource.countUnreadConenctionNotifications({ userId: userId }).$promise;
         }
 
         function getAllUsers() {

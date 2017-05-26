@@ -1,9 +1,5 @@
 ﻿using MeetMeWeb.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MeetMeWeb.Repositories.Interfaces
 {
@@ -11,5 +7,6 @@ namespace MeetMeWeb.Repositories.Interfaces
     {
         void createNotification(ConnectionNotification notification);
         List<ConnectionNotification> getConnectionNotifications(string userId, int startPostion, int size);
+        void readConnestionNotification(ConnectionNotification notification);
     }
 }
