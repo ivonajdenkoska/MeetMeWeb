@@ -41,10 +41,5 @@ namespace MeetMeWeb.Repositories
         {
             _context.Dispose();
         }
-
-        public List<ConnectionNotification> getConnectionNotifications(string userId)
-        {
-            return _context.ConnectionNotifications.Include("User1").Where(x => x.User2.Id == userId).ToList();
-        }
     }
 }

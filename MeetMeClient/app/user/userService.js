@@ -15,7 +15,7 @@
             setConnection: { method: "POST", url: 'https://localhost:44362/api/user/connectUsers' },
             acceptConnection: { method: "POST", url: 'https://localhost:44362/api/user/acceptConnection' },
             deleteConnection: { method: "POST", url: 'https://localhost:44362/api/user/deleteConnection', headers: { 'Content-Type': 'application/json; charset=utf8' } },
-            getConnectionNotifications: { method: "GET", url: 'https://localhost:44362/api/user/getConnestionNotifications', params: { userId: '@userId' }, isArray: true },
+            getConnectionNotifications: { method: "GET", url: 'https://localhost:44362/api/user/getConnestionNotifications', params: { userId: '@userId', startPosition: '@startPosition', size: '@size' }, isArray: true },
             getAll: { method: "GET", url: 'https://localhost:44362/api/user/getAll', isArray: true}
         });
 
@@ -61,8 +61,8 @@
             return resource.deleteConnection(connection).$promise;
         }
 
-        function getConnectionNotificationsFn(userId) {
-            return resource.getConnectionNotifications({ userId: userId }).$promise;
+        function getConnectionNotificationsFn(userId, startPosition, size) {
+            return resource.getConnectionNotifications({ userId: userId, startPosition: startPosition, size: size}).$promise;
         }
 
         function getAllUsers() {

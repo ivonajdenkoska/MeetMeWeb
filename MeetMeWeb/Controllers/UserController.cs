@@ -77,9 +77,9 @@ namespace MeetMeWeb.Controllers
         // GET api/User/GetConnestionNotifications
         [Route("GetConnestionNotifications")]
         [HttpGet]
-        public List<ConnectionNotification> GetConnestionNotifications(string userId)
+        public List<ConnectionNotification> GetConnestionNotifications(string userId, int startPosition, int size)
         {
-            return _userService.getConnectionNotifications(userId);
+            return _userService.getConnectionNotifications(userId, startPosition, size);
         }
     }
 }
