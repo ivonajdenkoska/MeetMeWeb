@@ -1,5 +1,7 @@
 ﻿using MeetMeWeb.Models;
 using MeetMeWeb.Services.Interfaces;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -39,6 +41,13 @@ namespace MeetMeWeb.Controllers
         {
             Meeting meeting = _meetingService.getByTitle(title);
             return meeting;
+        }
+
+        [Route("GetMeetingReq")]
+        public List<MeetingRequest> GetById([FromUri]string id)
+        {
+            List<MeetingRequest> meetingReq = _meetingService.getById(id);
+            return meetingReq;
         }
     }
 }

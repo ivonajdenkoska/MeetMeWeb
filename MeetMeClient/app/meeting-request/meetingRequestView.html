@@ -1,0 +1,20 @@
+﻿<div class="container">
+    <div class="row" ng-hide="vm.done">
+        <div class="col-md-12">
+            <div class="profile__loader">
+                <img src="../images/ellipsis.gif" />
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-hide="!vm.done">
+        <div class="col-md-8">
+            <h2 class="heading__style">Meeting Requests</h2>
+            <div ng-repeat="n in vm.notifications">
+                <div class="alert alert-info">
+                   <!-- <a ui-sref="profile({ id: n.user1.id })" class="card-link"><strong>{{n.user1.firstName}}&nbsp;{{n.user1.lastName}}</strong></a>-->
+                    <span class="card-text">&nbsp;{{n.content}}.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

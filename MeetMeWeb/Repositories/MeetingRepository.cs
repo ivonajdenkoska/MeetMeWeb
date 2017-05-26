@@ -28,10 +28,14 @@ namespace MeetMeWeb.Repositories
             return _context.Meetings.Single(x => x.Title == title);
         }
 
+        public List<MeetingRequest> getById(string guid)
+        {
+            return _context.MeetingRequests.Where(x => x.User.Id == guid).ToList();
+        }
+
         public void Dispose()
         {
             _context.Dispose();
         }
-
     }
 }

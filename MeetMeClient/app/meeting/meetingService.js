@@ -12,18 +12,22 @@
         {
             createMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/create', },
             sendMeetingRequest: { method: "POST", url: 'https://localhost:44362/api/meeting/send' },
-            getByTitle: { method: "GET", url: 'https://localhost:44362/api/meeting/get', params: { meeting: '@meeting' } },
+            getMRById: { method: "GET", url: 'https://localhost:44362/api/meeting/getmeetingreq', params: { id: '@id' }, isArray: true },
+            getByTitle: { method: "GET", url: 'https://localhost:44362/api/meeting/get', params: { meeting: '@meeting' } }
             /*deleteMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/delete', params: { title: '@title', id: '@id' }, headers: { 'Content-Type': 'application/json; charset=utf8' } },
             editMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/edit', params: { title: '@title', id: '@id', start: '@start', end: '@end' }, headers: { 'Content-Type': 'application/json; charset=utf8' } }
             */
         });
 
         var _meeting = null;
+        var _meetingReqs = [];
         var service = {
             createMeeting: createMeeting,
             createMeetingRequest: createMeetingRequest,
             getByTitle: getByTitle,
-            meeting: _meeting
+            getMRById: getMRById,
+            meeting: _meeting,
+            meetingReqs: _meetingReqs
            // deleteMeeting: deleteMeeting,
            // editMeeting: editMeeting
         };
@@ -43,6 +47,12 @@
         function getByTitle(title) {
             return resource.getByTitle({ title: title }, function (response) {
                 _meeting = response;
+            }).$promise;
+        };
+
+        function getMRById(id) {
+            return resource.getMRById({ id: id }, function (response) {
+                _meetingReqs = response;
             }).$promise;
         };
 

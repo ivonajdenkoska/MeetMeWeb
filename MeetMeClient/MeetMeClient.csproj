@@ -78,6 +78,9 @@
     <Content Include="app\calendar\calendarView.html" />
     <Content Include="app\connection-notification\connectionNotificationController.js" />
     <Content Include="app\connection-notification\connectionNotificationState.js" />
+    <Content Include="app\meeting-request\meetingRequestController.js" />
+    <Content Include="app\meeting-request\meetingRequestState.js" />
+    <Content Include="app\meeting-request\meetingRequestView.html" />
     <Content Include="app\meeting\meetingController.js" />
     <Content Include="app\meeting\meetingService.js" />
     <Content Include="app\meeting\meetingState.js" />

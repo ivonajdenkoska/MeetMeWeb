@@ -11,5 +11,7 @@ namespace MeetMeWeb.Services.Interfaces
     {
         void createMeeting(MeetingModel meetingModel);
         Meeting getByTitle(string title);
+        List<MeetingRequest> getById(string id);
+
     }
 }
