@@ -5,9 +5,9 @@
       .module('meet-me')
       .controller('MeetingController', MeetingController);
 
-    MeetingController.$inject = ['$scope','$state', 'MeetingService', 'AccountService','UserService','EventService','$timeout'];
+    MeetingController.$inject = ['$scope','$state', 'MeetingService', 'AccountService','UserService','EventService','$timeout', 'ngNotify'];
 
-    function MeetingController($scope, $state, MeetingService, AccountService, UserService, EventService,$timeout) {
+    function MeetingController($scope, $state, MeetingService, AccountService, UserService, EventService,$timeout, ngNotify) {
         var vm = this;
         vm.message = null;
 
@@ -35,6 +35,10 @@
                 //$state.go("calendar");
             }, function (err) {
                 vm.message = err;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
 
 
@@ -43,6 +47,10 @@
                $state.go("calendar");
             }, function (err) {
                 vm.message = err;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
 
             /*for (let index = 0, len = vm.participants.length; index < len; ++index) {

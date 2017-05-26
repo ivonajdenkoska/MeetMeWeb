@@ -5,9 +5,9 @@
       .module('meet-me')
       .controller('EventController', EventController);
 
-    EventController.$inject = ['$state', 'EventService', 'AccountService'];
+    EventController.$inject = ['$state', 'EventService', 'AccountService', 'ngNotify'];
 
-    function EventController($state, EventService, AccountService) {
+    function EventController($state, EventService, AccountService, ngNotify) {
         var vm = this;
         vm.message = null;
         
@@ -27,8 +27,17 @@
             EventService.createEvent(vm.eventData).then(function (data) {
                 // redirect to calendar
                 $state.go("calendar");
+                vm.message = "Event created";
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'success'
+                });
             }, function (err) {
                 vm.message = err;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
         };
     }

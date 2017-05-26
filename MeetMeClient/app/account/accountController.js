@@ -8,9 +8,9 @@
       .module('meet-me')
       .controller('AccountController', AccountController);
 
-    AccountController.$inject = ['$log', '$scope', '$state', '$location', '$timeout', 'AccountService', 'ngAuthSettings'];
+    AccountController.$inject = ['$log', '$scope', '$state', '$location', '$timeout', 'AccountService', 'ngAuthSettings', 'ngNotify'];
 
-    function AccountController($log, $scope, $state, $location, $timeout, AccountService, ngAuthSettings) {
+    function AccountController($log, $scope, $state, $location, $timeout, AccountService, ngAuthSettings, ngNotify) {
         var vm = this;
         vm.message = null;
         vm.loginData = {
@@ -35,6 +35,10 @@
             AccountService.saveRegistration(vm.registerData).then(function (response) {
                 vm.savedSuccessfully = true;
                 vm.message = "User has been registered successfully, you will be redicted to login page in 2 seconds.";
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'success'
+                });
                 startTimer();
             }, function (err) {
                 var errors = [];
@@ -44,6 +48,10 @@
                     }
                 }
                 vm.message = "Failed to register user due to:" + errors.join(' ');
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
         };
 
@@ -56,7 +64,11 @@
 
         function login() {
             AccountService.login(vm.loginData).then(function (response) {
-                vm.message = "success";
+                vm.message = "Success login in.";
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'success'
+                });
                 if ($state.previous) {
                     $state.go($state.previous.name, $state.previous.params);
                 } else {
@@ -66,6 +78,10 @@
             }, function (err) {
                 console.log(err);
                 vm.message = err.data.error_description;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
             });
         };
 
@@ -104,6 +120,10 @@
                         $location.path('/orders');
                     }, function (err) {
                         vm.message = err.error_description;
+                        ngNotify.set(vm.message, {
+                            sticky: true,
+                            type: 'error'
+                        });
                     });
                 }
             });

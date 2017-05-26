@@ -26,7 +26,8 @@
     "angular-ui-select": "*",
     "angular-notification-icons": "*",
     "angular-animate": "*",
-    "angular-desktop-notification": "*"
+    "angular-desktop-notification": "*",
+    "ng-notify": "^0.8.0"
   },
   "resolutions": {
     "angular": "^1.0.8",

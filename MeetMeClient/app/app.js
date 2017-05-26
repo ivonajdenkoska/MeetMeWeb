@@ -10,6 +10,7 @@
                             'angucomplete-alt',
                             'ui.select',
                             'angular-notification-icons',
+                            'ngNotify'
                             ]);
     var serviceBase = 'https://localhost:44362/';
 

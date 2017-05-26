@@ -6,9 +6,6 @@
                 <input type="text" class="form-control elements-padding" placeholder="Email" ng-model="vm.loginData.userName" required autofocus>
                 <input type="password" class="form-control elements-padding" placeholder="Password" ng-model="vm.loginData.password" required>
                 <button class="btn btn-md btn-info btn-block elements-padding btn-style" type="submit" ng-click="vm.login()">Login</button>
-                <div ng-hide="vm.message == null" class="alert alert-danger elements-padding">
-                    {{vm.message}}
-                </div>
             </div>
         </div>
         <div class="col-md-12">
