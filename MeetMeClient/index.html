@@ -7,7 +7,7 @@
     <title>MeetMe</title>
     <!-- Concatenated CSS -->
     <link href="/dest/lib.css?rev=793777265526fa7e11fdb9030913296d" rel="stylesheet">
-    <link href="/dest/app.css?rev=ae6da3c8ed1f5cfdeaea714fef1fbfdf" rel="stylesheet">
+    <link href="/dest/app.css?rev=edfcb202f43f1220ca6cf8f3ac8db58a" rel="stylesheet">
 </head>
 <body ng-app="meet-me">
     <div class="navbar navbar-fixed-top" role="navigation" ng-controller="indexController">
@@ -26,9 +26,9 @@
             </div>
             <div class="collapse navbar-collapse" collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
-                    <li ng-hide="!authentication.isAuth"><a ui-sref="meetingRequests" class="text-style"> <notification-icon animation="shake" count="count"> <i class="fa fa-bell fa-2x"></i></notification-icon></a></li>
-                    <li ng-hide="!authentication.isAuth"><a ui-sref="connectionNotifications" class="text-style"><notification-icon animation="shake" count="count"> <i class="fa fa-envelope-o fa-2x"></i></notification-icon></a></li>
-                    <li ng-hide="!authentication.isAuth"><a ui-sref="profile({ id: authentication.user.id })" class="text-style"><i class="fa fa-user fa-2x"></i></a></li>
+                    <li ng-hide="!authentication.isAuth"><a ui-sref="meetingRequests" class="text-style"> <notification-icon animation="shake" count="count"> <i class="fa fa-bell-o icon-style"></i></notification-icon></a></li>
+                    <li ng-hide="!authentication.isAuth"><a ui-sref="connectionNotifications" class="text-style"><notification-icon animation="shake" count="count"> <i class="fa fa-envelope-o icon-style"></i></notification-icon></a></li>
+                    <li ng-hide="!authentication.isAuth"><a ui-sref="profile({ id: authentication.user.id })" class="text-style"><i class="fa fa-user icon-style"></i></a></li>
                     <li ng-hide="!authentication.isAuth"><a href="" class="text-style" ng-click="logOut()">Logout</a></li>
                     <li ng-hide="authentication.isAuth"> <a ui-sref="login" class="text-style">Login</a></li>
                     <li ng-hide="authentication.isAuth"> <a ui-sref="register" class="text-style">Register</a></li>
@@ -63,6 +63,6 @@
     <!-- Concatenated libraries -->
     <script src="/dest/lib.js?rev=2bb679d712a50646635eb1f13d0b21b7"></script>
     <!-- Concatenated application -->
-    <script src="/dest/src.js?rev=3f951990729ababae302045f41338f81"></script>
+    <script src="/dest/src.js?rev=0aeae57e63bfd700f3fe5e18f89b1d7f"></script>
     </body>
 </html>

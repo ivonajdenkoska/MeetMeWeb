@@ -15,7 +15,7 @@ body {
 }
 
 .navbar__style {
-    background-color: #c4c24c;
+    background-color: #95a5a6;
     height: 60px;
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .heading__style {
-    color: #afad33;
+    color: #95a5a6;
     font-weight: bold;
     padding-bottom:20px;
 }
@@ -72,35 +72,37 @@ body {
 .text-over-image { 
    position: absolute; 
    text-align: center;
-   top: 30px;  
+   top: 35px;  
    width: 100%; 
-   color: #54511a;
+   color: #95a5a6;
    font-weight:bold;
    font-size: 25px;
 }
 
 .btn__main {
     position: absolute; 
-    top: 425px;
-    left: 620px;
-    background-color: #54511a;
-    color:white;
+    top: 110px;
+    left: 240px;
+    background-color: transparent;
+    color:#7f8c8d;
+    font-weight: bold;
     font-size: 20px;
     padding: 25px 70px;
     border-radius: 0px;
-    border: 2px solid white;
+    border: 2px solid #7f8c8d;
 }
 
 .btn__main:hover {
     position: absolute; 
-    top: 425px;
-    left: 620px;
-    background-color: #c9c35e;
-    color:black;
+    top: 110px;
+    left: 240px;
+    background-color: #bdc3c7;
+    color:white;
+    font-weight: bold;
     font-size: 20px;
     padding: 25px 70px;
     border-radius: 0px;
-    border: 2px solid white;
+    border: 2px solid #7f8c8d;
 }
 
 .btn__main-2 {
@@ -122,8 +124,8 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1rem;
-  background-color: #c4c24c;
+  padding: 2rem;
+  background-color: #95a5a6;
   text-align: center;
 }
 
@@ -158,8 +160,6 @@ body {
 
 .icon-style {
     color: white;
-    font-size: 25px;
-    padding-right: 15px;
-    margin-top: 35px;
+    font-size: 20px;
    
 }
