@@ -79,6 +79,12 @@ body {
    font-size: 25px;
 }
 
+.search-bar-style {
+    float: right;
+    padding-top: 13px;
+    width: 300px;
+}
+
 .btn__main {
     position: absolute; 
     top: 110px;

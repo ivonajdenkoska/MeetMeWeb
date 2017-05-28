@@ -7,35 +7,28 @@
         </div>
     </div>
     <div class="row" ng-hide="!vm.done">
-        <div class="col-md-6">
-            <h2 class="heading__style">My Profile</h2>
+        <div class="col-md-5">
+            <h2 class="heading__style" ng-hide="vm.loggedUser.id != vm.user.id">
+                My Profile
+            </h2>
+            <h2 class="heading__style" ng-hide="vm.loggedUser.id == vm.user.id">
+                Profile
+            </h2>
             <div class="">
                 <h3 class="label__style">Name: {{vm.user.firstName}} {{vm.user.lastName}}</h3>
+
                 <h3 class="label__style">Email: {{vm.user.email}}</h3>
             </div>
         </div>
+        <div>
 
-        <div class="col-md-6" ng-hide="vm.loggedUser.id != vm.user.id">
-            <button class="btn btn__add-event-pr" onclick="goToEvent()">Add event</button>
-            <button class="btn btn__add-meeting-pr">Add meeting</button>
         </div>
-        <div class="col-md-6" ng-hide="vm.loggedUser.id == vm.user.id">
-            <br />
-            <button class="btn btn-default" ng-show="vm.connect" ng-click="vm.connectUsers()">Connect</button>
-            <button class="btn btn-default disabled" ng-show="!vm.connect && !vm.connected && vm.waiting">Waiting for response</button>
-            <button class="btn btn-default" ng-show="!vm.connect && !vm.connected && !vm.waiting" ng-click="vm.acceptConnection()">Accept</button>
-            <button class="btn btn-default disabled" ng-show="vm.connected">Connected</button>
-            <button class="btn btn-danger" ng-show="!vm.connect" ng-click="vm.deleteConnection()">Delete</button>
-            <br />
-            <br />
-            <button class="btn btn__add-meeting-pr">Add meeting</button>
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-4" ng-hide="vm.loggedUser.id != vm.user.id">
             <h2 class="heading__style">Search Users:</h2>
             <angucomplete-alt id="ex1"
                               placeholder="Search users..."
                               pause="100"
-                              selected-object="vm.selectedUser"
+                              selected-object="selectUser"
                               local-data="vm.users"
                               search-fields="firstName"
                               title-field="firstName"
@@ -43,6 +36,21 @@
                               input-class="form-control form-control-small" />
 
         </div>
+        <div class="col-md-6" ng-hide="vm.loggedUser.id != vm.user.id">
+            <button class="btn btn__add-event-pr" onclick="goToEvent()">Add event</button>
+            <button class="btn btn__add-meeting-pr">Add meeting</button>
+        </div>
+        <div class="col-md-6 btn-connect" ng-hide="vm.loggedUser.id == vm.user.id">
+            <br />
+            <button class="btn btn-default" ng-show="vm.connect" ng-click="vm.connectUsers()">Connect</button>
+            <button class="btn btn-default disabled" ng-show="!vm.connect && !vm.connected && vm.waiting">Waiting for response</button>
+            <button class="btn btn-default" ng-show="!vm.connect && !vm.connected && !vm.waiting" ng-click="vm.acceptConnection()">Accept</button>
+            <button class="btn btn-default disabled" ng-show="vm.connected">Connected</button>
+            <button class="btn btn-danger" ng-show="!vm.connect" ng-click="vm.deleteConnection()">Delete request</button>
+            <br />
+            <button class="btn btn__add-meeting-pr" ng-hide="!vm.connected">Add meeting</button>
+        </div>
+        
     </div>
 </div>
 
@@ -50,6 +58,7 @@
     function goToEvent() {
         window.location.replace("/#/event");
     }
+
 </script>
 
     

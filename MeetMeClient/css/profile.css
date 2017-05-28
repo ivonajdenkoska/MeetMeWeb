@@ -13,6 +13,9 @@
     font-weight: bold;
 }
 
+.btn-connect {
+    margin-top: 60px;
+}
 
 .btn__add-event-pr {
     border-radius: 0px;

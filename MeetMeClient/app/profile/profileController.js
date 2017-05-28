@@ -5,13 +5,13 @@
       .module('meet-me')
       .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['AccountService','UserService', '$timeout', '$stateParams'];
+    ProfileController.$inject = ['AccountService','UserService', '$timeout', '$stateParams', '$scope', '$state'];
 
-    function ProfileController(AccountService, UserService, $timeout, $stateParams) {
+    function ProfileController(AccountService, UserService, $timeout, $stateParams, $scope, $state) {
         var vm = this;
         vm.user = null;
         vm.loggedUser = null;
-        vm.selectedUser;
+        vm.selectedUser ;
         vm.connected = false;
         vm.waiting = false;
         vm.connect = true;
@@ -38,7 +38,7 @@
                 });
             });
         };
-
+              
         function getLoggedUser() {
             vm.loggedUser = AccountService.authentication.user;
             getConnection();
@@ -131,9 +131,16 @@
             }
         }
 
+        $scope.selectUser = function (selected) {
+            $state.go('profile', {
+                id: selected.originalObject.id
+            });
+        };
+        
         $timeout(function () {
             vm.done = true;
         }, 5000);
 
+        
     }
 })(angular);
