@@ -37,10 +37,19 @@ namespace MeetMeWeb.Services
             return _repository.getById(id);
         }
 
+        public void acceptMR(Meeting meeting,User user, string id)
+        {
+            _repository.acceptMR(meeting, user, id);
+        }
+
+        public void rejectMR(Meeting meeting, User user, string id)
+        {
+            _repository.rejectMR(meeting, user, id);
+        }
+
         public void Dispose()
         {
             _repository.Dispose();
         }
-
     }
 }

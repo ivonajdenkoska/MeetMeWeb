@@ -69,7 +69,7 @@ namespace MeetMeWeb.Controllers
         // POST api/User/DeleteConnection
         [Route("DeleteConnection")]
         [HttpPost]
-        public void DeleteEvent(Connection connection)
+        public void DeleteConnection(Connection connection)
         {
             _connectionService.DeleteConnection(connection);
         }

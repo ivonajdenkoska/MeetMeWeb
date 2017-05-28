@@ -221,6 +221,15 @@
     <Compile Include="Migrations\201705261648526_Fix_meetingR.Designer.cs">
       <DependentUpon>201705261648526_Fix_meetingR.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705281158417_List.cs" />
+    <Compile Include="Migrations\201705281158417_List.Designer.cs">
+      <DependentUpon>201705281158417_List.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705281306490_PrioritesY.cs" />
+    <Compile Include="Migrations\201705281306490_PrioritesY.Designer.cs">
+      <DependentUpon>201705281306490_PrioritesY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AcceptMR.cs" />
     <Compile Include="Models\ConnectionNotification.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -296,6 +305,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705261648526_Fix_meetingR.resx">
       <DependentUpon>201705261648526_Fix_meetingR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705281158417_List.resx">
+      <DependentUpon>201705281158417_List.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705281306490_PrioritesY.resx">
+      <DependentUpon>201705281306490_PrioritesY.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

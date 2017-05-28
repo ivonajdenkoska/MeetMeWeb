@@ -29,8 +29,32 @@ namespace MeetMeWeb.Repositories
         public async Task<Event> DeleteEvent(string title,Guid id)
         {
             Event toDelete = (Event)_context.Events.SingleOrDefault(o => o.Title == title && o.ID == id);
-            _context.Events.Remove(toDelete);
-            _context.SaveChanges();
+            Meeting meetingToDelete = _context.Meetings.Include("creator").Where(x => x.Title == title).SingleOrDefault();
+            List<Event> eventsToDelete = _context.Events.Where(x => x.Title == title).ToList();
+            if (meetingToDelete == null)
+            {
+                _context.Events.Remove(toDelete);
+                _context.SaveChanges();
+            }
+            else
+            {
+               // _context.Events.Remove(toDelete);
+               // _context.SaveChanges();
+                if (meetingToDelete.creator.Id == id.ToString())
+                {
+                    foreach (Event e in eventsToDelete)
+                    {
+                        _context.Events.Remove(e);
+                    }
+                    _context.Meetings.Remove(meetingToDelete);
+                    _context.SaveChanges();
+                }
+                else
+                {
+                    _context.Events.Remove(toDelete);
+                    _context.SaveChanges();
+                }
+            }
             return toDelete;
         }
 

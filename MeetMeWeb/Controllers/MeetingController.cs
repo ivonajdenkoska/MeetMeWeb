@@ -44,16 +44,25 @@ namespace MeetMeWeb.Controllers
         }
 
         [Route("GetMeetingReq")]
-        public List<MeetingRequest> GetById([FromUri]string id)
+        [HttpGet]
+        public List<MeetingRequest> GetById(string id)
         {
-            List<MeetingRequest> meetingReq = _meetingService.getById(id);
-            return meetingReq;
+            var result = _meetingService.getById(id);
+            return result;
         }
 
-        [Route("AcceptMR")]
-        public void acceptMR(Meeting meeting, User user)
+        [Route("acceptmr")]
+        [HttpPost]
+        public void acceptMR(AcceptMR model)
         {
+            _meetingService.acceptMR(model.meeting, model.user, model.id);
+        }
 
+        [Route("rejecttmr")]
+        [HttpPost]
+        public void rejectMR(AcceptMR model)
+        {
+            _meetingService.rejectMR(model.meeting, model.user, model.id);
         }
 
     }

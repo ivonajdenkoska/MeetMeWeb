@@ -10,6 +10,7 @@ namespace MeetMeWeb
         public MeetMeDbContext()
             : base("name=MeetMeDB")
         {
+
         }
 
         public static MeetMeDbContext Create()
