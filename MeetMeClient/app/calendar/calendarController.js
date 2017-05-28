@@ -30,7 +30,7 @@
 
         function deleteEvent() {
             
-            EventService.deleteEvent($scope.SelectedEvent.title, $scope.SelectedEvent.id).then(function (data) {
+            EventService.deleteEvent($scope.SelectedEvent.title, $scope.SelectedEvent.id, AccountService.authentication.userName).then(function (data) {
                 $scope.username = AccountService.authentication.userName;
                 $scope.events = CalendarService.getEvents($scope.username);
                 console.log($scope.SelectedEvent);

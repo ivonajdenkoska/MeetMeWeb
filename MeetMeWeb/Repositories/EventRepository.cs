@@ -26,7 +26,7 @@ namespace MeetMeWeb.Repositories
             return eventModel;
         }
 
-        public async Task<Event> DeleteEvent(string title,Guid id)
+        public async Task<Event> DeleteEvent(string title,Guid id, string username)
         {
             Event toDelete = (Event)_context.Events.SingleOrDefault(o => o.Title == title && o.ID == id);
             Meeting meetingToDelete = _context.Meetings.Include("creator").Where(x => x.Title == title).SingleOrDefault();
@@ -40,11 +40,16 @@ namespace MeetMeWeb.Repositories
             {
                // _context.Events.Remove(toDelete);
                // _context.SaveChanges();
-                if (meetingToDelete.creator.Id == id.ToString())
+                if (meetingToDelete.creator.UserName == username)
                 {
                     foreach (Event e in eventsToDelete)
                     {
                         _context.Events.Remove(e);
+                    }
+                    List<MeetingRequest> mrLista = _context.MeetingRequests.Where(x => x.Meeting.ID == meetingToDelete.ID).ToList();
+                    foreach(MeetingRequest m in mrLista)
+                    {
+                        _context.MeetingRequests.Remove(m);
                     }
                     _context.Meetings.Remove(meetingToDelete);
                     _context.SaveChanges();

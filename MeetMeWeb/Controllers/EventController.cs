@@ -29,9 +29,9 @@ namespace MeetMeWeb.Controllers
         // POST api/Event/Delete
         [Route("Delete")]
         [HttpPost]
-        public async Task<Event> DeleteEvent(string title,Guid id)
+        public async Task<Event> DeleteEvent(string title,Guid id, string username)
         {
-            Event e = await _userService.deleteEvent(title,id);
+            Event e = await _userService.deleteEvent(title,id,username);
             return e;
         }
 

@@ -21,9 +21,9 @@ namespace MeetMeWeb.Services
             return await _repo.CreateEvent(eventModel);
         }
 
-        public async Task<Event> deleteEvent(string title,Guid id)
+        public async Task<Event> deleteEvent(string title,Guid id,string username)
         {
-            return await _repo.DeleteEvent(title,id);
+            return await _repo.DeleteEvent(title,id,username);
         }
 
         public Event editEvent(string title, Guid id, DateTime start, DateTime end)
