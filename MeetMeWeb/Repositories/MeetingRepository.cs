@@ -30,7 +30,8 @@ namespace MeetMeWeb.Repositories
 
         public List<MeetingRequest> getById(string guid)
         {
-            return _context.MeetingRequests.Where(x => x.User.Id == guid).ToList();
+          //  return _context.MeetingRequests.Where(x => x.User.Id == guid).ToList();
+            return _context.MeetingRequests.Include("Meeting").Include("User").Where(x => x.User.Id == guid).ToList();
         }
 
         public void Dispose()

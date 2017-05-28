@@ -13,6 +13,7 @@
             createMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/create', },
             sendMeetingRequest: { method: "POST", url: 'https://localhost:44362/api/meeting/send' },
             getMRById: { method: "GET", url: 'https://localhost:44362/api/meeting/getmeetingreq', params: { id: '@id' }, isArray: true },
+            acceptMR: { method: "POST", url: 'https://localhost:44362/api/meeting/acceptmr', params: { meeting: '@meeting', user: '@user' }, headers: { 'Content-Type': 'application/json; charset=utf8' } },
             getByTitle: { method: "GET", url: 'https://localhost:44362/api/meeting/get', params: { meeting: '@meeting' } }
             /*deleteMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/delete', params: { title: '@title', id: '@id' }, headers: { 'Content-Type': 'application/json; charset=utf8' } },
             editMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/edit', params: { title: '@title', id: '@id', start: '@start', end: '@end' }, headers: { 'Content-Type': 'application/json; charset=utf8' } }
@@ -26,6 +27,7 @@
             createMeetingRequest: createMeetingRequest,
             getByTitle: getByTitle,
             getMRById: getMRById,
+            acceptMR: acceptMR,
             meeting: _meeting,
             meetingReqs: _meetingReqs
            // deleteMeeting: deleteMeeting,
@@ -53,6 +55,12 @@
         function getMRById(id) {
             return resource.getMRById({ id: id }, function (response) {
                 _meetingReqs = response;
+            }).$promise;
+        };
+
+        function acceptMR(meeting, user) {
+            return resource.acceptMR({meeting: meeting, user: user},function(response){
+                return response;
             }).$promise;
         };
 

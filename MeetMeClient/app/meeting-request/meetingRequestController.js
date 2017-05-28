@@ -13,6 +13,7 @@
         vm.notifications = [];
         vm.done = false;
         vm.errMsg = "";
+        vm.acceptMR = acceptMR;
 
         getLoggedUser();
 
@@ -31,6 +32,19 @@
                 });
             });
             vm.done = true;
+        };
+
+        function acceptMR(n) {
+            console.log(n);
+            MeetingService.acceptMR(n.meeting, n.user).then(function (data) {
+
+            }, function (response) {
+                vm.errMsg = "Error occurred: " + response.data;
+                ngNotify.set(vm.errMsg, {
+                    sticky: true,
+                    type: 'error'
+                });
+            });
         };
 
         $timeout(function () {

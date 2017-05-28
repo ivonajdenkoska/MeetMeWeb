@@ -49,5 +49,12 @@ namespace MeetMeWeb.Controllers
             List<MeetingRequest> meetingReq = _meetingService.getById(id);
             return meetingReq;
         }
+
+        [Route("AcceptMR")]
+        public void acceptMR(Meeting meeting, User user)
+        {
+
+        }
+
     }
 }
