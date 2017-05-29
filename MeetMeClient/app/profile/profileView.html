@@ -24,8 +24,8 @@
 
         </div>
         <div class="col-md-6" ng-hide="vm.loggedUser.id != vm.user.id">
-            <button class="btn btn__add-event-pr" onclick="goToEvent()">Add event</button>
-            <button class="btn btn__add-meeting-pr">Add meeting</button>
+            <button class="btn btn__add-event-pr" ng-click="vm.goToEvent()">Add event</button>
+            <button class="btn btn__add-meeting-pr" ng-click="vm.goToMeeting()">Add meeting</button>
         </div>
         <div class="col-md-6 btn-connect" ng-hide="vm.loggedUser.id == vm.user.id">
             <br />
@@ -36,24 +36,21 @@
             <button class="btn btn-danger btn__connection" ng-show="!vm.connect && !vm.connected" ng-click="vm.deleteConnection()"><i class="fa fa-times"></i>&nbsp;Delete request</button>
             <button class="btn btn-danger btn__connection" ng-show="!vm.connect && vm.connected" ng-click="vm.deleteConnection()"><i class="fa fa-user-times"></i>&nbsp;Disconnect</button>
             <br />
-            <button class="btn btn__add-meeting-pr" ng-hide="!vm.connected">Add meeting</button>
+            <button class="btn btn__add-meeting-pr" ng-hide="!vm.connected" ng-click="vm.goToMeeting()">Add meeting</button>
         </div>
     </div>
     <div class="row" ng-show="vm.done && vm.loggedUser.id != vm.user.id && vm.connected">
-        <div class="col-md-12">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
             <br />
             <br />
             <h2 class="heading__style">{{vm.user.firstName}}'s calendar</h2>
             <div id="calendar" class="span8 calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources" calendar="calendar"></div>
         </div>
+        <div class="col-md-2">     
+        </div>
     </div>
 </div>
-
-<script>
-    function goToEvent() {
-        window.location.replace("/#/event");
-    }
-
-</script>
 
     

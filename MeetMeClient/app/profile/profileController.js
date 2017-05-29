@@ -5,9 +5,9 @@
       .module('meet-me')
       .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['AccountService', 'UserService', 'CalendarService', '$timeout', '$stateParams', 'ngNotify', 'uiCalendarConfig'];
+    ProfileController.$inject = ['AccountService', 'UserService', 'CalendarService', '$timeout', '$stateParams', 'ngNotify', 'uiCalendarConfig', '$state'];
 
-    function ProfileController(AccountService, UserService, CalendarService, $timeout, $stateParams, ngNotify, uiCalendarConfig) {
+    function ProfileController(AccountService, UserService, CalendarService, $timeout, $stateParams, ngNotify, uiCalendarConfig, $state) {
         var vm = this;
         vm.user = null;
         vm.loggedUser = null;
@@ -20,6 +20,8 @@
         vm.connectUsers = connectUsers;
         vm.acceptConnection = acceptConnection;
         vm.deleteConnection = deleteConnection;
+        vm.goToEvent = goToEvent;
+        vm.goToMeeting = goToMeeting;
         vm.events = [];
 
         getUser();
@@ -144,10 +146,18 @@
             }
         };
 
+        function goToEvent() {
+            $state.go('event');
+        }
+
+        function goToMeeting() {
+            $state.go('meeting');
+        }
+
         function displayCalendar() {
             vm.uiConfig = {
                 calendar: {
-                    height: 450,
+                    height: "auto",
                     editable: false,
                     header: {
                         left: 'month agendaWeek agendaDay',
