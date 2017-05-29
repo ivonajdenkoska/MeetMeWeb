@@ -28,7 +28,7 @@
             <angucomplete-alt id="ex1"
                               placeholder="Search users..."
                               pause="100"
-                              selected-object="selectUser"
+                              selected-object="vm.selectUser"
                               local-data="vm.users"
                               search-fields="firstName"
                               title-field="firstName"
@@ -51,6 +51,15 @@
             <button class="btn btn__add-meeting-pr" ng-hide="!vm.connected">Add meeting</button>
         </div>
         
+    </div>
+    <div class="row" ng-show="vm.done && vm.loggedUser.id != vm.user.id && vm.connected">
+        <div class="col-md-12">
+            <br />
+            <br />
+            <h2 class="heading__style">{{vm.user.firstName}}'s calendar</h2>
+            <div id="calendar" class="span8 calendar" ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources" calendar="calendar"></div>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 

@@ -7,6 +7,23 @@
     padding-bottom:15px;
 }
 
+.event {
+    color: black;
+    border-color: darkgray;
+}
+
+.event-low {
+    background-color: #fced37;
+}
+
+.event-medium {
+    background-color: #f9a11f;
+}
+
+.event-high {
+    background-color: #f44336;
+}
+
 .btn-remove__style {
     border-radius: 0px;
     border-color: #e2a5a5;

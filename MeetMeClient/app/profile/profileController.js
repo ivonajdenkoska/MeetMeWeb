@@ -5,13 +5,13 @@
       .module('meet-me')
       .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['AccountService','UserService', '$timeout', '$stateParams', '$scope', '$state'];
+    ProfileController.$inject = ['AccountService', 'UserService', 'CalendarService', '$timeout', '$stateParams', '$state', 'ngNotify', 'uiCalendarConfig'];
 
-    function ProfileController(AccountService, UserService, $timeout, $stateParams, $scope, $state) {
+    function ProfileController(AccountService, UserService, CalendarService, $timeout, $stateParams, $state, ngNotify, uiCalendarConfig) {
         var vm = this;
         vm.user = null;
         vm.loggedUser = null;
-        vm.selectedUser ;
+        vm.selectUser = selectUser;
         vm.connected = false;
         vm.waiting = false;
         vm.connect = true;
@@ -22,6 +22,7 @@
         vm.connectUsers = connectUsers;
         vm.acceptConnection = acceptConnection;
         vm.deleteConnection = deleteConnection;
+        vm.events = [];
 
         getUser();
 
@@ -48,7 +49,6 @@
             if (vm.loggedUser.id != vm.user.id) {
                 UserService.getConnection(vm.loggedUser.id, vm.user.id).then(function (data) {
                     var response = data.toJSON();
-                    console.log(response);
                     if (response.id != undefined) {
                         vm.connection = response;
                         vm.connect = false;
@@ -56,14 +56,26 @@
                             if(response.user1.id == vm.loggedUser.id)
                                 vm.waiting = true;
                         }
-                        else if (vm.connection.status == 1)
+                        else if (vm.connection.status == 1) {
                             vm.connected = true;
+                            CalendarService.getEvents(vm.user.userName).then(function (data) {
+                                var events = data;
+                                vm.events = events;
+                                displayCalendar();
+                            }, function (response) {
+                                vm.message = "Error occurred: " + response.data;
+                                ngNotify.set(vm.message, {
+                                    sticky: true,
+                                    type: 'error'
+                                });
+                            });
+                        }
                     }
                 }, function (response) {
                     vm.message = "Error occurred: " + response.data;
                     ngNotify.set(vm.message, {
                         sticky: true,
-                        type: 'success'
+                        type: 'error'
                     });
                 });
             }
@@ -129,12 +141,41 @@
                     });
                 });
             }
-        }
+        };
 
-        $scope.selectUser = function (selected) {
+        function selectUser(selected) {
             $state.go('profile', {
                 id: selected.originalObject.id
             });
+        };
+
+        function displayCalendar() {
+            vm.uiConfig = {
+                calendar: {
+                    height: 450,
+                    editable: false,
+                    header: {
+                        left: 'month agendaWeek agendaDay',
+                        center: 'title',
+                        right: 'today prev,next'
+                    },
+                    events: vm.events,
+                    eventRender: function (event, element) {
+                        $(element).tooltip({ title: event.title });
+                        if (event.priority == 1) {
+                            $(element).addClass('event-medium'); //Medium priority
+                        }
+                        else if (event.priority == 2) {
+                            $(element).addClass('event-high'); //High priority
+                        }
+                        else {
+                            $(element).addClass('event-low');  //Low priority
+                        }
+                        $(element).addClass('event');
+
+                    }
+                }
+            };
         };
         
         $timeout(function () {

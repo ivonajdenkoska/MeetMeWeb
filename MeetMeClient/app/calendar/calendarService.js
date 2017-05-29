@@ -24,9 +24,7 @@
         return service;
 
         function getEvents(username) {
-            return resource.getAll({ username: username }, function (response) {
-                _events = response;
-           });
+            return resource.getAll({ username: username }).$promise;
         };
 
         return service;
