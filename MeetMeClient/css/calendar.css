@@ -13,15 +13,15 @@
 }
 
 .event-low {
-    background-color: #fced37;
+    background-color: #ffee58;
 }
 
 .event-medium {
-    background-color: #f9a11f;
+    background-color: #ffb74d;
 }
 
 .event-high {
-    background-color: #f44336;
+    background-color: #e57373;
 }
 
 .event__name {
