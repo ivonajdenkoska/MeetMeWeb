@@ -24,20 +24,38 @@
     background-color: #f44336;
 }
 
+.event__name {
+    color: gray;
+}
+
 .btn-remove__style {
     border-radius: 0px;
-    border-color: #e2a5a5;
-    color: black;
-    background-color: #e2a5a5;
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
     float:right;
 }
 
-.btn-edit__style{
+.btn-remove__style:hover {
     border-radius: 0px;
-    border-color: #d6eac5;
-    color: black;
-    background-color: #d6eac5;
-    
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #e3e4ea;
+    float:right;
+}
+
+.btn-edit__style {
+    border-radius: 0px;    
+    border-color: #aacd4b;
+    background-color: #aacd4b;
+    color: white;
+}
+
+.btn-edit__style:hover {
+    border-radius: 0px;    
+    border-color: #e3e4ea;
+    background-color: #b5d954;
+    color: #f2f2f2;
 }
 
 .title__style {
@@ -52,10 +70,12 @@
 }
 
 .panel__style {
-    width: 270px;
+    max-width: 270px;
+    margin-top: 67px;
     border-radius: 0px;
     border-color: #e3e4ea;
     background-color: #e3e4ea;
+    color: #68b8df;
 }
 
 .btn__add-event {

@@ -9,9 +9,9 @@
             <div id="calendar" ui-calendar="uiConfig.calendar" ng-model="eventSources" calendar="myCalendar"></div>
         </div>
         <div class="col-md-2">
-            <div ng-show="SelectedEvent" class="alert alert-success panel__style" style="margin-top:67px;">
+            <div ng-show="SelectedEvent" class="alert panel__style"">
                 <h4 class="title__style">Selected Event:</h4>
-                <h4 style="color:green">{{SelectedEvent.title}}</h4>
+                <h4 class="event__name">{{SelectedEvent.title}}</h4>
                 <p class="text-small__style">Start: {{vm.selectedStart}}</p>
                 <p class="text-small__style">End: {{vm.selectedEnd}}</p>
                 <br/>
