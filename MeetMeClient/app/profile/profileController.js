@@ -62,6 +62,10 @@
                                 var events = data;
                                 vm.events = events;
                                 displayCalendar();
+                                $timeout(function () {
+                                    $('.fc-today-button').trigger("click");
+                                    console.log('clicked');
+                                }, 3000);
                             }, function (response) {
                                 vm.message = "Error occurred: " + response.data;
                                 ngNotify.set(vm.message, {
