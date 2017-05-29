@@ -3,11 +3,12 @@
         .module("meet-me")
         .controller("indexController", IndexController);
 
-    IndexController.$inject = ['$scope', '$location', 'AccountService'];
+    IndexController.$inject = ['$scope', '$location', 'AccountService', 'UserService', '$state'];
 
-    function IndexController($scope, $location, AccountService){
+    function IndexController($scope, $location, AccountService, UserService, $state) {
         var vm = this;
         $scope.count = '0';
+        $scope.users = UserService.getAllUsers();
 
         $scope.logOut = function () {
             AccountService.logOut();
@@ -15,5 +16,12 @@
         }
 
         $scope.authentication = AccountService.authentication;
+
+        $scope.selectUser = function (selected) {
+            $state.go('profile', {
+                id: selected.originalObject.id
+            });
+
+        };
     }
 })(angular);

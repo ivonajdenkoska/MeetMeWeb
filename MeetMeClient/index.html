@@ -7,7 +7,7 @@
     <title>MeetMe</title>
     <!-- Concatenated CSS -->
     <link href="/dest/lib.css?rev=750378ba90888bf4f3d6cb55957325c8" rel="stylesheet">
-    <link href="/dest/app.css?rev=f1c70c97d65b3c7b2d945b40e1efbc6c" rel="stylesheet">
+    <link href="/dest/app.css?rev=fa71634ca98796a023017f9aece52609" rel="stylesheet">
 </head>
 <body ng-app="meet-me">
     <div class="navbar navbar-fixed-top" role="navigation" ng-controller="indexController">
@@ -26,6 +26,20 @@
             </div>
             <div class="collapse navbar-collapse" collapse="!navbarExpanded">
                 <ul class="nav navbar-nav navbar-right">
+                    <li ng-hide="!authentication.isAuth" class="search__margin">
+                        <i class="fa fa-search icon-style" aria-hidden="true"></i>
+                        <angucomplete-alt id="ex1"
+                                          class="search-box-holder"
+                                          placeholder="Search for user..."
+                                          pause="100"
+                                          selected-object="selectUser"
+                                          local-data="users"
+                                          search-fields="firstName"
+                                          title-field="firstName"
+                                          clear-selected="true"
+                                          minlength="1"
+                                          input-class="form-control form-control-small search-box__style" />
+                    </li>
                     <li ng-hide="!authentication.isAuth"><a ui-sref="meetingRequests" class="text-style"> <notification-icon animation="shake" count="count"> <i class="fa fa-bell-o icon-style"></i></notification-icon></a></li>
                     <li ng-hide="!authentication.isAuth"><a ui-sref="connectionNotifications" class="text-style"><notification-icon animation="shake" count="count"> <i class="fa fa-envelope-o icon-style"></i></notification-icon></a></li>
                     <li ng-hide="!authentication.isAuth"><a ui-sref="profile({ id: authentication.user.id })" class="text-style"><i class="fa fa-user icon-style"></i></a></li>
@@ -63,6 +77,6 @@
     <!-- Concatenated libraries -->
     <script src="/dest/lib.js?rev=521096a050e506fee48a3abfa4d85f64"></script>
     <!-- Concatenated application -->
-    <script src="/dest/src.js?rev=bced85ee7cdfe82363b389149f89ebc5"></script>
+    <script src="/dest/src.js?rev=13e370c9ba177855dc8530dcfa0c659b"></script>
     </body>
 </html>

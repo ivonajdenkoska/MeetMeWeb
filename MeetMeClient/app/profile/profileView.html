@@ -23,19 +23,6 @@
         <div>
 
         </div>
-        <div class="col-md-4" ng-hide="vm.loggedUser.id != vm.user.id">
-            <h2 class="heading__style">Search Users:</h2>
-            <angucomplete-alt id="ex1"
-                              placeholder="Search users..."
-                              pause="100"
-                              selected-object="vm.selectUser"
-                              local-data="vm.users"
-                              search-fields="firstName"
-                              title-field="firstName"
-                              minlength="1"
-                              input-class="form-control form-control-small" />
-
-        </div>
         <div class="col-md-6" ng-hide="vm.loggedUser.id != vm.user.id">
             <button class="btn btn__add-event-pr" onclick="goToEvent()">Add event</button>
             <button class="btn btn__add-meeting-pr">Add meeting</button>

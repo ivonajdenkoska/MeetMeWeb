@@ -5,17 +5,15 @@
       .module('meet-me')
       .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['AccountService', 'UserService', 'CalendarService', '$timeout', '$stateParams', '$state', 'ngNotify', 'uiCalendarConfig'];
+    ProfileController.$inject = ['AccountService', 'UserService', 'CalendarService', '$timeout', '$stateParams', 'ngNotify', 'uiCalendarConfig'];
 
-    function ProfileController(AccountService, UserService, CalendarService, $timeout, $stateParams, $state, ngNotify, uiCalendarConfig) {
+    function ProfileController(AccountService, UserService, CalendarService, $timeout, $stateParams, ngNotify, uiCalendarConfig) {
         var vm = this;
         vm.user = null;
         vm.loggedUser = null;
-        vm.selectUser = selectUser;
         vm.connected = false;
         vm.waiting = false;
         vm.connect = true;
-        vm.users = UserService.getAllUsers();
         vm.done = false;
         vm.message = "";
         vm.connection = null;
@@ -64,7 +62,6 @@
                                 displayCalendar();
                                 $timeout(function () {
                                     $('.fc-today-button').trigger("click");
-                                    console.log('clicked');
                                 }, 3000);
                             }, function (response) {
                                 vm.message = "Error occurred: " + response.data;
@@ -145,12 +142,6 @@
                     });
                 });
             }
-        };
-
-        function selectUser(selected) {
-            $state.go('profile', {
-                id: selected.originalObject.id
-            });
         };
 
         function displayCalendar() {
