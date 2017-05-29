@@ -60,8 +60,9 @@
 
 .btn__add-event {
     border-radius: 0px;
-    border-color: #c8efa7;
-    background-color: #c8efa7;
+    border-color: #68b8df;
+    background-color: #68b8df;
+    color: white;
     padding: 10px 35px;
     font-size: 16px;
     width: 163px;
@@ -69,8 +70,9 @@
 
 .btn__add-event:hover {
     border-radius: 0px;
-    border-color: #d6eac5;
-    background-color: #d6eac5;
+    border-color: #f2f2f2;
+    background-color: #6ec5e9;
+    color: #f2f2f2;
     padding: 10px 35px;
     font-size: 16px;
     width: 163px;
@@ -78,8 +80,9 @@
 
 .btn__add-meeting {
     border-radius: 0px;
-    border-color: #e2a5a5;
-    background-color: #e2a5a5;
+    border-color: #aacd4b;
+    background-color: #aacd4b;
+    color: white;
     padding: 10px 35px;
     font-size: 16px;
     width: 163px;
@@ -88,8 +91,9 @@
 
 .btn__add-meeting:hover {
     border-radius: 0px;
-    border-color: #e5c3c3;
-    background-color: #e5c3c3;
+    border-color: #f2f2f2;
+    background-color: #b5d954;
+    color: #f2f2f2;
     padding: 10px 35px;
     font-size: 16px;
     width: 163px;

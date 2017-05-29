@@ -4,15 +4,26 @@
             <h2 class="heading__style">Schedule meeting</h2>
         </div>
         <div class="col-md-6 col-md-offset-3">
-            <div class="form-group has-success">
+            <div class="form-group">
                 <label for="meetingName" class="label__color">Meeting Title</label>
                 <input type="text" id="meetingName" class="form-control" aria-describedby="meetingTitle" ng-model="vm.meetingData.title" required>
             </div>
         </div>
         <div class="col-md-6 col-md-offset-3">
-            <div class="form-group has-success">
+            <div class="form-group">
                 <label for="meetingLocation" class="label__color">Meeting Location</label>
                 <input type="text" id="meetingLocation" class="form-control" aria-describedby="meetingLocation" ng-model="vm.meetingData.location">
+            </div>
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="form-group">
+                <label for="meetingParticipants" class="label__color">Meeting Participants</label>
+                <ui-select id="meetingParticipants" theme="bootstrap" ng-model="vm.meetingData.participants" multiple close-on-select="false" sortable="true" title="Add Participants">
+                    <ui-select-match placeholder="Add participants...">{{$item.firstName}}</ui-select-match>
+                    <ui-select-choices repeat="user in vm.users| filter: {firstName: $select.search}">
+                        {{user.firstName}} {{user.lastName}}
+                    </ui-select-choices>
+                </ui-select>
             </div>
         </div>
         <div class="col-md-6 col-md-offset-3 label__padding">
@@ -32,31 +43,10 @@
             </div>
         </div>
         <div class="col-md-6 col-md-offset-3">
-            <div class="form-group">
-                <label for="meetingParticipants" class="label__color">Meeting Participants</label>
-                <ui-select id="meetingParticipants" theme="bootstrap" ng-model="vm.meetingData.participants" multiple close-on-select="false" sortable="true" title="Add Participants">
-                    <ui-select-match placeholder="Add participants...">{{$item.firstName}}</ui-select-match>
-                    <ui-select-choices repeat="user in vm.users| filter: {firstName: $select.search}">
-                        {{user.firstName}} {{user.lastName}}
-                    </ui-select-choices>
-                </ui-select>
-            </div>
+            <button type="button" class="btn btn-lg btn__style" ng-click="vm.createMeeting()">Create Meeting</button>
         </div>
-
-      <!-- <div class="col-md-6 col-md-offset-3">
-                    <div class="form-group">
-                        <label for="meetingParticipants" class="label__color">Meeting Participants</label>
-                        <select id="meetingParticipants" class="selectpicker form-control" multiple title="Add participants to the Meeting ..." ng-model="vm.meetingData.participants" ng-options="item for item in names">
-                            <option>Participant 1</option>
-                            <option>Participant 2</option>
-                            <option>Participant 3</option>
-                        </select>
-                    </div>
-          </div>-->
-                <div class="col-md-6 col-md-offset-3">
-                    <button type="button" class="btn btn-lg btn__style" ng-click="vm.createMeeting()">Create Meeting</button>
-                </div>
-        </div>
+    </div>
+</div>
 
         <script>
             $(document).ready(function () {

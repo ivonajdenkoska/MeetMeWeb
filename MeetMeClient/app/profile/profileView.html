@@ -42,11 +42,12 @@
         </div>
         <div class="col-md-6 btn-connect" ng-hide="vm.loggedUser.id == vm.user.id">
             <br />
-            <button class="btn btn-default" ng-show="vm.connect" ng-click="vm.connectUsers()">Connect</button>
-            <button class="btn btn-default disabled" ng-show="!vm.connect && !vm.connected && vm.waiting">Waiting for response</button>
-            <button class="btn btn-default" ng-show="!vm.connect && !vm.connected && !vm.waiting" ng-click="vm.acceptConnection()">Accept</button>
-            <button class="btn btn-default disabled" ng-show="vm.connected">Connected</button>
-            <button class="btn btn-danger" ng-show="!vm.connect" ng-click="vm.deleteConnection()">Delete request</button>
+            <button class="btn btn-default btn__connection" ng-show="vm.connect" ng-click="vm.connectUsers()"><i class="fa fa-user-plus"></i>&nbsp;Connect</button>
+            <button class="btn btn-default btn__connection disabled" ng-show="!vm.connect && !vm.connected && vm.waiting">Waiting for response</button>
+            <button class="btn btn-default btn__connection" ng-show="!vm.connect && !vm.connected && !vm.waiting" ng-click="vm.acceptConnection()"><i class="fa fa-check"></i>&nbsp;Accept</button>
+            <button class="btn btn-default btn__connection disabled" ng-show="vm.connected"><i class="fa fa-user-plus"></i>&nbsp;Connected</button>
+            <button class="btn btn-danger btn__connection" ng-show="!vm.connect && !vm.connected" ng-click="vm.deleteConnection()"><i class="fa fa-times"></i>&nbsp;Delete request</button>
+            <button class="btn btn-danger btn__connection" ng-show="!vm.connect && vm.connected" ng-click="vm.deleteConnection()"><i class="fa fa-user-times"></i>&nbsp;Disconnect</button>
             <br />
             <button class="btn btn__add-meeting-pr" ng-hide="!vm.connected">Add meeting</button>
         </div>

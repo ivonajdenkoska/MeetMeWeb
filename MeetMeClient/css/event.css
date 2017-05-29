@@ -13,7 +13,16 @@
 
 .btn__style {
     border-radius: 0px;
-    border-color: #4cc44a;
+    border-color: #68b8df;
     color: white;
-    background-color: #4cc44a;
+    background-color: #68b8df;
+}
+
+.btn__style:hover {
+    border-radius: 0px;
+    border-color: #f2f2f2;
+    background-color: #ff5959;
+    border-color: #f2f2f2;
+    background-color: #6ec5e9;
+    color: #f2f2f2;
 }
