@@ -5,9 +5,9 @@
       .module('meet-me')
       .controller('CalendarController', CalendarController);
 
-    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService', 'EventService', '$state', 'ngNotify'];
+    CalendarController.$inject = ['$log', '$scope', '$compile', 'uiCalendarConfig', 'CalendarService', '$interval', 'AccountService', 'EventService', '$state', 'ngNotify','MeetingService'];
 
-    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService, $interval, AccountService, EventService, $state, ngNotify) {
+    function CalendarController($log, $scope, $compile, uiCalendarConfig, CalendarService, $interval, AccountService, EventService, $state, ngNotify, MeetingService) {
         var vm = this;
         var date = new Date();
         var d = date.getDate();
@@ -19,6 +19,7 @@
         vm.editEvent = editEvent;
         vm.goToEvent = goToEvent;
         vm.goToMeeting = goToMeeting;
+        vm.initParticipants = initParticipants;
 
         vm.eventData = {
             title: "",
@@ -77,6 +78,19 @@
             EventService.editEvent(vm.eventData.title, vm.eventData.id,vm.eventData.start,vm.eventData.end).then(function (data) {
                 console.log(vm.eventData);
                 $state.reload();
+            }, function (err) {
+                vm.message = err;
+                ngNotify.set(vm.message, {
+                    sticky: true,
+                    type: 'error'
+                });
+            });
+        };
+
+        function initParticipants() {
+            MeetingService.getParticipants($scope.SelectedEvent.title, $scope.SelectedEvent.start, $scope.SelectedEvent.end, $scope.SelectedEvent.location, $scope.SelectedEvent.priority).then(function (data) {
+                $scope.participants = data;
+                console.log($scope.participants);
             }, function (err) {
                 vm.message = err;
                 ngNotify.set(vm.message, {

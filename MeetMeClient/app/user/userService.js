@@ -34,7 +34,6 @@
             countUnreadConenctionNotifications: countUnreadConenctionNotificationsFn,
             getAllUsers: getAllUsers,
             user: _user,
-            users: _users
         };
 
         function getUserByUsernameFn(username) {
@@ -72,9 +71,7 @@
         }
 
         function getAllUsers() {
-            return resource.getAll(function (response) {
-                _users = response;
-            });
+            return resource.getAll().$promise;
         };
 
         return service;

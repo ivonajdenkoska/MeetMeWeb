@@ -15,6 +15,8 @@
             getMRById: { method: "GET", url: 'https://localhost:44362/api/meeting/getmeetingreq', params: { id: '@id' }, isArray: true},
             acceptMR: { method: "POST", url: 'https://localhost:44362/api/meeting/acceptmr' },
             rejectMR: { method: "POST", url: 'https://localhost:44362/api/meeting/rejecttmr' },
+            getParticipants: { method: "POST", url: 'https://localhost:44362/api/meeting/getp', isArray: true},
+
             getByTitle: { method: "GET", url: 'https://localhost:44362/api/meeting/get', params: { meeting: '@meeting' } }
             /*deleteMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/delete', params: { title: '@title', id: '@id' }, headers: { 'Content-Type': 'application/json; charset=utf8' } },
             editMeeting: { method: "POST", url: 'https://localhost:44362/api/meeting/edit', params: { title: '@title', id: '@id', start: '@start', end: '@end' }, headers: { 'Content-Type': 'application/json; charset=utf8' } }
@@ -23,6 +25,7 @@
 
         var _meeting = null;
         var _meetingReqs = [];
+        var _participants = [];
         var service = {
             createMeeting: createMeeting,
             createMeetingRequest: createMeetingRequest,
@@ -30,8 +33,10 @@
             getMRById: getMRById,
             acceptMR: acceptMR,
             rejectMR: rejectMR,
+            getParticipants: getParticipants,
             meeting: _meeting,
-            meetingReqs: _meetingReqs
+            meetingReqs: _meetingReqs,
+            participants:_participants
            // deleteMeeting: deleteMeeting,
            // editMeeting: editMeeting
         };
@@ -66,6 +71,12 @@
 
         function rejectMR(meeting, user, id) {
             return resource.rejectMR({ meeting, user, id: id }).$promise;
+        };
+
+        function getParticipants(title, start, end, location, priority) {
+            return resource.getParticipants({ title: title, start: start, end: end, location: location, priority: priority}, function (response) {
+                return response;
+            }).$promise;
         };
 
         /*function deleteEvent(title, id) {

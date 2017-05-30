@@ -14,5 +14,6 @@ namespace MeetMeWeb.Repositories.Interfaces
         List<MeetingRequest> getById(string guid);
         void acceptMR(Meeting meeting, User user, string id);
         void rejectMR(Meeting meeting, User user, string id);
+        List<Event> getParticipants(string title, DateTime start, DateTime end, string location, PrioritiesY priority);
     }
 }

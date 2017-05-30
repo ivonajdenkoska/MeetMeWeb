@@ -47,9 +47,15 @@ namespace MeetMeWeb.Services
             _repository.rejectMR(meeting, user, id);
         }
 
+        public List<Event> getParticipants(string title, DateTime start, DateTime end, string location, PrioritiesY priority)
+        {
+            return _repository.getParticipants(title, start, end,location,priority);
+        }
+
         public void Dispose()
         {
             _repository.Dispose();
         }
+
     }
 }

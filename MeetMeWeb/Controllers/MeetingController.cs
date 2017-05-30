@@ -51,6 +51,14 @@ namespace MeetMeWeb.Controllers
             return result;
         }
 
+        [Route("Getp")]
+        [HttpPost]
+        public List<Event> GetParticipants(Event e)
+        {
+            var result = _meetingService.getParticipants(e.Title, e.Start, e.End,e.Location,e.Priority);
+            return result;
+        }
+
         [Route("acceptmr")]
         [HttpPost]
         public void acceptMR(AcceptMR model)

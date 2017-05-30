@@ -56,5 +56,11 @@ namespace MeetMeWeb.Repositories
             _context.MeetingRequests.Remove(mr);
             _context.SaveChanges();
         }
+
+        public List<Event> getParticipants(string title, DateTime start, DateTime end, string location, PrioritiesY priority)
+        {
+            List<Event> listaEventi = _context.Events.Include("User").Where(x => x.Title == title && x.Start==start && x.End==end && x.Location==location && x.Priority==priority).ToList();
+            return listaEventi;
+        }
     }
 }
