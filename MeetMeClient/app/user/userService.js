@@ -71,7 +71,9 @@
         }
 
         function getAllUsers() {
-            return resource.getAll().$promise;
+            return resource.getAll(function (response) {
+                _users = response;
+            });
         };
 
         return service;
