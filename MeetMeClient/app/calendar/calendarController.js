@@ -33,7 +33,7 @@
             
             EventService.deleteEvent($scope.SelectedEvent.title, $scope.SelectedEvent.id, AccountService.authentication.userName).then(function (data) {
                 $scope.username = AccountService.authentication.userName;
-                CalendarService.getEvents(vm.user.userName).then(function (data) {
+                CalendarService.getEvents($scope.username).then(function (data) {
                     var events = data;
                     $scope.events = events;
                 }, function (response) {
