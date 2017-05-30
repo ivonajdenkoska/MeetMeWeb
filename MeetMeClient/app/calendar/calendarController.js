@@ -67,6 +67,7 @@
         };
 
         function init() {
+            console.log($scope.SelectedEvent);
             vm.eventData.title = $scope.SelectedEvent.title;
             vm.eventData.id = $scope.SelectedEvent.id;
             vm.eventData.start = new Date($scope.SelectedEvent.start).toISOString().replace(/T/, ' ').replace(/\..+/, '');

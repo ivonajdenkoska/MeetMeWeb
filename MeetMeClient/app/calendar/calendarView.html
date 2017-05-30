@@ -17,7 +17,7 @@
                 <br/>
                 <button type="button" class="btn btn-edit__style btn-large" data-toggle="modal" ng-click="vm.init()" data-target="#myModal1">Edit</button>
 				<button type="button" class="btn btn-remove__style btn-large" data-toggle="modal" data-target="#myModal">Remove</button>
-                <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal2" ng-show="SelectedEvent.mr != null" ng-click="vm.initParticipants()">View Participants</button> 
+                <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal2" ng-show="SelectedEvent.mr != null" ng-click="vm.initParticipants()">Meeting Details</button> 
             </div>
         </div>
     </div>
@@ -84,15 +84,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                    <h4 class="modal-title">View Participants</h4>
+                    <h4 class="modal-title">Meeting details for {{SelectedEvent.title}}</h4>
                 </div>
                 <div class="modal-body">
-                    <p>View participants for Event {{SelectedEvent.title}} ?</p>
+                    <h2>Meeting creator: {{SelectedEvent.mr.meeting.creator.firstName}}</h2>
+                    <h2>Meeting participants: </h2>
                     <ol>
                     <li ng-repeat="item in participants">
-                        <p>
+                        <h3>
                            {{item.user.firstName}} {{item.user.lastName}}
-                        </p>
+                        </h3>
                     </li>
                         </ol>
                 </div>
