@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201705281306490_PrioritesY.Designer.cs">
       <DependentUpon>201705281306490_PrioritesY.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705301858532_MR_Event_Relation.cs" />
+    <Compile Include="Migrations\201705301858532_MR_Event_Relation.Designer.cs">
+      <DependentUpon>201705301858532_MR_Event_Relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AcceptMR.cs" />
     <Compile Include="Models\ConnectionNotification.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -311,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705281306490_PrioritesY.resx">
       <DependentUpon>201705281306490_PrioritesY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705301858532_MR_Event_Relation.resx">
+      <DependentUpon>201705301858532_MR_Event_Relation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

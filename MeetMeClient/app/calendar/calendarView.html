@@ -14,10 +14,11 @@
                 <h4 class="event__name">{{SelectedEvent.title}}</h4>
                 <p class="text-small__style">Start: {{vm.selectedStart}}</p>
                 <p class="text-small__style">End: {{vm.selectedEnd}}</p>
+                <p>{{SelectedEvent.MR}}</p>
                 <br/>
                 <button type="button" class="btn btn-edit__style btn-large" data-toggle="modal" ng-click="vm.init()" data-target="#myModal1">Edit</button>
 				<button type="button" class="btn btn-remove__style btn-large" data-toggle="modal" data-target="#myModal">Remove</button>
-                <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal2" ng-click="vm.initParticipants()">View Participants</button> 
+                <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal2" ng-show="SelectedEvent.mr" ng-click="vm.initParticipants()">View Participants</button> 
             </div>
         </div>
     </div>

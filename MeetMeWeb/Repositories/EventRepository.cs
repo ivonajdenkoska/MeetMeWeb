@@ -42,14 +42,14 @@ namespace MeetMeWeb.Repositories
                // _context.SaveChanges();
                 if (meetingToDelete.creator.UserName == username)
                 {
-                    foreach (Event e in eventsToDelete)
-                    {
-                        _context.Events.Remove(e);
-                    }
                     List<MeetingRequest> mrLista = _context.MeetingRequests.Where(x => x.Meeting.ID == meetingToDelete.ID).ToList();
                     foreach(MeetingRequest m in mrLista)
                     {
                         _context.MeetingRequests.Remove(m);
+                    }
+                    foreach (Event e in eventsToDelete)
+                    {
+                        _context.Events.Remove(e);
                     }
                     _context.Meetings.Remove(meetingToDelete);
                     _context.SaveChanges();
