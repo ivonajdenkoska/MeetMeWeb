@@ -35,6 +35,7 @@ namespace MeetMeWeb.Controllers
         }
 
         // GET api/User/GetAll
+        [AllowAnonymous]
         [Route("GetAll")]
         public List<User> getAll()
         {
