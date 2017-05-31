@@ -1,4 +1,5 @@
 ﻿using MeetMeWeb.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace MeetMeWeb.Services.Interfaces
@@ -9,5 +10,6 @@ namespace MeetMeWeb.Services.Interfaces
         Task<Connection> CreateConnection(Connection connection);
         void DeleteConnection(Connection connection);
         Task<Connection> AcceptConnection(Connection connection);
+        List<User> getFriends(string userName);
     }
 }

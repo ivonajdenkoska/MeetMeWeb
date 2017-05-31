@@ -22,7 +22,18 @@
         };
 
         vm.names = ["Emil", "Tobias", "Linus"];
-        vm.users = UserService.getAllUsers();
+        //vm.users = UserService.getAllUsers();
+        UserService.getFriends(AccountService.authentication.user.userName).then(function (data) {
+            vm.users = data;
+            // redirect to calendar
+            //$state.go("calendar");
+        }, function (err) {
+            vm.message = err;
+            ngNotify.set(vm.message, {
+                sticky: true,
+                type: 'error'
+            });
+        });
         console.log(vm.users);
 
         vm.createMeeting = createMeeting;

@@ -50,6 +50,13 @@ namespace MeetMeWeb.Controllers
             return connection;
         }
 
+        [Route("GetFriends")]
+        public List<User> getFriends([FromUri]string username)
+        {
+            var results = _connectionService.getFriends(username);
+            return results;
+        }
+
         // POST api/User/ConnectUsers
         [Route("ConnectUsers")]
         public Task<Connection> ConnectUsers(Connection connection)

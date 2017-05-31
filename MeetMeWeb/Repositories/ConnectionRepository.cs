@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using MeetMeWeb.Models;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace MeetMeWeb.Repositories
 {
@@ -51,6 +52,16 @@ namespace MeetMeWeb.Repositories
                 connection = _context.Connections.Include("User1").Include("User2").Where(x => x.User1.Id == user2 && x.User2.Id == user1).FirstOrDefault();
             }
             return connection;
+        }
+
+        public List<User> getFriends(string userName)
+        {
+            var rezultat = new List<User>();
+            var prvDel = _context.Connections.Include("User1").Include("User2").Where(x => x.User1.UserName == userName).Select(x => x.User2).ToList();
+            foreach(User u in prvDel) { rezultat.Add(u); }
+            var vtorDel = _context.Connections.Include("User1").Include("User2").Where(x => x.User2.UserName == userName).Select(x=> x.User1).ToList();
+            foreach (User u in vtorDel) { rezultat.Add(u); }
+            return rezultat;
         }
     }
 }

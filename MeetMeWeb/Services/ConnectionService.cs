@@ -3,6 +3,7 @@ using MeetMeWeb.Services.Interfaces;
 using MeetMeWeb.Models;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace MeetMeWeb.Services
 {
@@ -43,6 +44,11 @@ namespace MeetMeWeb.Services
             var notification = new ConnectionNotification { User1 = connection.User2, User2 = connection.User1, Date = DateTime.Now, Read = false, Content = "accepted your request for connection" };
             _notificationRepo.createNotification(notification);
             return result;
+        }
+
+        public List<User> getFriends(string userName)
+        {
+            return _repo.getFriends(userName);
         }
     }
 }

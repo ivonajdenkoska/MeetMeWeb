@@ -17,7 +17,8 @@
             deleteConnection: { method: "POST", url: 'https://localhost:44362/api/user/deleteConnection', headers: { 'Content-Type': 'application/json; charset=utf8' } },
             getConnectionNotifications: { method: "GET", url: 'https://localhost:44362/api/user/getConnestionNotifications', params: { userId: '@userId', startPosition: '@startPosition', size: '@size' }, isArray: true },
             countUnreadConenctionNotifications: { method: "GET", url: 'https://localhost:44362/api/user/countUnreadConnestionNotifications', params: { userId: '@userId'} },
-            getAll: { method: "GET", url: 'https://localhost:44362/api/user/getAll', isArray: true}
+            getAll: { method: "GET", url: 'https://localhost:44362/api/user/getAll', isArray: true },
+            getFriends: { method: "GET", url: 'https://localhost:44362/api/user/getfriends', params: { username:'@username' }, isArray: true }
         });
 
         var _user = null;
@@ -33,6 +34,7 @@
             getConnectionNotifications: getConnectionNotificationsFn,
             countUnreadConenctionNotifications: countUnreadConenctionNotificationsFn,
             getAllUsers: getAllUsers,
+            getFriends: getFriends,
             user: _user,
         };
 
@@ -74,6 +76,10 @@
             return resource.getAll(function (response) {
                 _users = response;
             });
+        };
+
+        function getFriends(username) {
+            return resource.getFriends({username: username}).$promise;
         };
 
         return service;
