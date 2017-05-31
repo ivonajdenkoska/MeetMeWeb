@@ -23,7 +23,7 @@
 
         vm.names = ["Emil", "Tobias", "Linus"];
         //vm.users = UserService.getAllUsers();
-        UserService.getFriends(AccountService.authentication.user.userName).then(function (data) {
+        UserService.getFriends(AccountService.authentication.userName).then(function (data) {
             vm.users = data;
             // redirect to calendar
             //$state.go("calendar");
