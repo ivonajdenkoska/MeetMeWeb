@@ -37,6 +37,10 @@
             input.datetimepicker({
                 format: 'yyyy-mm-dd hh:ii'
             });
+            // $(input).datetimepicker('setHoursDisabled', [12, 19]);
+            $(input).datetimepicker('setStartDate', new Date());
+            $(input).datetimepicker('update');
+
         }
 
     }

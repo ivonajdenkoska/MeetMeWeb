@@ -17,7 +17,8 @@
             start: "",
             end: "",
             priority: "",
-            user: null
+            user: null,
+            flag: false
         };
 
         vm.createEvent = createEvent;

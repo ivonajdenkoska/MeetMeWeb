@@ -42,7 +42,7 @@
             });
 
 
-            EventService.createEvent({title: vm.meetingData.title, location: vm.meetingData.location, start: vm.meetingData.start, end: vm.meetingData.end, priority:vm.meetingData.priority, user: vm.meetingData.creator}).then(function (data) {
+            EventService.createEvent({title: vm.meetingData.title, location: vm.meetingData.location, start: vm.meetingData.start, end: vm.meetingData.end, priority:vm.meetingData.priority, user: vm.meetingData.creator, flag: true}).then(function (data) {
                 // redirect to calendar
                $state.go("calendar");
             }, function (err) {

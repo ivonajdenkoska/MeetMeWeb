@@ -17,7 +17,7 @@
                 <br/>
                 <button type="button" class="btn btn-edit__style btn-large" data-toggle="modal" ng-click="vm.init()" data-target="#myModal1">Edit</button>
 				<button type="button" class="btn btn-remove__style btn-large" data-toggle="modal" data-target="#myModal">Remove</button>
-                <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal2" ng-show="SelectedEvent.mr != null" ng-click="vm.initParticipants()">Meeting Details</button> 
+                <button type="button" class="btn btn-large" data-toggle="modal" data-target="#myModal2" ng-show="SelectedEvent.flag == true" ng-click="vm.initParticipants()">Meeting Details</button> 
             </div>
         </div>
     </div>
@@ -83,19 +83,24 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
                     <h4 class="modal-title">Meeting details for {{SelectedEvent.title}}</h4>
                 </div>
                 <div class="modal-body">
-                    <h2>Meeting creator: {{SelectedEvent.mr.meeting.creator.firstName}}</h2>
-                    <h2>Meeting participants: </h2>
-                    <ol>
-                    <li ng-repeat="item in participants">
-                        <h3>
-                           {{item.user.firstName}} {{item.user.lastName}}
-                        </h3>
-                    </li>
-                        </ol>
+                    <h1>Meeting participants: </h1>                  
+                    <table class="table table-bodered">
+                        <thead>
+                            <tr>
+                                <th>First Name </th>
+                                <th>Last Name </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="success" ng-repeat="item in participants">
+                                <td>{{item.user.firstName}}</td>
+                                <td>{{item.user.lastName}}</td>>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

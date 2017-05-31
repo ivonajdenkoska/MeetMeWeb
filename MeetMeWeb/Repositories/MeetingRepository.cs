@@ -43,7 +43,7 @@ namespace MeetMeWeb.Repositories
         {
             MeetingRequest mr = _context.MeetingRequests.SingleOrDefault(x => x.ID.ToString() == id);
             mr.Status = true;
-            Event e=new Event { Title =meeting.Title, Start = meeting.Start, End = meeting.End, Location = meeting.Location, Priority = meeting.Priority, User = user, MR=mr};
+            Event e=new Event { Title =meeting.Title, Start = meeting.Start, End = meeting.End, Location = meeting.Location, Priority = meeting.Priority, User = user, MR=mr, flag=true};
             _context.Entry(e.User).State = System.Data.Entity.EntityState.Unchanged;
             _context.Entry(e).State = System.Data.Entity.EntityState.Added;
             _context.SaveChanges();
